@@ -1548,12 +1548,15 @@ export class FocusRect extends EventDispatcher {
 		this.visible = egretObj.visible
 
 		egretObj.addEventListener('complete', this.instanceEventHandle, this);
+		/*
 		var parentInstance = egretObj.parent;
 		if (parentInstance && 'validateNow' in parentInstance) {
 			(<any>parentInstance['validateNow'])();
 		}
+		*/
 		var m: Matrix = new Matrix(1, 0, 0, 1, -egretObj.anchorOffsetX, -egretObj.anchorOffsetY);
 		m.concat(egretObj.matrix.clone() as any)
+		/*
 		//由于相对布局的问题，如果自身发生变化可能会引起父级的变化，这里更新一下父级
 		if (this.parentFocusRect && this.lastMatrix && (
 			!m.equals(this.lastMatrix) ||
@@ -1563,6 +1566,7 @@ export class FocusRect extends EventDispatcher {
 			this.lastInstanceHeight = egretObj.height;
 			this.parentFocusRect.refreshDisplay();
 		}
+		*/
 		this._Width = egretObj.width;
 		this._Height = egretObj.height;
 		this._Matrix = m;
