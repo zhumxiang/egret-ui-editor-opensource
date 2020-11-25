@@ -23020,8 +23020,8 @@ var eui;
          */
         p.calculateRowAndColumn = function (explicitWidth, explicitHeight) {
             var target = this.$target;
-            var horizontalGap = isNaN(this._horizontalGap) ? 0 : this._horizontalGap;
-            var verticalGap = isNaN(this._verticalGap) ? 0 : this._verticalGap;
+            var horizontalGap = isNaN(this.explicitHorizontalGap) ? 0 : this.explicitHorizontalGap;
+            var verticalGap = isNaN(this.explicitVerticalGap) ? 0 : this.explicitVerticalGap;
             this._rowCount = this._columnCount = -1;
             var numElements = target.numElements;
             var count = numElements;
