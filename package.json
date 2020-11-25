@@ -7,14 +7,16 @@
     "license": "ISC",
     "scripts": {
         "start": "electron .",
-        "setup-mac": "export ELECTRON_MIRROR=http://npm.taobao.org/mirrors/electron/&& npm install",
-        "setup-win": "set ELECTRON_MIRROR=https://npm.taobao.org/mirrors/electron/&& npm install",
+        "setup": "npm install",
         "build": "webpack --progress --config webpack.debug.config.js",
         "watch": "webpack --watch --progress --config  webpack.debug.config.js",
-        "setup-cnpm": "npm install cnpm@6.0.0 -g"
+        "publish": "webpack --progress --config webpack.release.config.js",
+        "setup-cnpm": "npm install cnpm@6.0.0 -g",
+        "pack-win": "electron-packager . \"Egret UI Editor\" --platform=win32 --arch=x64 --icon=./build/win/app.ico --out=./dist --app-version=1.12.0 --overwrite"
     },
     "dependencies": {
         "chokidar": "^3.4.2",
+        "electron-packager": "^15.1.0",
         "fs-extra": "^9.0.1",
         "gsap": "^3.5.1",
         "iconv-lite": "^0.6.2",
@@ -36,7 +38,6 @@
         "copy-webpack-plugin": "5.1.1",
         "css-loader": "^4.3.0",
         "electron": "7.3.2",
-        "electron-builder": "^22.8.0",
         "eslint": "^7.9.0",
         "file-loader": "^6.1.0",
         "glob": "^7.1.6",
