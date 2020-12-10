@@ -49,7 +49,7 @@ export class ExmlModelConfig {
 		return this._runtime;
 	}
 	runtimeApi: IRuntimeAPI;
-	private exmlConfigInRuntime: any;
+	private exmlConfigInRuntime: eui.sys.EXMLConfig;
 	private assetAdapter: IAssetsAdapter;
 	/**
 	 * 设置运行时

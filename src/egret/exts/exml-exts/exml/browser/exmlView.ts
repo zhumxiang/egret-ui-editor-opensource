@@ -45,6 +45,7 @@ export class ExmlView implements IExmlView {
 	private animationDisposables: IDisposable[] = [];
 	private _onZoomChanged: Emitter<number>;
 	private _onViewChanged: Emitter<ExmlView>;
+	private _onCustomClassChangedListener: IDisposable;
 
 	constructor(
 		protected rootContainer: IExmlViewContainer,
@@ -428,6 +429,69 @@ export class ExmlView implements IExmlView {
 		this.runtimeLayer.style.left = '0';
 		this.runtimeLayer.style.zIndex = '-1';
 		this._runtime = this.instantiationService.createInstance(EgretRuntimeDelegate, this.runtimeLayer);
+		this._runtime.getRuntime().then(runtime => {
+			let syncProps = (e?) => {
+				if (e == "exml") {
+					return;
+				}
+				let classMap = this.egretProjectService.exmlConfig.getClassNodeMap();
+				let euiExmlConfig: eui.sys.EXMLConfig = new runtime.eui.sys.EXMLConfig();
+				for (let fullName in classMap) {
+					let cls = runtime.egret.getDefinitionByName(fullName);
+					if (!cls || !cls.prototype) {
+						continue;
+					}
+					if (!runtime.egret.is(cls.prototype, "egret.DisplayObject")) {
+						continue;
+					}
+					let instance;
+					try {
+						instance = new cls();
+					} catch (e) {
+						continue;
+					}
+					let props = classMap[fullName].props;
+					let lacks = [] as { name: string, val: any }[];
+					for (let prop of props) {
+						if (prop.name in cls.prototype || prop.name in instance) {
+							continue;
+						}
+						try {
+							let type = euiExmlConfig.getPropertyType(prop.name, fullName);
+							if (type === undefined) {
+								let val: any;
+								if (prop.type == "number") {
+									val = 0;
+								} else if (prop.type == "string") {
+									val = "";
+								} else if (prop.type == "boolean") {
+									val = false;
+								} else {
+									continue;
+								}
+								lacks.push({
+									name: prop.name,
+									val: val,
+								});
+							}
+						} catch (e) {
+							lacks.length = 0;
+							break;
+						}
+					}
+					if (lacks.length > 0) {
+						let prototype = cls.prototype;
+						delete prototype.__hashCode__;
+						for (let prop of lacks) {
+							instance[prop.name] = prop.val;
+						}
+						euiExmlConfig.$describe(instance);
+					}
+				}
+			};
+			this._onCustomClassChangedListener = this.egretProjectService.exmlConfig.onCustomClassChanged(syncProps);
+			syncProps();
+		})
 		this._runtime.onLog = (message) => {
 			this.outputService.append(message);
 		};
@@ -1093,6 +1157,7 @@ export class ExmlView implements IExmlView {
 		dispose(this.modelDisposables);
 		dispose(this._subview);
 		dispose(this._helper);
+		dispose(this._onCustomClassChangedListener);
 		this._subview = null;
 		if (this.rootContainer) {
 			this.rootContainer.removeExmlView(this);
