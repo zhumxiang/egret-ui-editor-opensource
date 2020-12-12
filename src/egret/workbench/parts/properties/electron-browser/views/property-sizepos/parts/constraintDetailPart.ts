@@ -285,10 +285,10 @@ export class ConstraintDetailPart extends BasePart {
 			const value = keyValue[type];
 			if (value.user != null) {
 				this.constraint.setValue(type as PositionType, value.user as number, '');
-			} else if (value.default != null) {
-				this.constraint.setValue(type as PositionType, null, value.default as string);
+			} else if (value.default != null && !isNaN(value.default as number)) {
+				this.constraint.setValue(type as PositionType, null, String(value.default));
 			} else {
-				this.constraint.setValue(type as PositionType, null, '-');
+				this.constraint.setValue(type as PositionType, null, '');
 			}
 		}
 	}
