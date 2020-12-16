@@ -10,7 +10,7 @@ export class ClipboardService implements IClipboardService {
 
 	private static FILE_FORMAT = 'code/file-list';
 
-
+	memText = "";
 
 	_serviceBrand: undefined;
 	/**
@@ -18,20 +18,23 @@ export class ClipboardService implements IClipboardService {
 	 * @param text 
 	 */
 	public writeText(text: string, type?: 'selection' | 'clipboard'): void {
-		clipboard.writeText(text, type);
+		this.memText = text;
+		//clipboard.writeText(text, type);
 	}
 	/**
 	 * 从剪贴板中读取文本
 	 */
 	public readText(type?: 'selection' | 'clipboard'): string {
-		return clipboard.readText(type);
+		return this.memText;
+		//return clipboard.readText(type);
 	}
 
 	/**
 	* 清理剪切板内容
 	*/
 	public clear(type?: 'selection' | 'clipboard'): void {
-		clipboard.clear(type);
+		this.memText = "";
+		//clipboard.clear(type);
 	}
 	/**
 	 * 写文本
