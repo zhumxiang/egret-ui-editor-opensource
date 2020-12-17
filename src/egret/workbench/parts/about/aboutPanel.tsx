@@ -8,6 +8,8 @@ import ReactDOM = require('react-dom');
 import { localize } from '../../../base/localization/nls';
 import { APPLICATION_NAME } from 'egret/consts/consts';
 
+const customAuther = "zmx";
+const customVersion = 3;
 /**
  * 新建文件夹
  * @export
@@ -71,7 +73,7 @@ export class AboutPanel extends InnerWindow {
 				<div className='log' />
 				<div className='titlePanel'>
 					<div style={{ fontSize: 20, color: '#E4E5E9' }}>{APPLICATION_NAME}</div>
-					<div style={{ fontSize: 20, color: '#E4E5E9' }}>{remote.app.getVersion()}</div>
+					<div style={{ fontSize: 20, color: '#E4E5E9' }}>{remote.app.getVersion() + "(" + customAuther + ".v=" + customVersion + ")"}</div>
 				</div>
 			</div>
 			<div className='seperate'></div>
