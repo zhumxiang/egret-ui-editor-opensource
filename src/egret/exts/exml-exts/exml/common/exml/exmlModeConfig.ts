@@ -685,11 +685,11 @@ class ExmlCompiler {
 			let classGen = this.modelConfig.runtimeApi.egret.getDefinitionByName(className);
 			if (classGen) {
 				if (this.modelConfig.runtimeApi.egret.is(classGen.prototype, "eui.Component")) {
-					if (skinName && !this.modelConfig.runtimeApi.egret.getDefinitionByName(skinName)) {
+					if (skinName) {
 						this.compile(skinName, null);
 					}
 				} else if (this.modelConfig.runtimeApi.egret.is(classGen.prototype, "eui.DataGroup")) {
-					if (itemRendererSkinName && !this.modelConfig.runtimeApi.egret.getDefinitionByName(itemRendererSkinName)) {
+					if (itemRendererSkinName) {
 						this.compile(itemRendererSkinName, null);
 					}
 				}
