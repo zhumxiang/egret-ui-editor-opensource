@@ -161,6 +161,14 @@ export class ExmlModelConfig {
 			instance = new clazz();
 		}
 		catch (e) { }
+		if(instance){
+			if (this.isInstance(instance, "eui.Component") && instance.skinName && !instance.skin) {
+				let skin = this.compileIfNeed(instance.skinName);
+				if (skin) {
+					instance.setSkin(new skin());
+				}
+			}
+		}
 		return instance;
 	}
 	/**
