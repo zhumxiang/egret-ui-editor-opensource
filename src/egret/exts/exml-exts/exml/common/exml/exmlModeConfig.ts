@@ -671,6 +671,29 @@ class ExmlCompiler {
 		}
 		//这里的classdata 的super没有模块名!!!!  todo fuck
 		this.modelConfig.runtimeApi.registerClass(className, prop, propsMap);
+		const readSkinName = (key: string) => {
+			let skinName = propsMap[key] as string;
+			if (skinName && /^".*"$/.test(skinName) && !/\.exml"$/.test(skinName)) {
+				skinName = skinName.substr(1, skinName.length - 2);
+				return skinName;
+			}
+			return null;
+		}
+		let skinName = readSkinName("skinName");
+		let itemRendererSkinName = readSkinName("itemRendererSkinName");
+		if (skinName || itemRendererSkinName) {
+			let classGen = this.modelConfig.runtimeApi.egret.getDefinitionByName(className);
+			if (classGen) {
+				if (this.modelConfig.runtimeApi.egret.is(classGen.prototype, "eui.Component")) {
+					if (skinName && !this.modelConfig.runtimeApi.egret.getDefinitionByName(skinName)) {
+						this.compile(skinName, null);
+					}
+					if (itemRendererSkinName && !this.modelConfig.runtimeApi.egret.getDefinitionByName(itemRendererSkinName)) {
+						this.compile(itemRendererSkinName, null);
+					}
+				}
+			}
+		}
 		this.compileDic[path] = this.getModStamp(path);
 		this.tempCompiled[pathKey] = true;
 		if (this.tempCompiling.hasOwnProperty(pathKey)) {
