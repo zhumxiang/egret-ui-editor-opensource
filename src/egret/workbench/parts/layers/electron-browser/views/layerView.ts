@@ -279,7 +279,7 @@ export class LayerView extends PanelContentDom implements IModelRequirePart, IFo
 
 		const moduleAndPathName = this.exmlModel.getExmlConfig().getClassNameById(node.getName(), node.getNs());
 		if (node.getId()) {
-			defStrSum.sum += 'public ' + node.getId() + ':' + moduleAndPathName + ';\n';
+			defStrSum.sum += node.getId() + ': ' + moduleAndPathName + ';\n';
 		}
 		if (LayerPanelUtil.isContainer(node)) {
 			const count: number = node.getNumChildren();
