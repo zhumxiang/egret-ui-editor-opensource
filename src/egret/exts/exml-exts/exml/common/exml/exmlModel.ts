@@ -587,7 +587,7 @@ export class ExmlTreeParser {
 		let eObject: EObject;
 		const name: string = xml.localName;
 		const ns: Namespace = new Namespace(xml.prefix, xml.namespace);
-		const className: string = this.getExmlConfig().getClassNameById(name, ns);
+		const className: string = this.getExmlConfig().getProjectConfig().getClassName(xml);
 		let instance: any = this.getExmlConfig().getInstanceByName(className);
 		if (!instance) {
 			return null;
