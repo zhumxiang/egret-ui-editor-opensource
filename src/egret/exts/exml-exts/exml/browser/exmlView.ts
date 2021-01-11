@@ -441,7 +441,7 @@ export class ExmlView implements IExmlView {
 					if (!cls || !cls.prototype) {
 						continue;
 					}
-					if (!runtime.egret.is(cls.prototype, "egret.DisplayObject")) {
+					if (cls != runtime.egret.DisplayObject && !runtime.egret.is(cls.prototype, "egret.DisplayObject")) {
 						continue;
 					}
 					let instance;
@@ -451,7 +451,7 @@ export class ExmlView implements IExmlView {
 						continue;
 					}
 					let props = classMap[fullName].props;
-					let lacks = [] as { name: string, val: any }[];
+					let lacks = [] as typeof props;
 					for (let prop of props) {
 						if (prop.name in cls.prototype || prop.name in instance) {
 							continue;
@@ -469,10 +469,7 @@ export class ExmlView implements IExmlView {
 								} else {
 									continue;
 								}
-								lacks.push({
-									name: prop.name,
-									val: val,
-								});
+								lacks.push(prop);
 							}
 						} catch (e) {
 							lacks.length = 0;
@@ -480,12 +477,10 @@ export class ExmlView implements IExmlView {
 						}
 					}
 					if (lacks.length > 0) {
-						let prototype = cls.prototype;
-						delete prototype.__hashCode__;
+						let info = euiExmlConfig.$describe(instance);
 						for (let prop of lacks) {
-							instance[prop.name] = prop.val;
+							info[prop.name] = prop.type;
 						}
-						euiExmlConfig.$describe(instance);
 					}
 				}
 			};
