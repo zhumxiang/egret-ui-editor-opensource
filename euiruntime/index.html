@@ -85,7 +85,7 @@
             var base = document.createElement("base");
             base.href=decodeURIComponent(projectRoot)+"/";
 			document.head.appendChild(base);
-			egret.runEgret({ calculateCanvasScaleFactor:function(context) {return 1;}});
+			egret.runEgret({ renderMode: "webgl", calculateCanvasScaleFactor:function(context) {return 1;}});
 			window.parent.postMessage('egret_loaded:'+runtimeId,'*');
         });
 	</script>
