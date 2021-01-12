@@ -547,39 +547,54 @@ export class NumberInput extends TextInput {
 			return '';
 		}
 		let tmpValue: string = '';
-		//先过滤一遍非法字符，且只保留一个小数点
+		//先过滤一遍非法字符，且只保留一个小数点，一个e，一个x
 		let hasPoint: boolean = false;
+		let hasE: boolean = false;
+		let hasX: boolean = false;
 		for (var i = 0; i < value.length; i++) {
-			if (this.supportDecimal) {
-				if (value.charAt(i) == '.') {
+			let c = value.charAt(i);
+			let lc = c.toLowerCase();
+			if (lc == '.') {
+				if (this.supportDecimal) {
 					if (!hasPoint) {
 						hasPoint = true;
 						tmpValue += '.';
 					}
 				}
-			}
-			if (
+			} else if (lc == 'e') {
+				if (!hasE) {
+					hasE = true;
+					tmpValue += c;
+				}
+			} else if (lc == 'x') {
+				if (!hasX && i == (value.charAt(0) == '-' ? 2 : 1) && value.charAt(i - 1) == '0') {
+					hasX = true;
+					tmpValue += c;
+				}
+			} else if (value.charCodeAt(i) >= 'a'.charCodeAt(0) && value.charCodeAt(i) <= 'f'.charCodeAt(0)) {
+				if (hasX) {
+					tmpValue += c;
+				}
+			} else if (
 				(value.charCodeAt(i) >= 48 && value.charCodeAt(i) <= 57) ||
-				value.charAt(i) == '-' ||
-				(this.supportPercent && value.charAt(i) == '%')
+				lc == '-' || (this.supportPercent && lc == '%')
 			) {
-				tmpValue += value.charAt(i);
+				tmpValue += c;
 			}
 		}
 		value = tmpValue;
 		tmpValue = '';
 		//处理负号和百分号不能在中间的情况
 		for (var i = 0; i < value.length; i++) {
-			if (value.charAt(i) == '-' && i == 0) {
-				tmpValue += value.charAt(i);
-			}
-			if (value.charAt(i) == '%' && i == value.length - 1) {
-				tmpValue += value.charAt(i);
-			}
-			if (
-				(value.charCodeAt(i) >= 48 && value.charCodeAt(i) <= 57) ||
-				value.charAt(i) == '.'
-			) {
+			if (value.charAt(i) == '-') {
+				if (i == 0) {
+					tmpValue += value.charAt(i);
+				}
+			} else if (value.charAt(i) == '%') {
+				if (i == value.length - 1) {
+					tmpValue += value.charAt(i);
+				}
+			} else {
 				tmpValue += value.charAt(i);
 			}
 		}
@@ -623,14 +638,17 @@ export class NumberInput extends TextInput {
 		let numValue = 0;
 		if (value.charAt(value.length - 1) == '%') {
 			isPercent = true;
-			numValue = parseFloat(value.slice(0, value.length - 1)) * 100;
+			numValue = Number(value.slice(0, value.length - 1)) * 100;
 		} else {
-			numValue = parseFloat(value);
+			numValue = Number(value);
 		}
 		if (Number.isNaN(numValue)) {
 			return '';
 		}
-		numValue = this.validateRange(numValue);
+		let validNumValue = this.validateRange(numValue);
+		if (validNumValue == numValue) {
+			return value;
+		}
 
 		let result = '';
 		if (isPercent) {

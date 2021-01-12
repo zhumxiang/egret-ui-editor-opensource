@@ -181,8 +181,8 @@ export function setPropertyStr(node: IObject, key: string, value: string): void 
  * @param key 属性名 
  * @param value 
  */
-export function setPropertyNum(node: IObject, key: string, value: number): void {
-	if (value == null || isNaN(value)) {
+export function setPropertyNum(node: IObject, key: string, value: string | number): void {
+	if (value == null || isNaN(Number(value))) {
 		node.setProperty(key, null);
 	} else {
 		node.setNumber(key, value);

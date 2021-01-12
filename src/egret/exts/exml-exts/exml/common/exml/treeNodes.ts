@@ -425,7 +425,7 @@ export interface IObject extends IValue {
 	/**
 	 * 设置number属性值,NaN表示要清空属性。
 	 */
-	setNumber(property: string, instance: number): void;
+	setNumber(property: string, instance: number | string): void;
 	/**
 	 * 设置string属性值,null表示要清空属性。
 	 */

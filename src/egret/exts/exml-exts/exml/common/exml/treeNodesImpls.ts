@@ -947,6 +947,9 @@ export class EObject extends EValue implements IObject {
 		let formatValue: any = undefined;
 		if (value) {
 			formatValue = value.getInstance();
+			if (value.getName() == 'number') {
+				formatValue = Number(formatValue);
+			}
 		} else {
 			formatValue = this.getDefaultValue(key);
 		}
@@ -1047,8 +1050,8 @@ export class EObject extends EValue implements IObject {
 	/**
 	 * 设置number属性值,NaN表示要清空属性。
 	 */
-	public setNumber(property: string, instance: number): void {
-		if (isNaN(instance)) {
+	public setNumber(property: string, instance: string | number): void {
+		if (isNaN(Number(instance))) {
 			this.setProperty(property, null);
 			return;
 		}

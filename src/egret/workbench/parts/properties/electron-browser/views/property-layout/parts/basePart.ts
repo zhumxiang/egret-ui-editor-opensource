@@ -135,18 +135,10 @@ export class BaseLayoutPart extends BasePart {
 		input.style.maxWidth = '50px';
 		input.regulateStep = 0.1;
 		this.toDisposes.push(input.onValueChanging(e => {
-			let value: number = null;
-			if (e) {
-				value = Number.parseFloat(e);
-			}
-			this.numberChanging_handler(type, value);
+			this.numberChanging_handler(type, e);
 		}));
 		this.toDisposes.push(input.onValueChanged(e => {
-			let value: number = null;
-			if (e) {
-				value = Number.parseFloat(e);
-			}
-			this.numberChanged_handler(type, value);
+			this.numberChanged_handler(type, e);
 		}));
 		this.reigsterComps(type, input);
 	}
@@ -180,7 +172,7 @@ export class BaseLayoutPart extends BasePart {
 		return this.compsMap[type];
 	}
 
-	private numberChanging_handler(type: string, value: number): void {
+	private numberChanging_handler(type: string, value: string): void {
 		if (!this.currentNodes) {
 			return;
 		}
@@ -190,10 +182,10 @@ export class BaseLayoutPart extends BasePart {
 			if (!layoutValue || !isInstanceof(layoutValue, 'eui.IObject')) {
 				return;
 			}
-			node.setInstanceValue(type, value);
+			node.setInstanceValue(type, Number(value));
 		}
 	}
-	private numberChanged_handler(type: string, value: number): void {
+	private numberChanged_handler(type: string, value: string): void {
 		if (!this.currentNodes) {
 			return;
 		}

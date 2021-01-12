@@ -234,10 +234,10 @@ export class PropertyAllPart implements IUIBase, IDisposable {
 					if (!existInput) {
 						this.inputDisposables.push(numberInput);
 						this.inputDisposables.push(numberInput.onValueChanging(e => {
-							this.numberChanging_handler(e ? Number.parseFloat(e) : null, prop);
+							this.numberChanging_handler(e ? e : null, prop);
 						}));
 						this.inputDisposables.push(numberInput.onValueChanged(e => {
-							this.numberChanged_handler(e ? Number.parseFloat(e) : null, prop);
+							this.numberChanged_handler(e ? e : null, prop);
 						}));
 					}
 					return numberInput;
@@ -270,7 +270,7 @@ export class PropertyAllPart implements IUIBase, IDisposable {
 									const value = e;
 									this.numberPercentChanging_handler(value, prop);
 								} else {
-									const value = Number.parseFloat(e);
+									const value = e;
 									this.numberChanging_handler(value, prop);
 								}
 							} else {
@@ -283,7 +283,7 @@ export class PropertyAllPart implements IUIBase, IDisposable {
 									const value = e;
 									this.numberPercentChanged_handler(value, prop);
 								} else {
-									const value = Number.parseFloat(e);
+									const value = e;
 									this.numberChanged_handler(value, prop);
 								}
 							} else {
@@ -373,16 +373,16 @@ export class PropertyAllPart implements IUIBase, IDisposable {
 				return null;
 		}
 	}
-	private numberChanging_handler(value: number, prop: IProperty): void {
+	private numberChanging_handler(value: string, prop: IProperty): void {
 		if (!this.selectionNodes) {
 			return;
 		}
 		for (let i = 0; i < this.selectionNodes.length; i++) {
 			const node = this.selectionNodes[i];
-			node.setInstanceValue(prop.name, value);
+			node.setInstanceValue(prop.name, Number(value));
 		}
 	}
-	private numberChanged_handler(value: number, prop: IProperty): void {
+	private numberChanged_handler(value: string, prop: IProperty): void {
 		if (!this.selectionNodes) {
 			return;
 		}
@@ -403,7 +403,7 @@ export class PropertyAllPart implements IUIBase, IDisposable {
 			} else {
 				propName = 'percentHeight';
 			}
-			const numValue = Number.parseFloat(value);
+			const numValue = Number(value);
 			for (var i = 0; i < this.selectionNodes.length; i++) {
 				var node = this.selectionNodes[i];
 				node.setInstanceValue(propName, numValue);

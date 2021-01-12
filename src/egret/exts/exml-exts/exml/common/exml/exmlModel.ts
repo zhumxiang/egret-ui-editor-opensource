@@ -379,7 +379,7 @@ export class ExmlTreeParser {
 				eValue = new EValue(type, ns, value === 'true');
 				break;
 			case 'number':
-				eValue = new EValue(type, ns, Number(value));
+				eValue = new EValue(type, ns, value);
 				break;
 			case 'string':
 			case 'any':
