@@ -82,28 +82,28 @@ export class AssetAdapterEUI implements IAssetsAdapter {
 				if (runtime.RES) {
 					const resConfigs: IResourceConfigItem[] = this.project.resConfigs;
 					if (resConfigs.length === 0) {
-						runtime.RES.dispose();//TODO 应该在某一个地方统一教研一下这个RES是否有dispose方法
+						runtime.RES.dispose();
 						this._onConfigChanged.fire(this);
 						resolve(void 0);
 					} else {
 						var configComplete = (event) => {
-							runtime.RES.removeEventListener(runtime.RES.ResourceEvent.CONFIG_COMPLETE, configComplete);
-							runtime.RES.removeEventListener(runtime.RES.ResourceEvent.CONFIG_LOAD_ERROR, configError);
+							runtime.RES.removeEventListener(runtime.RES.ResourceEvent.CONFIG_COMPLETE, configComplete, null);
+							runtime.RES.removeEventListener(runtime.RES.ResourceEvent.CONFIG_LOAD_ERROR, configError, null);
 							this._onConfigChanged.fire(this);
 							resolve(void 0);
-							runtime.RES.cleanAsync();//TODO 应该在某一个地方统一教研一下这个RES是否有dispose方法
+							runtime.RES.cleanAsync();
 						};
 						var configError = (event) => {
-							runtime.RES.removeEventListener(runtime.RES.ResourceEvent.CONFIG_COMPLETE, configComplete);
-							runtime.RES.removeEventListener(runtime.RES.ResourceEvent.CONFIG_LOAD_ERROR, configError);
-							runtime.RES.cleanAsync();//TODO 应该在某一个地方统一教研一下这个RES是否有dispose方法
-							runtime.RES.dispose();//TODO 应该在某一个地方统一教研一下这个RES是否有dispose方法
+							runtime.RES.removeEventListener(runtime.RES.ResourceEvent.CONFIG_COMPLETE, configComplete, null);
+							runtime.RES.removeEventListener(runtime.RES.ResourceEvent.CONFIG_LOAD_ERROR, configError, null);
+							runtime.RES.cleanAsync();
+							runtime.RES.dispose();
 							this.notificationService.error({content:localize('assetAdapterEUI.doReload.loadError','Resource configuration file loading error'),duration:3});
 							reject(localize('assetAdapterEUI.doReload.loadError','Resource configuration file loading error'));
 						};
-						runtime.RES.addEventListener(runtime.RES.ResourceEvent.CONFIG_COMPLETE, configComplete);
-						runtime.RES.addEventListener(runtime.RES.ResourceEvent.CONFIG_LOAD_ERROR, configError);
-						runtime.RES.dispose();//TODO 应该在某一个地方统一教研一下这个RES是否有dispose方法
+						runtime.RES.addEventListener(runtime.RES.ResourceEvent.CONFIG_COMPLETE, configComplete, null);
+						runtime.RES.addEventListener(runtime.RES.ResourceEvent.CONFIG_LOAD_ERROR, configError, null);
+						runtime.RES.dispose();
 						for (let i = 0; i < resConfigs.length; i++) {
 							const configPath: string = resConfigs[i].url;
 							const folderPath: string = resConfigs[i].folder;

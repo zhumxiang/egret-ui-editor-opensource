@@ -82,6 +82,12 @@ export class EgretRuntimeDelegate implements IDisposable {
 			runtimeRootContainer: window.egret_stages[0].getChildAt(0),
 			egretPlayer: this.iframe.contentDocument.body.childNodes[1] as HTMLElement
 		};
+		{
+			//这里只是做个保险，实际上下面的方法都是已存在
+			this.runtimeCore.egret.cleanCache = this.runtimeCore.egret.cleanCache || (() => { });
+			this.runtimeCore.RES.dispose = this.runtimeCore.RES.dispose || (() => { });
+			this.runtimeCore.RES.cleanAsync = this.runtimeCore.RES.cleanAsync || (() => { });
+		}
 		//TODO 未来还是要移除这个事件的
 		// this.runtimeCore.runtimeRootContainer.addEventListener('resize', () => {
 		// 	this.containerInRuntimeReize_handler();
@@ -228,8 +234,8 @@ export class EgretAssetsRuntime implements IEgretAssetsRuntime {
 		}
 	}
 
-	private _runtimeRES: any;
-	public get runtimeRES(): any {
+	private _runtimeRES: typeof RES;
+	public get runtimeRES() {
 		return this._runtimeRES;
 	}
 
@@ -248,7 +254,7 @@ export class EgretAssetsRuntime implements IEgretAssetsRuntime {
 	public get url(): string {
 		return this._url;
 	}
-	private _runtimeEgret: any;
+	private _runtimeEgret: typeof egret;
 
 	public initRuntime(url: string): Promise<void> {
 		return new Promise<void>((c, e) => {
@@ -271,7 +277,7 @@ export class IRuntimeAPI {
 	/**
 	 * 编辑器runtime内部引擎舞台上的最外层容器
 	 */
-	readonly runtimeRootContainer: any;
+	readonly runtimeRootContainer: eui.Group;
 	/**
 	 * egret节点容器
 	 */
@@ -283,15 +289,15 @@ export class IRuntimeAPI {
 	/**
 	 * Runtime中的Egret
 	 */
-	readonly egret: any;
+	readonly egret: typeof egret;
 	/**
 	 * Runtime中的Eui
 	 */
-	readonly eui: any;
+	readonly eui: typeof eui;
 	/**
 	 * Runtime中的RES
 	 */
-	readonly RES: any;
+	readonly RES: typeof RES;
 	/**
 	 * 注册一个主题
 	 */
@@ -324,7 +330,7 @@ export class IRuntimeAPI {
 	 * 全局继续一次
 	 */
 	readonly resumeOnceGlobal: () => void;
-	
+
 }
 
 /**
