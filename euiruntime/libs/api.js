@@ -130,6 +130,7 @@ var registerTheme = function (getSkin, getStyle) {
 	egret_stages[0].registerImplementation("eui.Theme", new Theme(getSkin, getStyle));
 }
 
+var uieditorEx = {}
 var registerTSClass = function (className, classData, propertyData) {
 	var superClassName = classData ? classData["super"] : null;
 	var moduleList = className.split(".");
@@ -201,6 +202,18 @@ var registerTSClass = function (className, classData, propertyData) {
 			classString += "})(" + moduleName + " = " + comboModuleName + " || (" + comboModuleName + " = {}))\n";
 		} else {
 			classString += "})(" + moduleName + " || (" + moduleName + " = {}))\n";
+		}
+	}
+	//自定义扩展
+	if (uieditorEx[className]) {
+		for (var prop in uieditorEx[className]) {
+			var func = uieditorEx[className][prop];
+			var funcStr = "uieditorEx[\"" + className + "\"][\"" + prop + "\"]";
+			if (typeof func == "function") {
+				classString += className + ".prototype[\"" + prop + "\"] = " + funcStr + "\n";
+			} else if (typeof func.get == "function" || typeof func.set == "function") {
+				classString += "Object.defineProperty(" + className + ".prototype, \"" + prop + "\", " + funcStr + ")\n";
+			}
 		}
 	}
 	delete className;

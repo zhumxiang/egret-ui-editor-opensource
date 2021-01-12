@@ -34,6 +34,7 @@
         var uiLibPath = paramsObject["uiLibPath"] || "";
 		var tweenPath = paramsObject["tweenPath"] || "";
 		var runtimeId = paramsObject["id"] || "";
+		var extensionPath = paramsObject["extensionPath"] || "";
 	</script>
 </head>
 
@@ -77,7 +78,8 @@
             'libs/api.js',
             'AssetAdapter.js',
             'Theme.js',
-            'Main.js'
+            'Main.js',
+            ...extensionPath.split(',').map(function (p) {return projectRoot + "\\" + p}),
 		];
         addScripts(scripts,function(){
             var base = document.createElement("base");

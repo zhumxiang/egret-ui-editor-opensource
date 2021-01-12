@@ -535,6 +535,10 @@ export class EUIExmlConfig extends AbstractExmlConfig {
 				'egretWebLibPath=' + egretWebLibPath + '&' +
 				'uiLibPath=' + uiLibPath + '&' +
 				'tweenPath=' + tweenPath;
+			let extensionJSList = getRuntimeExtensionJSList(this.projectUri.fsPath);
+			if (extensionJSList.length > 0) {
+				this.runtimeUrl += '&extensionPath=' + extensionJSList.join(',');
+			}
 		});
 		return promise.then(() => {
 			//默认组件的初始化
@@ -734,4 +738,34 @@ export interface IComponent {
 	 * 控件类型
 	 */
 	type: string;
+}
+
+function getRuntimeExtensionJSList(projRoot: string): string[] {
+	let list = [] as string[];
+	let uieditorRoot = paths.join(projRoot, 'uieditor');
+	if (!fs.existsSync(uieditorRoot)) {
+		return list;
+	}
+	runDir(uieditorRoot, p => {
+		list.push(paths.relative(projRoot, p));
+	}, /\.js$/);
+	return list;
+	function runDir(filePath: string, deal: (p: string) => void, filter: RegExp) {
+		var files = fs.readdirSync(filePath)
+		for (var i = 0; i < files.length; ++i) {
+			var filename = files[i];
+			var filedir = paths.join(filePath, filename);
+			var stats = fs.statSync(filedir);
+			var isFile = stats.isFile();
+			var isDir = stats.isDirectory();
+			if (isFile) {
+				filedir = filedir.replace(/\\/g, "/")
+				if (!filter || filedir.match(filter)) {
+					deal(filedir);
+				}
+			} else if (isDir) {
+				runDir(filedir, deal, filter);
+			}
+		}
+	}
 }
