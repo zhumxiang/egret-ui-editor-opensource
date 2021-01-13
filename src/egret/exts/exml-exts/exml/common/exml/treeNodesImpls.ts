@@ -1120,10 +1120,11 @@ export class EObject extends EValue implements IObject {
 			}
 			const value = this.getProperty(prop);
 			if (value) {
-				if (value.getName() == 'number') {
-					properties[prop] = Number(value.getInstance());
+				let propVal = value.getInstance();
+				if (value.getName() == 'number' && typeof propVal == 'string' && !/%$/.test(propVal)) {
+					properties[prop] = Number(propVal);
 				} else {
-					properties[prop] = value.getInstance();
+					properties[prop] = propVal;
 				}
 			}
 		});
