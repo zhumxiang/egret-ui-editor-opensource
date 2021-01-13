@@ -12,7 +12,7 @@
         "watch": "webpack --watch --progress --config  webpack.debug.config.js",
         "publish": "webpack --progress --config webpack.release.config.js",
         "setup-cnpm": "npm install cnpm@6.0.0 -g",
-        "pack-win": "electron-packager . \"Egret UI Editor\" --platform=win32 --arch=x64 --icon=./build/win/app.ico --ignore=node_modules/.cache/* --out=./dist --overwrite"
+        "pack-win": "electron-packager . \"Egret UI Editor\" --platform=win32 --arch=x64 --icon=./build/win/app.ico --ignore=\"^/node_modules/\\.cache$\" --ignore=\"^/src$\" --ignore=\"^/\\.vscode$\" --ignore=\"^/build$\" --ignore=\"^/docs$\" --out=./dist --overwrite"
     },
     "dependencies": {
         "chokidar": "^3.4.2",
