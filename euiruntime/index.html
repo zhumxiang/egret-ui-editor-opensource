@@ -82,14 +82,6 @@
             ...extensionPath.split(',').map(function (p) {return projectRoot + "\\" + p}),
 		];
         addScripts(scripts,function(){
-			{
-				//webgl不自动删除原始图像，因为九宫格图片需要原始图像的src
-				var onImageComplete = egret.web.WebImageLoader.prototype.onImageComplete;
-				egret.web.WebImageLoader.prototype.onImageComplete = function (event) {
-					onImageComplete.call(this, event);
-					this.data.$deleteSource = false;
-				}
-			}
             var base = document.createElement("base");
             base.href=decodeURIComponent(projectRoot)+"/";
 			document.head.appendChild(base);

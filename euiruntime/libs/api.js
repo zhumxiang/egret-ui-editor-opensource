@@ -351,3 +351,11 @@ Object.defineProperty(egret.web.WebImageLoader.prototype, 'loadImage', {
 		}
 	}
 });
+{
+	//webgl不自动删除原始图像，因为九宫格图片需要原始图像的src
+	var onImageComplete = egret.web.WebImageLoader.prototype.onImageComplete;
+	egret.web.WebImageLoader.prototype.onImageComplete = function (event) {
+		onImageComplete.call(this, event);
+		this.data.$deleteSource = false;
+	}
+}
