@@ -437,6 +437,21 @@ export class ExmlView implements IExmlView {
 				let classMap = this.egretProjectService.exmlConfig.getClassNodeMap();
 				let euiExmlConfig: eui.sys.EXMLConfig = new runtime.eui.sys.EXMLConfig();
 				for (let fullName in classMap) {
+					let props = classMap[fullName].props;
+					for (let i = 0; i < props.length; ++i) {
+						let prop = props[i];
+						if (/\[\]$/.test(prop.name)) {
+							let refPropName = prop.name.substr(0, prop.name.length - 2);
+							let available = eval(prop.value);
+							for (let prop of props) {
+								if (prop.name == refPropName) {
+									prop.available = available;
+									break;
+								}
+							}
+							props.splice(i--, 1);
+						}
+					}
 					let cls = runtime.egret.getDefinitionByName(fullName);
 					if (!cls || !cls.prototype) {
 						continue;
@@ -450,7 +465,6 @@ export class ExmlView implements IExmlView {
 					} catch (e) {
 						continue;
 					}
-					let props = classMap[fullName].props;
 					let lacks = [] as typeof props;
 					for (let prop of props) {
 						if (prop.name in cls.prototype || prop.name in instance) {
