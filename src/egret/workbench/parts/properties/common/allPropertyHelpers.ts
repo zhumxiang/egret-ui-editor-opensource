@@ -79,7 +79,7 @@ const filterNames = ['accessibilityImplementation', 'accessibilityProperties',
 
 const percentSupportProps = ['width', 'height', 'top', 'right', 'bottom', 'left', 'horizontalCenter', 'verticalCenter'];
 
-const colorPropertyList = ['fillColor', 'strokeColor', 'textColor', 'backgroundColor', 'borderColor', 'promptColor'];
+const colorPropertyList = ['fillColor', 'strokeColor', 'textColor', 'backgroundColor', 'borderColor', 'promptColor', 'tint'];
 
 function getPropertyList(className: string, node: IObject, model: IExmlModel): { [name: string]: IProperty } {
 	const propertyMap: { [name: string]: IProperty } = {};
