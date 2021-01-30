@@ -546,6 +546,9 @@ export class NumberInput extends TextInput {
 		if (value.length == 0) {
 			return '';
 		}
+		if (value.startsWith('{')) {
+			return value;
+		}
 		let tmpValue: string = '';
 		//先过滤一遍非法字符，且只保留一个小数点，一个e，一个x
 		let hasPoint: boolean = false;
@@ -632,6 +635,9 @@ export class NumberInput extends TextInput {
 		value = this.doChangingFilter(value);
 		if (!value) {
 			return '';
+		}
+		if (value.startsWith("{")) {
+			return value;
 		}
 		//处理值域的问题
 		let isPercent = false;
