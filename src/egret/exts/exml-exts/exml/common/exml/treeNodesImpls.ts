@@ -344,18 +344,11 @@ export class EValue extends HashObject implements IValue {
 	}
 
 	public toString(): string {
+		if (typeof this._instance == 'string') {
+			return this._instance;
+		}
 		if (this._instance !== undefined && this._instance !== null) {
-			if (this._name === 'number' && this._hostProperty &&
-				this._hostProperty.toLowerCase().indexOf('color') !== -1) {
-				let numStr: string = (<number>this._instance).toString(16).toUpperCase();
-				while (numStr.length < 6) {
-					numStr = '0' + numStr;
-				}
-				return '0x' + numStr;
-			}
-			else {
-				return this._instance.toString();
-			}
+			return this._instance.toString();
 		}
 		return '';
 	}
