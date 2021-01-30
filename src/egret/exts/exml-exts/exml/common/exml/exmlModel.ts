@@ -3032,7 +3032,7 @@ export class ExmlModel implements IExmlModel {
 	private getProperty(node: INode, property: string): number {
 		let result: number = NaN;
 		if (node.getProperty(property)) {
-			result = node.getProperty(property).getInstance();
+			result = Number(node.getProperty(property).getInstance());
 		}
 		else if (node.getInstance()) {
 			result = node.getInstance()[property];
