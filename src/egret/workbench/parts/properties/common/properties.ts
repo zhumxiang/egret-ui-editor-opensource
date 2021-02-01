@@ -184,7 +184,7 @@ export function setPropertyStr(node: IObject, key: string, value: string): void 
 export function setPropertyNum(node: IObject, key: string, value: string | number): void {
 	if (value == null || isNaN(Number(value))) {
 		node.setProperty(key, null);
-	} if (typeof value == 'string' && value.startsWith('{') && value.endsWith('}')) {
+	} else if (typeof value == 'string' && value.startsWith('{') && value.endsWith('}')) {
 		node.setString(key, value);
 	} else {
 		node.setNumber(key, value);
