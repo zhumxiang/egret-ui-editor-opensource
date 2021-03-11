@@ -1262,6 +1262,8 @@ export class ExmlModel implements IExmlModel {
 					for (let i = 0; i < xml.errors.length; i++) {
 						//TODO 看看这个格式是否需要优化
 						this._onCompileError.fire(xml.errors[i].message + ' in line:' + xml.errors[i].line + ' column:' + xml.errors[i].column);
+						//TODO eui-compiler
+						// this._onCompileError.fire(xml.errors[i].message);
 					}
 					this.refreshNext(xml);
 				} else {

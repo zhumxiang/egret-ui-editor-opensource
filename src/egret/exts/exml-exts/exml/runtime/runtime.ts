@@ -88,6 +88,15 @@ export class EgretRuntimeDelegate implements IDisposable {
 			this.runtimeCore.RES.dispose = this.runtimeCore.RES.dispose || (() => { });
 			this.runtimeCore.RES.cleanAsync = this.runtimeCore.RES.cleanAsync || (() => { });
 		}
+		// fixes https://github.com/egret-labs/egret-ui-editor-opensource/issues/122
+		const inputArea = this.iframe.contentDocument.getElementById('egretTextarea') as HTMLTextAreaElement;
+		if (inputArea) {
+			inputArea.scrollIntoView = () => void {};
+		}
+		const input = this.iframe.contentDocument.getElementById('egretInput') as HTMLInputElement;
+		if (input) {
+			input.scrollIntoView = () => void {};
+		}
 		//TODO 未来还是要移除这个事件的
 		// this.runtimeCore.runtimeRootContainer.addEventListener('resize', () => {
 		// 	this.containerInRuntimeReize_handler();
@@ -165,10 +174,10 @@ export class EgretRuntimeDelegate implements IDisposable {
 	 * 释放运行时
 	 */
 	public dispose(): void {
-		if(this.runtimeCore){
+		if (this.runtimeCore) {
 			this.runtimeCore.pauseGlobal();
 		}
-		if(this.iframe){
+		if (this.iframe) {
 			this.iframe.contentWindow.document.body.innerHTML = '';
 		}
 		this.iframe.remove();

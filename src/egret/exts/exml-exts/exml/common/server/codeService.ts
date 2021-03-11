@@ -5,6 +5,7 @@ import { EXMLContentAssistProcessor } from '../contentassist/EXMLContentAssistPr
 import { IEgretProjectService } from 'egret/exts/exml-exts/project';
 import { dispose } from 'egret/base/common/lifecycle';
 import { XMLFormatUtil } from '../contentassist/XMLFormat';
+import { parser, typeInit } from '@egret/eui-compiler';
 
 export function initCodeService(instantiationService: IInstantiationService): void {
 	const codeServiceImpl = instantiationService.createInstance(CodeService);
@@ -38,6 +39,34 @@ export class CodeService implements ICodeService {
 		});
 	}
 
+	private async errorCheck(uri: monaco.Uri) {
+		//TODO eui-compiler
+		// let model = monaco.editor.getModel(uri);
+
+		// const text = model.getValue();
+		
+		// typeInit();
+		// const skinNode = parser.generateAST(text, '');
+		// const errorInfo = skinNode.errors.shift();
+
+		// if (errorInfo) {
+		// 	monaco.editor.setModelMarkers(model, 'owner', [
+		// 		{
+		// 			startLineNumber: errorInfo.startLine,
+		// 			startColumn: errorInfo.startColumn,
+		// 			endLineNumber: errorInfo.endLine,
+		// 			endColumn: errorInfo.endColumn,
+		// 			message: errorInfo.message.split('\n')[0],
+		// 			severity: monaco.MarkerSeverity.Error
+		// 		}
+		// 	]);
+		// }
+		// else {
+		// 	monaco.editor.setModelMarkers(model, 'owner', [
+		// 	]);
+		// }
+	}
+
 	private registerCompletionItemProvider(): void {
 		monaco.languages.registerCompletionItemProvider('xml', {
 			triggerCharacters: [':', '<', '\'', '\"', ' ', '.', '/'],
@@ -48,6 +77,7 @@ export class CodeService implements ICodeService {
 					};
 				}
 				try {
+					this.errorCheck(model.uri);
 					const xmlDoc = this.getInstance(model.uri).doc;
 					let text: string = xmlDoc.getText();
 					let offset: number = xmlDoc.offsetAt(position);
@@ -68,6 +98,7 @@ export class CodeService implements ICodeService {
 		monaco.languages.registerDocumentFormattingEditProvider('xml', {
 			provideDocumentFormattingEdits: (model, options, token) => {
 				try {
+					this.errorCheck(model.uri);
 					const xmlDoc = this.getInstance(model.uri).doc;
 					return this.format(xmlDoc, options);
 				} catch (e) {
@@ -78,6 +109,7 @@ export class CodeService implements ICodeService {
 		monaco.languages.registerDocumentRangeFormattingEditProvider('xml', {
 			provideDocumentRangeFormattingEdits: (model, rang, options, token) => {
 				try {
+					this.errorCheck(model.uri);
 					const xmlDoc = this.getInstance(model.uri).doc;
 					return this.format(xmlDoc, options, rang);
 				} catch (e) {
@@ -119,7 +151,8 @@ export class CodeService implements ICodeService {
 
 	private registerCommand(editor: monaco.editor.IStandaloneCodeEditor): void {
 		// see https://github.com/microsoft/monaco-editor/issues/900
-		(editor as any)._commandService.addCommand({
+		// https://github.com/TypeFox/monaco-languageclient/blob/master/CHANGELOG.md
+		(monaco as any).CommandsRegistry.registerCommand({
 			id: 'editor.action.moveCursorLeftAndTriggerSuggest',
 			handler: (_: any, ...args: any[]) => {
 				// 把光标前移一格
@@ -135,7 +168,7 @@ export class CodeService implements ICodeService {
 			},
 		});
 
-		(editor as any)._commandService.addCommand({
+		(monaco as any).CommandsRegistry.registerCommand({
 			id: 'editor.action.egretEXmlInsertNamespace',
 			handler: (_: any, ...args: any[]) => {
 				console.log('-----------', args);
@@ -169,6 +202,7 @@ export class CodeService implements ICodeService {
 		}
 		this.registerCommand(editor);
 		const disposables: monaco.IDisposable[] = [];
+
 		disposables.push(editor.onDidChangeModel((e) => this.didChangeModel_handler(editor, e)));
 		disposables.push(editor.onDidChangeModelContent((e) => this.didChangeModelContent_handler(editor, e)));
 		const model = editor.getModel();
@@ -189,6 +223,7 @@ export class CodeService implements ICodeService {
 		}
 		instance.modelUri = e.newModelUrl;
 		instance.doc = new XMLDocument(e.newModelUrl.toString(), editor.getModel().getValue());
+		this.errorCheck(instance.modelUri);
 	}
 
 	private didChangeModelContent_handler(editor: monaco.editor.IStandaloneCodeEditor, e: monaco.editor.IModelContentChangedEvent): void {
@@ -201,6 +236,7 @@ export class CodeService implements ICodeService {
 		} else {
 			instance.doc.update(e);
 		}
+		this.errorCheck(instance.modelUri);
 	}
 
 	public detachEditor(editor: monaco.editor.IStandaloneCodeEditor): void {
