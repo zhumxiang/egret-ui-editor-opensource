@@ -78,6 +78,22 @@ export class ParseCenterProcess implements IParseCenter {
 				folders.push(path.join(workspace, 'src'));
 				folders.push(path.join(workspace, 'libs'));
 			}
+			const editorInclude = tsConfig.config['uieditor.include'];
+			if (editorInclude && isArray(editorInclude)) {
+				for (const element of editorInclude) {
+					folders.push(path.join(workspace, element));
+				}
+			}
+			const editorExclude = tsConfig.config['uieditor.exclude'];
+			if (editorExclude && isArray(editorExclude)) {
+				for (const element of editorExclude) {
+					let p = path.join(workspace, element);
+					let index = folders.indexOf(p);
+					if (index != -1) {
+						folders.splice(index, 1);
+					}
+				}
+			}
 		} catch (error) {
 			console.error(error);
 		}
