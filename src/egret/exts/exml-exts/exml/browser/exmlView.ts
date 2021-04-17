@@ -442,7 +442,7 @@ export class ExmlView implements IExmlView {
 						let prop = props[i];
 						if (/\[.*\]$/.test(prop.name)) {
 							let [refPropName, values] = prop.name.split(/\[|\]/).map(v => v.trim());
-							let available = values.split(",");
+							let available = values.split(",").map(v => v.trim());
 							for (let prop of props) {
 								if (prop.name == refPropName) {
 									prop.available = available;
