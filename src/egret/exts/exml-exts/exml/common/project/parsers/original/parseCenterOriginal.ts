@@ -276,14 +276,20 @@ export class ParseCenterOriginal implements IParseCenter {
 					var baseClass = tsClassDataMap[baseNames[i]];
 					var baseClassNode = baseClass ? baseClass.classNode : null;
 					if (baseClassNode) {
-						classNode.baseClass = baseClassNode;
+						if (!baseClassNode.isInterface) {
+							classNode.baseClass = baseClassNode;
+						} else {
+							classNode.implementeds.push(baseClassNode);
+						}
 					}
 				}
 				for (var i = 0; i < implementedNames.length; i++) {
 					const interfaceClass = tsClassDataMap[implementedNames[i]];
 					const interfaceClassNode = interfaceClass ? interfaceClass.classNode : null;
 					if (interfaceClassNode) {
-						classNode.implementeds.push(interfaceClassNode);
+						if (classNode.implementeds.indexOf(interfaceClassNode) === -1) {
+							classNode.implementeds.push(interfaceClassNode);
+						}
 					}
 				}
 				classNodes.push(classNode);
