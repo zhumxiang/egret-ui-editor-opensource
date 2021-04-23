@@ -396,8 +396,14 @@ export class TsParser implements IDisposable {
 				implementedNames: implementedNames,
 				classNode: classNode
 			};
+			let oldClass = this.tmpClassMap[className];
 			if (this.checkCanAdded(classNode)) {
 				this.tmpClassMap[className] = tempClassNode;
+			}
+			if (oldClass) {
+				if (!oldClass.classNode.isInterface || !classNode.isInterface) {
+					this.tmpClassMap[className].classNode.isInterface = false;
+				}
 			}
 		}
 		ts.forEachChild(node, (node) => {
