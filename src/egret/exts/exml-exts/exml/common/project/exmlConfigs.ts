@@ -64,6 +64,10 @@ export abstract class AbstractExmlConfig implements IDisposable {
 	protected get uiLibUri(): URI {
 		return this._uiLibUri;
 	}
+	protected _resLibUri: URI;
+	protected get resLibUri(): URI {
+		return this._resLibUri;
+	}
 	protected _tweenUri: URI;
 	protected get tweenUri() {
 		return this._tweenUri;
@@ -104,6 +108,7 @@ export abstract class AbstractExmlConfig implements IDisposable {
 			this._egretLibUri = URI.file(engineInfo.egretLibPath);
 			this._egretWebLibUri = URI.file(engineInfo.egretWebLibPath);
 			this._uiLibUri = this.getUILibUri(engineInfo);
+			this._resLibUri = this.getResLibUri(engineInfo);
 			this._tweenUri = URI.file(engineInfo.tweenPath);
 			this.initParser(engineInfo);
 		});
@@ -163,6 +168,7 @@ export abstract class AbstractExmlConfig implements IDisposable {
 
 	protected abstract getManifestUri(engineInfo: EgretEngineInfo): URI;
 	protected abstract getUILibUri(engineInfo: EgretEngineInfo): URI;
+	protected abstract getResLibUri(engineInfo: EgretEngineInfo): URI;
 	protected abstract initParser(engineInfo: EgretEngineInfo): void;
 
 
@@ -289,34 +295,58 @@ export abstract class AbstractExmlConfig implements IDisposable {
 		return false;
 	}
 
+	private _isInstanceOfCache = {};
+	private isInstanceOfByCache(classNameA: string, classNameB: string) {
+		if (classNameA in this._isInstanceOfCache) {
+			if (classNameB in this._isInstanceOfCache[classNameA]) {
+				return this._isInstanceOfCache[classNameA][classNameB];
+			}
+		}
+	}
+	private setIsInstanceOfCache(classNameA: string, classNameB: string, value: boolean) {
+		if (!(classNameA in this._isInstanceOfCache)) {
+			this._isInstanceOfCache[classNameA] = {};
+		}
+		this._isInstanceOfCache[classNameA][classNameB] = value;
+		return value;
+	}
 	/**
 	 * 判断A是否继承或实现自了B
 	 * @param classNameA 
 	 * @param classNameB 
 	 */
 	public isInstanceOf(classNameA: string, classNameB: string): boolean {
+		let cacheValue = this.isInstanceOfByCache(classNameA, classNameB);
+		if (cacheValue != undefined) {
+			return cacheValue;
+		}
 		if (this.isInstanceOfClass(classNameA, classNameB)) {
-			return true;
+			return this.setIsInstanceOfCache(classNameA, classNameB, true);
 		}
 		const classNode = this.getClassNode(classNameA);
 		if (!classNode) {
-			return false;
+			return this.setIsInstanceOfCache(classNameA, classNameB, false);
 		}
 		let temp = classNode.baseClass;
 		while (temp) {
 			if (this.isInstanceOfClass(temp.fullName, classNameB)) {
-				return true;
+				return this.setIsInstanceOfCache(classNameA, classNameB, true);
 			}
 			const implementedNodes = temp.implementeds;
 			for (let i = 0; i < implementedNodes.length; i++) {
 				const item = implementedNodes[i];
 				if (this.isInstanceOfClass(item.fullName, classNameB)) {
-					return true;
+					return this.setIsInstanceOfCache(classNameA, classNameB, true);
 				}
 			}
 			temp = temp.baseClass;
 		}
-		return false;
+		for (let imp of classNode.implementeds) {
+			if (this.isInstanceOf(imp.fullName, classNameB)) {
+				return this.setIsInstanceOfCache(classNameA, classNameB, true);
+			}
+		}
+		return this.setIsInstanceOfCache(classNameA, classNameB, false);
 	}
 
 	/**
@@ -528,12 +558,14 @@ export class EUIExmlConfig extends AbstractExmlConfig {
 			const egretWebLibPath = fs.existsSync(this.egretWebLibUri.fsPath) ? format(this.egretWebLibUri.fsPath) : 'libs/modules/egret/egret.web.js';
 			const uiLibPath = fs.existsSync(this.uiLibUri.fsPath) ? format(this.uiLibUri.fsPath) : 'libs/modules/eui/eui.js';
 			const tweenPath = fs.existsSync(this.tweenUri.fsPath) ? format(this.tweenUri.fsPath) : 'libs/modules/tween/tween.js';
+			const resLibPath = fs.existsSync(this.resLibUri.fsPath) ? format(this.resLibUri.fsPath) : 'libs/modules/assetsmanager/assetsmanager.js';
 
 			this.runtimeUrl = '../../../../../euiruntime/index.html?' +
 				'project=' + path + '&' +
 				'egretLibPath=' + egretLibPath + '&' +
 				'egretWebLibPath=' + egretWebLibPath + '&' +
 				'uiLibPath=' + uiLibPath + '&' +
+				'resLibPath=' + resLibPath + '&' +
 				'tweenPath=' + tweenPath;
 			let extensionJSList = getRuntimeExtensionJSList(this.projectUri.fsPath);
 			if (extensionJSList.length > 0) {
@@ -573,7 +605,9 @@ export class EUIExmlConfig extends AbstractExmlConfig {
 	protected getUILibUri(engineInfo: EgretEngineInfo): URI {
 		return URI.file(engineInfo.euiLibPath);
 	}
-
+	protected getResLibUri(engineInfo: EgretEngineInfo): URI {
+		return URI.file(engineInfo.resLibPath);
+	}
 
 
 	private _hosts: IHost[] = [];
@@ -677,6 +711,9 @@ export class GUIExmlConfig extends AbstractExmlConfig {
 		return URI.file(engineInfo.guiManifestPath);
 	}
 	protected getUILibUri(engineInfo: EgretEngineInfo): URI {
+		return null;
+	}
+	protected getResLibUri(engineInfo: EgretEngineInfo): URI {
 		return null;
 	}
 }

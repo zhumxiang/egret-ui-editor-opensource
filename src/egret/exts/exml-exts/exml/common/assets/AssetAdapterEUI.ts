@@ -14,7 +14,7 @@ export class AssetAdapterEUI implements IAssetsAdapter {
 	private _onConfigChanged: Emitter<IAssetsAdapter>;
 	constructor(
 		private project: EgretProjectModel,
-		@INotificationService private notificationService:INotificationService
+		@INotificationService private notificationService: INotificationService
 	) {
 		this._onConfigChanged = new Emitter<IAssetsAdapter>();
 	}
@@ -45,7 +45,7 @@ export class AssetAdapterEUI implements IAssetsAdapter {
 	 */
 	public reload(): void {
 		if (!this._runtime) {
-			this.notificationService.error({content:localize('assetAdapterEUI.reload.preConfig','You need to set the runtime before loading the resource configuration file.'),duration:3});
+			this.notificationService.error({ content: localize('assetAdapterEUI.reload.preConfig', 'You need to set the runtime before loading the resource configuration file.'), duration: 3 });
 			return;
 		}
 		this.loadSuccess = false;
@@ -78,45 +78,33 @@ export class AssetAdapterEUI implements IAssetsAdapter {
 
 	private doReload(): Promise<void> {
 		return new Promise<void>((resolve, reject) => {
-			this._runtime.getRuntime().then(runtime => {
+			this._runtime.getRuntime().then(async (runtime) => {
 				if (runtime.RES) {
 					const resConfigs: IResourceConfigItem[] = this.project.resConfigs;
 					if (resConfigs.length === 0) {
-						runtime.RES.dispose();
 						this._onConfigChanged.fire(this);
 						resolve(void 0);
 					} else {
-						var configComplete = (event) => {
-							runtime.RES.removeEventListener(runtime.RES.ResourceEvent.CONFIG_COMPLETE, configComplete, null);
-							runtime.RES.removeEventListener(runtime.RES.ResourceEvent.CONFIG_LOAD_ERROR, configError, null);
+						try {
+							for (let i = 0; i < resConfigs.length; i++) {
+								const configPath: string = resConfigs[i].url;
+								const folderPath: string = resConfigs[i].folder;
+								await runtime.RES.loadConfig(configPath, folderPath);
+							}
 							this._onConfigChanged.fire(this);
 							resolve(void 0);
-							runtime.RES.cleanAsync();
-						};
-						var configError = (event) => {
-							runtime.RES.removeEventListener(runtime.RES.ResourceEvent.CONFIG_COMPLETE, configComplete, null);
-							runtime.RES.removeEventListener(runtime.RES.ResourceEvent.CONFIG_LOAD_ERROR, configError, null);
-							runtime.RES.cleanAsync();
-							runtime.RES.dispose();
-							this.notificationService.error({content:localize('assetAdapterEUI.doReload.loadError','Resource configuration file loading error'),duration:3});
-							reject(localize('assetAdapterEUI.doReload.loadError','Resource configuration file loading error'));
-						};
-						runtime.RES.addEventListener(runtime.RES.ResourceEvent.CONFIG_COMPLETE, configComplete, null);
-						runtime.RES.addEventListener(runtime.RES.ResourceEvent.CONFIG_LOAD_ERROR, configError, null);
-						runtime.RES.dispose();
-						for (let i = 0; i < resConfigs.length; i++) {
-							const configPath: string = resConfigs[i].url;
-							const folderPath: string = resConfigs[i].folder;
-							runtime.RES.loadConfig(configPath, folderPath);
+						} catch (e) {
+							this.notificationService.error({ content: localize('assetAdapterEUI.doReload.loadError', 'Resource configuration file loading error'), duration: 3 });
+							reject(localize('assetAdapterEUI.doReload.loadError', 'Resource configuration file loading error'));
 						}
 					}
 				} else {
-					this.notificationService.error({content:localize('assetAdapterEUI.doReload.loadResError','The RES module could not be found in editor runtime'),duration:3});
-					reject(localize('assetAdapterEUI.doReload.loadResError','The RES module could not be found in editor runtime'));
+					this.notificationService.error({ content: localize('assetAdapterEUI.doReload.loadResError', 'The RES module could not be found in editor runtime'), duration: 3 });
+					reject(localize('assetAdapterEUI.doReload.loadResError', 'The RES module could not be found in editor runtime'));
 				}
 			}, error => {
-				this.notificationService.error({content:localize('assetAdapterEUI.doReload.runtimeError','Runtime Error!'),duration:3});
-				reject(localize('assetAdapterEUI.doReload.runtimeError','Runtime Error!'));
+				this.notificationService.error({ content: localize('assetAdapterEUI.doReload.runtimeError', 'Runtime Error!'), duration: 3 });
+				reject(localize('assetAdapterEUI.doReload.runtimeError', 'Runtime Error!'));
 			});
 		});
 	}

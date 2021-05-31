@@ -105,6 +105,13 @@ export class EgretEngineInfo implements VersionInfo {
 	}
 
 	/**
+     * 得到eui框架清单文件路径
+     */
+	public get resLibPath(): string {
+		return pathUtil.join(this.path, 'build/assetsmanager/assetsmanager.js');
+	}
+
+	/**
      * 得到tween库
      */
 	public get tweenPath(): string {

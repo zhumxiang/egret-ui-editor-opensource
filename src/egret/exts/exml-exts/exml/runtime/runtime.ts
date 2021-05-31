@@ -85,8 +85,6 @@ export class EgretRuntimeDelegate implements IDisposable {
 		{
 			//这里只是做个保险，实际上下面的方法都是已存在
 			this.runtimeCore.egret.cleanCache = this.runtimeCore.egret.cleanCache || (() => { });
-			this.runtimeCore.RES.dispose = this.runtimeCore.RES.dispose || (() => { });
-			this.runtimeCore.RES.cleanAsync = this.runtimeCore.RES.cleanAsync || (() => { });
 		}
 		// fixes https://github.com/egret-labs/egret-ui-editor-opensource/issues/122
 		const inputArea = this.iframe.contentDocument.getElementById('egretTextarea') as HTMLTextAreaElement;

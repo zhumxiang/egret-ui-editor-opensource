@@ -12,7 +12,7 @@ const _inEgret = [
 	'/libs/modules/egret-wasm/',
 	'/libs/modules/eui-wasm/',
 	'/libs/modules/gui/',
-	'/libs/modules/res/',
+	'/libs/modules/assetsmanager/',
 	'/libs/modules/tween/'
 ];
 const _needPrompt = [

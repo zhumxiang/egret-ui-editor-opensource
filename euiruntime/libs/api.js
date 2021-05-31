@@ -143,7 +143,7 @@ var registerTSClass = function (className, classData, propertyData) {
 		classString += "var " + moduleName + ";\n";
 		classString += "(function (" + moduleName + ") {\n";
 	}
-	classString += "var " + classShortName + " = (function (" + (superClassName ? "_super" : "") + ") {\n";
+	classString += "var " + classShortName + " = " + (moduleName || "window") + "." + classShortName + " || (function (" + (superClassName ? "_super" : "") + ") {\n";
 	if (superClassName)
 		classString += "__extends(" + classShortName + ", _super);\n";
 	classString += "function " + classShortName + "(){\n";

@@ -118,7 +118,7 @@ export class ExmlModelConfig {
 	/**
 	 * 根据ID获取对应的默认属性
 	 * @param id 类的短名ID
-     * @param ns 命名空间
+	 * @param ns 命名空间
 	 * @return 默认属性名
 	 */
 	public getDefaultPropById(id: string, ns: Namespace): string {
@@ -161,7 +161,7 @@ export class ExmlModelConfig {
 			instance = new clazz();
 		}
 		catch (e) { }
-		if(instance){
+		if (instance) {
 			if (this.isInstance(instance, "eui.Component") && instance.skinName && !instance.skin) {
 				let skin = this.compileIfNeed(instance.skinName);
 				if (skin) {
@@ -695,7 +695,9 @@ class ExmlCompiler {
 				}
 			}
 		}
-		this.compileDic[path] = this.getModStamp(path);
+		if (path) {
+			this.compileDic[path] = this.getModStamp(path);
+		}
 		this.tempCompiled[pathKey] = true;
 		if (this.tempCompiling.hasOwnProperty(pathKey)) {
 			delete this.tempCompiling[pathKey];

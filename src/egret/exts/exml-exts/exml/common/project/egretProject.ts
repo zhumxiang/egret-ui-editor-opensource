@@ -341,6 +341,29 @@ export class EgretProjectModel {
 		}
 		return '';
 	}
+
+	/**
+	 * 得到当前使用的res库
+	 */
+	public get RESLibrary(): string {
+		const modules: string[] = [];
+		const egretProperties = this.getEgretProperties();
+		if (egretProperties && egretProperties['modules'] && egretProperties['modules'].length) {
+			for (let i = 0; i < egretProperties['modules'].length; i++) {
+				const name: string = egretProperties['modules'][i]['name'];
+				if (name) {
+					modules.push(name);
+				}
+			}
+		}
+		if (modules.indexOf('assetsmanager') !== -1) {
+			return 'assetsmanager';
+		} else if (modules.indexOf('res') !== -1) {
+			return 'res';
+		}
+		return '';
+	}
+
 	/**
 	 * 得到项目当前使用的版本信息
 	 */
