@@ -32,7 +32,7 @@ export class ProjectResCenter {
 	private resCache: any;
 	//文件列表改变了
 	private onFileChanges(e: FileChangesEvent): void {
-		if (!this.projectModel || this.projectModel.UILibrary !== 'eui') {
+		if (!this.projectModel) {
 			return;
 		}
 		const configPaths = this.projectModel.resConfigs;

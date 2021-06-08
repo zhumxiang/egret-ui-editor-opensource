@@ -2,7 +2,7 @@ import { NodeProcess } from 'egret/base/parts/ipc/node/ipc.cp';
 import { IParserProcess } from './parseProcess';
 import { ClassNode } from '../../syntaxNodes';
 import { TsParser } from '../core/tsParser';
-import { ExmlParser, EUIParser, GUIParser } from '../core/exmlParser';
+import { ExmlParser, EUIParser } from '../core/exmlParser';
 import URI from 'egret/base/common/uri';
 import { ISelectedStat, FileChangeType, IFileChange } from 'egret/platform/files/common/files';
 import { isTs, isExml } from '../core/commons';
@@ -23,16 +23,12 @@ class ParserProcess extends NodeProcess implements IParserProcess {
 	 * 初始化
 	 * @param propertiesPath 
 	 */
-	public initProcess(propertiesPath: string, uiLib: string, workspace: string, parseFolders: string[]): Promise<void> {
+	public initProcess(propertiesPath: string, workspace: string, parseFolders: string[]): Promise<void> {
 		this.currentParsedFolders = parseFolders;
 		return this.initProperty(propertiesPath).then(propertiesMap => {
 			this.properties = propertiesMap;
 			this.tsParser = new TsParser();
-			if (uiLib == 'eui') {
-				this.exmlParser = new EUIParser(URI.file(workspace));
-			} else {
-				this.exmlParser = new GUIParser(URI.file(workspace));
-			}
+			this.exmlParser = new EUIParser(URI.file(workspace));
 			let tasks: Promise<ISelectedStat[]>[] = [];
 			for (const item of parseFolders) {
 				tasks.push(this.getFiles(item));

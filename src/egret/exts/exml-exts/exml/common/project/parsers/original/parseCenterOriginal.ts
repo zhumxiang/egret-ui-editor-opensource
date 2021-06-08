@@ -6,7 +6,7 @@ import { ClassChangedEvent, IParseCenter, ClassChangedType } from '../parser';
 import { isTs, isExml } from '../core/commons';
 import URI from 'egret/base/common/uri';
 import { TsParser } from '../core/tsParser';
-import { ExmlParser, EUIParser, GUIParser } from '../core/exmlParser';
+import { ExmlParser, EUIParser } from '../core/exmlParser';
 import { ClassNode } from '../../syntaxNodes';
 import { isIgnore } from '../core/ignores';
 import { IDisposable } from 'egret/base/common/lifecycle';
@@ -24,7 +24,6 @@ export class ParseCenterOriginal implements IParseCenter {
 	private properties: any = {};
 	constructor(
 		private propertiesPath: string,
-		private uiLib: 'eui' | 'gui',
 		@IInstantiationService private instantiationService: IInstantiationService,
 		@IFileService private fileService: IFileService,
 		@IWorkspaceService private workspaceService: IWorkspaceService
@@ -32,19 +31,19 @@ export class ParseCenterOriginal implements IParseCenter {
 		this._onClassChanges = new Emitter<ClassChangedEvent>();
 	}
 
-	private inited:boolean = false;
-	private initPromise:Promise<void> = null;
+	private inited: boolean = false;
+	private initPromise: Promise<void> = null;
 	private disposables: IDisposable[] = [];
 	/**
 	 * 初始化完成
 	 */
 	public init(): Promise<void> {
-		if(this.inited){
+		if (this.inited) {
 			return Promise.resolve(void 0);
-		}else if(this.initPromise){
+		} else if (this.initPromise) {
 			return this.initPromise;
-		}else{
-			const initPormise = this.doInit().then(()=>{
+		} else {
+			const initPormise = this.doInit().then(() => {
 				this.initPromise = null;
 				this.inited = true;
 			});
@@ -57,13 +56,9 @@ export class ParseCenterOriginal implements IParseCenter {
 		return this.initProperty(this.propertiesPath).then(propertiesMap => {
 			this.properties = propertiesMap;
 			this.tsParser = this.instantiationService.createInstance(TsParser);
-			if (this.uiLib == 'eui') {
-				this.exmlParser = this.instantiationService.createInstance(EUIParser, this.workspaceService.getWorkspace().uri);
-			} else {
-				this.exmlParser = this.instantiationService.createInstance(GUIParser, this.workspaceService.getWorkspace().uri);
-			}
+			this.exmlParser = this.instantiationService.createInstance(EUIParser, this.workspaceService.getWorkspace().uri);
 			this.disposables.push(this.fileService.onFileChanges(e => this.fileChanged_handler(e)));
-			return this.fileService.select(this.workspaceService.getWorkspace().uri, ['.exml', '.ts'], null,['node_modules','.git','.DS_Store']).then(fileStats => {
+			return this.fileService.select(this.workspaceService.getWorkspace().uri, ['.exml', '.ts'], null, ['node_modules', '.git', '.DS_Store']).then(fileStats => {
 				for (let i = 0; i < fileStats.length; i++) {
 					this.addFile(fileStats[i].resource);
 				}
@@ -77,7 +72,7 @@ export class ParseCenterOriginal implements IParseCenter {
 		this.onFileChanged(e.changes);
 	}
 
-	public onFileChanged(changes: IFileChange[]): Promise<void> { 
+	public onFileChanged(changes: IFileChange[]): Promise<void> {
 		for (const change of changes) {
 			if (change.type == FileChangeType.ADDED) {
 				this.addFile(change.resource);
@@ -134,7 +129,7 @@ export class ParseCenterOriginal implements IParseCenter {
 	private exmlModifies: string[] = [];
 	private exmlDelete: string[] = [];
 	private addFile(resource: URI): void {
-		if(!resource){
+		if (!resource) {
 			return;
 		}
 		if (isIgnore(resource.fsPath)) {
@@ -325,7 +320,7 @@ export class ParseCenterOriginal implements IParseCenter {
 		const fullClassName: string = classNode.fullName;
 		for (let i = 0; i < classNode.props.length; i++) {
 			const prop = classNode.props[i];
-			prop.available = this.getPropAvailable(fullClassName,prop.name,eumnData);
+			prop.available = this.getPropAvailable(fullClassName, prop.name, eumnData);
 		}
 	}
 	/**
@@ -345,9 +340,9 @@ export class ParseCenterOriginal implements IParseCenter {
 		return arr;
 	}
 
-	private getPropAvailable(fullClassName:string,propName:string,eumnData:any):string[]{
+	private getPropAvailable(fullClassName: string, propName: string, eumnData: any): string[] {
 		const extendsChains = this.getExtendsChain(fullClassName);
-		for(let i = 0;i<extendsChains.length;i++){
+		for (let i = 0; i < extendsChains.length; i++) {
 			const curClassName = extendsChains[i].fullName;
 			if (eumnData[curClassName] && eumnData[curClassName][propName]) {
 				return eumnData[eumnData[curClassName][propName]];

@@ -20,7 +20,6 @@ export class ParseCenterProcess implements IParseCenter {
 	private disposables: IDisposable[] = [];
 	constructor(
 		private propertiesPath: string,
-		private uiLib: 'eui' | 'gui',
 		@IFileService private fileService: IFileService,
 		@IEgretProjectService private projectService: IEgretProjectService,
 		@IWorkspaceService private workspaceService: IWorkspaceService
@@ -55,9 +54,8 @@ export class ParseCenterProcess implements IParseCenter {
 	}
 	private doInit(): Promise<void> {
 		const propertiesPath = this.propertiesPath;
-		const uiLib = this.uiLib;
 		const workspace = this.workspaceService.getWorkspace().uri.fsPath;
-		return this.childProcess.initProcess(propertiesPath, uiLib, workspace, this.getParseFolders());
+		return this.childProcess.initProcess(propertiesPath, workspace, this.getParseFolders());
 	}
 
 	private getParseFolders(): string[] {

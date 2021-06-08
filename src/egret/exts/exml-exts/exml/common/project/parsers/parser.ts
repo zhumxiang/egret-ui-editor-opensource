@@ -45,8 +45,8 @@ export interface IParseCenter extends IDisposable {
 /**
  * 创建一个解析中心
  */
-export function createParseCenter(instantiationService: IInstantiationService, propertiesPath: string, uiLib: 'eui' | 'gui'): IParseCenter {
-	const center: IParseCenter = instantiationService.createInstance(ParseCenterProcess, propertiesPath, uiLib);
+export function createParseCenter(instantiationService: IInstantiationService, propertiesPath: string): IParseCenter {
+	const center: IParseCenter = instantiationService.createInstance(ParseCenterProcess, propertiesPath);
 	center.init();
 	return center;
 }

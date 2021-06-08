@@ -321,28 +321,6 @@ export class EgretProjectModel {
 	}
 
 	/**
-	 * 得到当前使用的ui库
-	 */
-	public get UILibrary(): string {
-		const modules: string[] = [];
-		const egretProperties = this.getEgretProperties();
-		if (egretProperties && egretProperties['modules'] && egretProperties['modules'].length) {
-			for (let i = 0; i < egretProperties['modules'].length; i++) {
-				const name: string = egretProperties['modules'][i]['name'];
-				if (name) {
-					modules.push(name);
-				}
-			}
-		}
-		if (modules.indexOf('eui') !== -1) {
-			return 'eui';
-		} else if (modules.indexOf('gui') !== -1) {
-			return 'gui';
-		}
-		return '';
-	}
-
-	/**
 	 * 得到当前使用的res库
 	 */
 	public get RESLibrary(): string {

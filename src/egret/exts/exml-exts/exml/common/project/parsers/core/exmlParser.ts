@@ -3,7 +3,7 @@ import * as xmlTagUtil from '../../../sax/xml-tagUtils';
 import * as paths from 'path';
 import * as fs from 'fs';
 import URI from 'egret/base/common/uri';
-import { TempClassData, ExmlCoreParser, ExmlCoreParserEUI, ExmlCoreParserGUI } from './commons';
+import { TempClassData, ExmlCoreParser, ExmlCoreParserEUI } from './commons';
 import { ClassNode } from '../../syntaxNodes';
 import { endWith } from '../../../utils/strings';
 import { isEqualOrParent, normalize } from 'egret/base/common/paths';
@@ -171,30 +171,5 @@ export class EUIParser extends ExmlParser {
 		catch (error) {
 		}
 		return '';
-	}
-}
-
-/**
- * GUI的exml解析器
- */
-export class GUIParser extends ExmlParser {
-	constructor(project: URI) {
-		super(project);
-		this.coreParser = new ExmlCoreParserGUI();
-	}
-
-	protected parseExmlClassName(filePath: string, content: string | sax.Tag): string {
-		filePath = paths.normalize(filePath);
-		let srcPath = paths.normalize(this.src.fsPath);
-		filePath = filePath.toLocaleLowerCase();
-		srcPath = srcPath.toLocaleLowerCase();
-
-		let className: string = '';
-		if (filePath.substring(0, srcPath.length) === srcPath) {
-			className = filePath.substring(srcPath.length, filePath.length - 5);
-			className = className.split('\\').join('.');
-			className = className.split('/').join('.');
-		}
-		return className;
 	}
 }

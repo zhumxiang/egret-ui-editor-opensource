@@ -2,7 +2,7 @@ import { IInstantiationService, createDecorator } from 'egret/platform/instantia
 import { IFileService, FileChangesEvent, IFileStat, FileChangeType } from '../../platform/files/common/files';
 import { IWorkspaceService } from '../../platform/workspace/common/workspace';
 import { EgretProjectModel } from './exml/common/project/egretProject';
-import { AbstractExmlConfig, EUIExmlConfig, GUIExmlConfig } from './exml/common/project/exmlConfigs';
+import { AbstractExmlConfig, EUIExmlConfig } from './exml/common/project/exmlConfigs';
 import { IExmlModelCreater } from './exml/common/factory/exmlCreater';
 import { IExmlModel } from './exml/common/exml/models';
 import { ITheme } from './exml/common/theme/themes';
@@ -196,9 +196,7 @@ class EgretProjectService implements IEgretProjectService {
 	 */
 	public createAssetsAdapter(): IAssetsAdapter {
 		if (this._projectModel) {
-			if (this._projectModel.UILibrary === 'eui') {
-				return this.instantiationService.createInstance(AssetAdapterEUI, this.projectModel);
-			}
+			return this.instantiationService.createInstance(AssetAdapterEUI, this.projectModel);
 		}
 		return null;
 	}
@@ -254,15 +252,9 @@ class EgretProjectService implements IEgretProjectService {
 		this._projectModel = this.instantiationService.createInstance(EgretProjectModel, this.workspaceService.getWorkspace().uri);
 		return this.checkProject(this._projectModel).then(result => {
 			if (result) {
-				if (this._projectModel.UILibrary === 'eui') {
-					this._exmlModelCreater = this.instantiationService.createInstance(ExmlModelCreaterEui);
-					this._exmlConfig = this.instantiationService.createInstance(EUIExmlConfig);
-					this._theme = this.instantiationService.createInstance(ThemeEUI, this.projectModel);
-				} else if (this._projectModel.UILibrary === 'gui') {
-					this._exmlModelCreater = null;// 不支持GUI的可视化编辑
-					this._exmlConfig = this.instantiationService.createInstance(GUIExmlConfig);
-					this._theme = null;
-				}
+				this._exmlModelCreater = this.instantiationService.createInstance(ExmlModelCreaterEui);
+				this._exmlConfig = this.instantiationService.createInstance(EUIExmlConfig);
+				this._theme = this.instantiationService.createInstance(ThemeEUI, this.projectModel);
 				if (this._theme) {
 					//TODO 在theme文件改变之后，应该重新调用theme的reload方法，让他重新派发事件。
 					this._theme.reload();

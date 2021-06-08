@@ -2,7 +2,6 @@ import { Element, Group, SchemaNameChecker, ISchemaName } from '../core/Schema';
 import { XMLDocument } from '../core/XMLDocument';
 import { BaseSchemaStrategy } from '../schemas/BaseSchemaStrategy';
 import { EUISchemaStrategy } from '../schemas/EUISchemaStrategy';
-import { GUISchemaStrategy } from '../schemas/GUISchemaStrategy';
 import { TextDocumentBase } from '../core/TextDocumentBase';
 import { AbstractExmlConfig } from '../project/exmlConfigs';
 import { SchemaModel } from '../schemas/SchemaModel';
@@ -46,9 +45,9 @@ export class EXMLContentAssistProcessor {
 	public initedFunc: () => void;
 	public inited: boolean = false;
 	/**
-     * 初始化内容提示器
-     * @param rootPath 项目根路径
-     */
+	 * 初始化内容提示器
+	 * @param rootPath 项目根路径
+	 */
 	public async init(projectModel: EgretProjectModel, exmlConfig: AbstractExmlConfig): Promise<void> {
 		this._projectModel = projectModel;
 		this._exmlConfig = exmlConfig;
@@ -61,31 +60,20 @@ export class EXMLContentAssistProcessor {
 
 	private schema: SchemaModel = null;
 	/**
-     * 启动代码提示助手，该方法可以重复调用，重复调用会彻底初始化内部配置
-     */
+	 * 启动代码提示助手，该方法可以重复调用，重复调用会彻底初始化内部配置
+	 */
 	private async start(): Promise<void> {
-		if(!this._projectModel){
+		if (!this._projectModel) {
 			return;
 		}
-		let isEUI: boolean = false;
 		let schemaStrategy: BaseSchemaStrategy = null;
-		if (this._projectModel.UILibrary === 'eui') {
-			isEUI = true;
-			schemaStrategy = new EUISchemaStrategy();
-		} else if (this._projectModel.UILibrary === 'gui') {
-			schemaStrategy = new GUISchemaStrategy();
-		}
+		schemaStrategy = new EUISchemaStrategy();
 		if (schemaStrategy) {
 			this.schema = new SchemaModel();
 			const engine = await this._projectModel.getEngineInfo();
 			this.labelStyle.init(this.getthemePath(this._projectModel.wingPropertiesUri.fsPath));
 			schemaStrategy.init(this._exmlConfig);
-			let xsd: sax.Tag = null;
-			if (isEUI) {
-				xsd = await this.initXsd(engine.euiExmlXsdPath);
-			} else {
-				xsd = await this.initXsd(engine.guiExmlXsdPath);
-			}
+			let xsd: sax.Tag = await this.initXsd(engine.euiExmlXsdPath);
 			this.schema.install(schemaStrategy, xsd);
 		}
 	}
@@ -134,11 +122,11 @@ export class EXMLContentAssistProcessor {
 	private text: string = '';
 	private document: TextDocumentBase = null;
 	/**
-     * 计算提示列表
-     * @param text 全部文本
-     * @param offset 位置
-     * @return 提示列表
-     */
+	 * 计算提示列表
+	 * @param text 全部文本
+	 * @param offset 位置
+	 * @return 提示列表
+	 */
 	public computeCompletion(text: string, offset: number, document: TextDocumentBase): monaco.languages.CompletionItem[] {
 		// 还没初始化完毕就直接返回
 		if (!this.getSchemaModel()) {
@@ -193,10 +181,10 @@ export class EXMLContentAssistProcessor {
 	}
 
 	/**
-     * 起始节点的自动补全
-     * @param parentNodeName 父级的节点名
-     * @param typeInNodeName 当前正在输入的节点名
-     */
+	 * 起始节点的自动补全
+	 * @param parentNodeName 父级的节点名
+	 * @param typeInNodeName 当前正在输入的节点名
+	 */
 	private createNodeStartCompletions(nodePath: any[], fullText: string, range?: monaco.Range): monaco.languages.CompletionItem[] {
 		let pathQNames: any = [];
 		for (let i: number = 0; i < nodePath.length; i++) {
@@ -269,10 +257,10 @@ export class EXMLContentAssistProcessor {
 	}
 
 	/**
-     * 结束节点的自动补全
-     * @param value
-     * @param onComplete
-     */
+	 * 结束节点的自动补全
+	 * @param value
+	 * @param onComplete
+	 */
 	private createNodeEndCompletions(value: string, range?: monaco.Range): monaco.languages.CompletionItem[] {
 		let completions: monaco.languages.CompletionItem[] = [];
 		let insertText: string = '/' + value;
@@ -289,10 +277,10 @@ export class EXMLContentAssistProcessor {
 	}
 
 	/**
-     * 显示节点属性的自动补全
-     * @param currentNodeName 当前所在的节点名
-     * @param typeInAttName 正在输入的属性名
-     */
+	 * 显示节点属性的自动补全
+	 * @param currentNodeName 当前所在的节点名
+	 * @param typeInAttName 正在输入的属性名
+	 */
 	private createAttributeCompetions(currentNodeName: string, fullText: string, range?: monaco.Range, value?: string): monaco.languages.CompletionItem[] {
 		let completions: monaco.languages.CompletionItem[] = [];
 		let qName: QName = this.getQNameWithNode(currentNodeName, fullText); // TODO:
@@ -318,8 +306,8 @@ export class EXMLContentAssistProcessor {
 	}
 
 	/**
-     * 得到所有的皮肤名
-     */
+	 * 得到所有的皮肤名
+	 */
 	private createSkinNameCompletions(range: monaco.Range): monaco.languages.CompletionItem[] {
 		let completions: monaco.languages.CompletionItem[] = [];
 		let skinNames = this.getSchemaModel().skinClassNames;
@@ -336,12 +324,12 @@ export class EXMLContentAssistProcessor {
 	}
 
 	/**
-     * 得到属性的值
-     * @param qNameStr
-     * @param attribute
-     * @param value
-     * @return
-     */
+	 * 得到属性的值
+	 * @param qNameStr
+	 * @param attribute
+	 * @param value
+	 * @return
+	 */
 	private createAttributeValueCompletions(qNameStr: string, attribute: string, fullText: string, range?: monaco.Range, flag: number = 0): monaco.languages.CompletionItem[] {
 		let completions: monaco.languages.CompletionItem[] = [];
 		let qName: QName = this.getQNameWithNode(qNameStr, fullText);
@@ -366,10 +354,10 @@ export class EXMLContentAssistProcessor {
 	}
 
 	/**
-     * 得到属性的状态
-     * @param child
-     * @return
-     */
+	 * 得到属性的状态
+	 * @param child
+	 * @return
+	 */
 	private createAttributeStateCompletions(child: String, fullText: string, range: monaco.Range): monaco.languages.CompletionItem[] {
 		let completions: monaco.languages.CompletionItem[] = [];
 		let stateArr: string[] = this.getStates(fullText);
@@ -386,11 +374,11 @@ export class EXMLContentAssistProcessor {
 	}
 
 	/**
-     * 通过节点的字符串得到qName
-     * @param nodeStr
-     * @return
-     *
-     */
+	 * 通过节点的字符串得到qName
+	 * @param nodeStr
+	 * @return
+	 *
+	 */
 	private getQNameWithNode(nodeStr: string, fullText: string): QName {
 		let nodeArr: string[] = (<string>nodeStr).split(':');
 		let classId: string = nodeArr.length === 2 ? nodeArr[1] : nodeArr[0];
@@ -414,11 +402,11 @@ export class EXMLContentAssistProcessor {
 	}
 
 	/**
-     * 以字符串的方式读取一个xml中的命名空间数组。
-     * @param xmlStr
-     * @return
-     *
-     */
+	 * 以字符串的方式读取一个xml中的命名空间数组。
+	 * @param xmlStr
+	 * @return
+	 *
+	 */
 	private getNamespaces(xmlStr: string): Namespace[] {
 		let result: Namespace[] = [];
 		let arr: any[] = xmlStr.match(/(xmlns.*?=(\"|\').*?(\"|\'))/g);
@@ -464,9 +452,9 @@ export class EXMLContentAssistProcessor {
 		return result;
 	}
 	/**
-     * 得到当前Exml文档的States
-     * @return
-     */
+	 * 得到当前Exml文档的States
+	 * @return
+	 */
 	private getStates(fullText: string): string[] {
 		// 先读节点的，如果读不到节点的则从属性中读取
 		let arr: string[] = this.getStatesByNode(fullText);
@@ -477,9 +465,9 @@ export class EXMLContentAssistProcessor {
 	}
 
 	/**
-     * 从节点中读取states
-     * @return
-     */
+	 * 从节点中读取states
+	 * @return
+	 */
 	private getStatesByNode(fullText: string): string[] {
 		let text: String = fullText;
 		let arr: string[] = [];
@@ -524,9 +512,9 @@ export class EXMLContentAssistProcessor {
 	}
 
 	/**
-     * 从属性中读取states
-     * @return
-     */
+	 * 从属性中读取states
+	 * @return
+	 */
 	private getStatesByAttribute(): string[] {
 		let reg: RegExp = /\<.*?\:Skin[\s\S]*?states[\s\S]*?\=[\s\S]*?[\'|\"](.*?)[\'|\"][\s\S]*?\>/;
 		let arr: string[] = this.text.match(reg);

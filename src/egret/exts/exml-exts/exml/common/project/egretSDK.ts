@@ -41,27 +41,6 @@ export class EgretEngineInfo implements VersionInfo {
 	}
 
 	/**
-     * 得到gui框架属性表文件路径
-     */
-	public get guiPropertiesPath(): string {
-		return pathUtil.join(this.path, 'tools/lib/exml/properties.json');
-	}
-
-	/**
-     * 得到gui框架清单文件路径
-     */
-	public get guiManifestPath(): string {
-		return pathUtil.join(this.path, 'tools/lib/exml/egret-manifest.xml');
-	}
-
-	/**
-     * 得到gui框架清单文件路径
-     */
-	public get guiExmlXsdPath(): string {
-		return pathUtil.join(this.path, 'tools/lib/exml/exml.xsd');
-	}
-
-	/**
      * 得到eui框架属性表文件路径
      */
 	public get euiPropertiesPath(): string {

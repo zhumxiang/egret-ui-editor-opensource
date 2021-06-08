@@ -1,7 +1,7 @@
 import { BaseSchemaStrategy } from './BaseSchemaStrategy';
 import { ISchemaStrategy } from './ISchemaStrategy';
 import { Namespace } from '../sax/Namespace';
-import { EUI, W_GUI } from '../project/parsers/core/commons';
+import { EUI, W_EUI } from '../project/parsers/core/commons';
 
 /**
  * GUI的exml规范策略
@@ -17,6 +17,6 @@ export class EUISchemaStrategy extends BaseSchemaStrategy implements ISchemaStra
      * GUI的命名空间，具体子类重写
      */
 	public get workNS(): Namespace {
-		return W_GUI;
+		return W_EUI;
 	}
 }

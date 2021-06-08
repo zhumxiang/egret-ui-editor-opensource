@@ -26,35 +26,30 @@ export class EgretChecker {
 	 */
 	public checkProject(project: EgretProjectModel): Promise<boolean> {
 		this.project = project;
-		if (project.UILibrary == 'eui') {
-			let wingPropertyJson = null;
-			//step1 先确保得到一个WingProperty
-			if (!fs.existsSync(project.wingPropertiesUri.fsPath)) {
-				wingPropertyJson = TemplateTool.getWingProperties();
-				writeWingProperty(wingPropertyJson,project.wingPropertiesUri.fsPath);
-			} else {
-				try {
-					const wingPropertyStr = fs.readFileSync(project.wingPropertiesUri.fsPath, 'utf8');
-					wingPropertyJson = JSON.parse(wingPropertyStr);
-				} catch (error) { }
-				if (!wingPropertyJson) {
-					wingPropertyJson = TemplateTool.getWingProperties();
-					writeWingProperty(wingPropertyJson,project.wingPropertiesUri.fsPath);
-				}
-			}
-
-			const prompts = validateProperty(wingPropertyJson, project.exmlRoot, project.project.fsPath);
-			if (!prompts.isResExist || !prompts.isThemeExist || prompts.prompts.length > 0) {
-				return this.promptPanel(wingPropertyJson, project);
-				// .then(() => {
-				// 	return true;
-				// });
-			} else {
-				return Promise.resolve(true);
-			}
+		let wingPropertyJson = null;
+		//step1 先确保得到一个WingProperty
+		if (!fs.existsSync(project.wingPropertiesUri.fsPath)) {
+			wingPropertyJson = TemplateTool.getWingProperties();
+			writeWingProperty(wingPropertyJson, project.wingPropertiesUri.fsPath);
 		} else {
-			this.notificationService.warn({ content: localize('egretChecker.checkProject.euiProjectError','This is not a valid Egret EUI project'), duration: 5 });
-			return Promise.resolve(false);
+			try {
+				const wingPropertyStr = fs.readFileSync(project.wingPropertiesUri.fsPath, 'utf8');
+				wingPropertyJson = JSON.parse(wingPropertyStr);
+			} catch (error) { }
+			if (!wingPropertyJson) {
+				wingPropertyJson = TemplateTool.getWingProperties();
+				writeWingProperty(wingPropertyJson, project.wingPropertiesUri.fsPath);
+			}
+		}
+
+		const prompts = validateProperty(wingPropertyJson, project.exmlRoot, project.project.fsPath);
+		if (!prompts.isResExist || !prompts.isThemeExist || prompts.prompts.length > 0) {
+			return this.promptPanel(wingPropertyJson, project);
+			// .then(() => {
+			// 	return true;
+			// });
+		} else {
+			return Promise.resolve(true);
 		}
 	}
 
@@ -80,14 +75,14 @@ export class EgretChecker {
 
 	}
 
-	
+
 }
 
 /**
  * 保存wing配置文件
  * @param property 
  */
-export function  writeWingProperty(property: any,rootPath:string): void {
+export function writeWingProperty(property: any, rootPath: string): void {
 	const wingPropertyStr = JSON.stringify(property, null, 2);
 	fs.writeFileSync(rootPath, wingPropertyStr, { encoding: 'utf8' });
 }

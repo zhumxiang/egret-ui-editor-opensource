@@ -10,7 +10,7 @@ export interface IParserProcess extends IDisposable {
 	 * @param propertiesPath 
 	 * @param parseFolders 需要解析的文件夹
 	 */
-	initProcess(propertiesPath: string, uiLib: string, workspace: string, parseFolders: string[]): Promise<void>;
+	initProcess(propertiesPath: string, workspace: string, parseFolders: string[]): Promise<void>;
 	/**
 	 * 更改解析文件夹
 	 * @param folders 

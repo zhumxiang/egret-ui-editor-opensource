@@ -61,17 +61,9 @@ export function isExml(resource: URI): boolean {
  */
 export var W_EUI: Namespace = new Namespace('w', 'http://ns.egret.com/wing');
 /**
- * Gui项目中Wing工作空间的命名空间
- */
-export var W_GUI: Namespace = new Namespace('w', 'http://ns.egret-labs.org/wing');
-/**
  * Eui的命名空间
  */
 export var EUI: Namespace = new Namespace('e', 'http://ns.egret.com/eui');
-/**
- * Gui的命名空间
- */
-export var GUI: Namespace = new Namespace('e', 'http://ns.egret-labs.org/egret');
 /**
  * Tween的命名空间
  */
@@ -203,31 +195,5 @@ export class ExmlCoreParserEUI extends ExmlCoreParser {
 	}
 	protected getWorkNs(): Namespace {
 		return W_EUI;
-	}
-}
-
-/**
- * Exml皮肤的核心解析类
- */
-export class ExmlCoreParserGUI extends ExmlCoreParser {
-	private static coreClasses: string[] = ['Point', 'Matrix', 'Rectangle'];
-	private static basicTypes: string[] = ['void', 'any', 'number', 'string', 'boolean', 'Object', 'Array', 'Function'];
-	protected getBasicTypes(): string[] {
-		return ExmlCoreParserGUI.basicTypes;
-	}
-	protected getEgretClasses(): string[] {
-		return ExmlCoreParserGUI.coreClasses;
-	}
-	protected getUIPrefix(): string {
-		return 'egret.gui.';
-	}
-	/**
-	 * 得到UI的命名空间
-	 */
-	public getUINs(): Namespace {
-		return GUI;
-	}
-	protected getWorkNs(): Namespace {
-		return W_GUI;
 	}
 }

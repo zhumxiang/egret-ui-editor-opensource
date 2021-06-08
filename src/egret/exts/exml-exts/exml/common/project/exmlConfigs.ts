@@ -14,7 +14,7 @@ import { EgretEngineInfo } from './egretSDK';
 import { IInstantiationService } from 'egret/platform/instantiation/common/instantiation';
 
 import { IParseCenter, createParseCenter, ClassChangedEvent, ClassChangedType } from './parsers/parser';
-import { ExmlCoreParser, ExmlCoreParserEUI, ExmlCoreParserGUI, EUI } from './parsers/core/commons';
+import { ExmlCoreParser, ExmlCoreParserEUI, EUI } from './parsers/core/commons';
 import { Emitter, Event } from 'egret/base/common/event';
 import { IDisposable } from 'egret/base/common/lifecycle';
 
@@ -535,7 +535,7 @@ export class EUIExmlConfig extends AbstractExmlConfig {
 		this.coreParser = new ExmlCoreParserEUI();
 	}
 	protected initParser(engineInfo: EgretEngineInfo): void {
-		this.parseCenter = createParseCenter(this.instantiationService, engineInfo.euiPropertiesPath, 'eui');
+		this.parseCenter = createParseCenter(this.instantiationService, engineInfo.euiPropertiesPath);
 		this.parseCenter.onClassChanges(e => this.classChanged_handler(e));
 	}
 	protected doInit(): Promise<void> {
@@ -693,28 +693,6 @@ export class EUIExmlConfig extends AbstractExmlConfig {
 	 */
 	public getRuntimeUrl(): Promise<string> {
 		return this.ensureLoaded().then(() => this.runtimeUrl);
-	}
-}
-
-/**
- * Gui的Config
- */
-export class GUIExmlConfig extends AbstractExmlConfig {
-	protected initConfig(): void {
-		this.coreParser = new ExmlCoreParserGUI();
-	}
-	protected initParser(engineInfo: EgretEngineInfo): void {
-		this.parseCenter = createParseCenter(this.instantiationService, engineInfo.guiPropertiesPath, 'gui');
-		this.parseCenter.onClassChanges(e => this.classChanged_handler(e));
-	}
-	protected getManifestUri(engineInfo: EgretEngineInfo): URI {
-		return URI.file(engineInfo.guiManifestPath);
-	}
-	protected getUILibUri(engineInfo: EgretEngineInfo): URI {
-		return null;
-	}
-	protected getResLibUri(engineInfo: EgretEngineInfo): URI {
-		return null;
 	}
 }
 
