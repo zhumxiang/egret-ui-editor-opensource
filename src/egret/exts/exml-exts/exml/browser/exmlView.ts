@@ -430,10 +430,7 @@ export class ExmlView implements IExmlView {
 		this.runtimeLayer.style.zIndex = '-1';
 		this._runtime = this.instantiationService.createInstance(EgretRuntimeDelegate, this.runtimeLayer);
 		this._runtime.getRuntime().then(runtime => {
-			let syncProps = (e?) => {
-				if (e == "exml") {
-					return;
-				}
+			let syncProps = () => {
 				let classMap = this.egretProjectService.exmlConfig.getClassNodeMap();
 				let euiExmlConfig: eui.sys.EXMLConfig = new runtime.eui.sys.EXMLConfig();
 				for (let fullName in classMap) {
