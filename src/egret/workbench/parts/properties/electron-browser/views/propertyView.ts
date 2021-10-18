@@ -76,12 +76,10 @@ export class PropertyView extends PanelContentDom implements IModelRequirePart, 
 			this.tabbar.setItemVisible(0, false);
 			this.tabbar.setItemVisible(1, false);
 			this.tabbar.setItemVisible(2, true);
-			this.tabbar.selectedIndex = 2;
 		} else {
 			this.tabbar.setItemVisible(0, true);
 			this.tabbar.setItemVisible(1, true);
 			this.tabbar.setItemVisible(2, false);
-			this.tabbar.selectedIndex = 0;
 		}
 	}
 
