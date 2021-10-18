@@ -9,7 +9,7 @@ import { localize } from '../../../base/localization/nls';
 import { APPLICATION_NAME } from 'egret/consts/consts';
 
 const customAuther = "zmx";
-const customVersion = 18;
+const customVersion = 19;
 /**
  * 新建文件夹
  * @export
