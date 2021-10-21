@@ -12,7 +12,7 @@ export default class TemplateTool {
 	public static createEUIExmlSkin(states: string, initWidth: string, initHeight: string, _className: string): string {
 
 
-		const xml: string = `<?xml version='1.0' encoding='utf-8'?>
+		const xml: string = `<?xml version="1.0" encoding="utf-8"?>
 <e:Skin class="${_className}Skin"
 	${!states ? '' : 'states="' + states.toString() + '"'} width="${initWidth}"
 	height="${initHeight}" xmlns:e="http://ns.egret.com/eui">
