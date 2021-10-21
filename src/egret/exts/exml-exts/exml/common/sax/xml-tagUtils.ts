@@ -351,6 +351,9 @@ export function stringify(xml: sax.Tag): string {
  */
 function $stringify(xml: sax.Tag, indent: number = 0): string {
 	let str: string = '';
+	if (indent === 0) {
+		str += '<?xml version="1.0" encoding="utf-8"?>\n';
+	}
 	for (var i = 0; i < indent; i++) {
 		str += '\t';
 	}
@@ -398,7 +401,7 @@ function $stringify(xml: sax.Tag, indent: number = 0): string {
 		}
 	}
 	if (xml.children.length === 0 && !xml.text) {
-		str += ' />';
+		str += '/>';
 	} else if (xml.text && xml.children.length === 0) {
 		str += '>' + escape(xml.text) + '</' + xml.name + '>';
 	} else if (xml.children.length !== 0 && !xml.text) {
