@@ -1178,7 +1178,7 @@ export class ExmlModel implements IExmlModel {
 			return false;
 		}
 		this._currentState = index === 0 ? this.getStates()[0] : this.getStates()[index - 1];
-		const newText: string = xmlStrUtil.removeState(this._text, stateName, this.getStates());
+		const newText: string = xmlStrUtil.removeState(this._text, stateName);
 		this.refreshOnStateChange(newText);
 		return true;
 	}

@@ -997,172 +997,47 @@ function createEmptyState(xmlStr: string, states: string[], newState: string): s
  * @param xmlStr xml文本
  * @param stateName 要移除的状态名称
  */
-export function removeState(xmlStr: string, stateName: string, states: string[]): string {
-	let index: number;
-	let closed: boolean = true;
-	let nodeText: string = '';
-	let isNote: boolean;
-	let returnStr: string = '';
-	let stateRemoved: boolean = false;
-	let delNext: number = 0;
-	while (xmlStr.length > 0) {
-		if (closed) {
-			index = xmlStr.indexOf('<');
-			if (index === -1) {
-				break;
-			}
-			returnStr += xmlStr.substring(0, index);
-			xmlStr = xmlStr.substring(index);
-			closed = false;
-		}
-		else {
-			isNote = false;
-			if (xmlStr.substr(0, 4) === '<!--') {
-				index = xmlStr.indexOf('-->', 4) + 2;
-				isNote = true;
-			}
-			else if (xmlStr.substr(0, 9) === '<![CDATA[') {
-				index = xmlStr.indexOf(']]>') + 2;
-				isNote = true;
-			}
-			else {
-				index = xmlStr.indexOf('>');
-			}
-			nodeText = xmlStr.substring(0, index + 1);
-
-			xmlStr = xmlStr.substring(index + 1);
-			closed = true;
-			if (nodeText.charAt(1) === '?' || isNote) {
-				returnStr += nodeText;
-				continue;
-			}
-			if (nodeText.indexOf('<w:Declarations') !== -1) {
-				returnStr += nodeText;
-				index = xmlStr.indexOf('</w:Declarations');
-				if (index !== -1) {
-					returnStr += xmlStr.substring(0, index + 17);
-					xmlStr = xmlStr.substring(index + 17);
-				}
-				continue;
-			}
-			if (delNext > 0) {
-				delNext--;
-				returnStr = trimRight(returnStr);
-				continue;
-			}
-			const type: number = getNodeType(nodeText);
-			if (type === 3) {
-				returnStr += nodeText;
-				continue;
-			}
-			if (!stateRemoved && nodeText.indexOf(':states') !== -1) {
-				if (states.length === 1) {
-					returnStr = trimRight(returnStr);
-					continue;
-				}
-			}
-			var valueRange: number[];
-			if (!stateRemoved && nodeText.indexOf('<s:State') !== -1) {
-				valueRange = getValueIndex(nodeText, 'name');
-				if (valueRange) {
-					if (nodeText.substring(valueRange[1], valueRange[2]) === stateName) {
-						stateRemoved = true;
-						returnStr = trimRight(returnStr);
-						if (type === 2) {
-							delNext = 1;
-						}
-						if (states.length === 1) {
-							delNext++;
-						}
-						continue;
-					}
-				}
-			}
-			var stateNames: string[];
-			valueRange = getValueIndex(nodeText, 'excludeFrom');
-			if (valueRange) {
-				const exStates: string[] = nodeText.substring(valueRange[1], valueRange[2]).split(',');
-				index = exStates.indexOf(stateName);
-				if (index !== -1) {
-					if (exStates.length > 1) {
-						exStates.splice(index, 1);
-						nodeText = nodeText.substring(0, valueRange[1]) + exStates.join(',') + nodeText.substring(valueRange[2]);
-					}
-					else {
-						nodeText = trimRight(nodeText.substring(0, valueRange[0])) + nodeText.substring(valueRange[2] + 1);
-					}
-				}
-				else {
-					stateNames = [];
-					for (var i = 0; i < states.length; i++) {
-						const s: string = states[i];
-						if (exStates.indexOf(s) === -1) {
-							stateNames.push(s);
-						}
-					}
-					if (stateNames.length === 1) {
-						returnStr = trimRight(returnStr);
-						if (type === 2) {
-							delNext = 1;
-						}
-						continue;
-					}
-				}
-			}
-			valueRange = getValueIndex(nodeText, 'includeIn');
-			if (valueRange) {
-				stateNames = nodeText.substring(valueRange[1], valueRange[2]).split(',');
-				index = stateNames.indexOf(stateName);
-				if (index !== -1) {
-					if (stateNames.length > 1) {
-						stateNames.splice(index, 1);
-						nodeText = nodeText.substring(0, valueRange[1]) + stateNames.join(',') + nodeText.substring(valueRange[2]);
-					}
-					else {
-						returnStr = trimRight(returnStr);
-						if (type === 2) {
-							delNext = 1;
-						}
-						continue;
-					}
-				}
-			}
-			let str: string = nodeText.split('\t').join(' ');
-			str = str.split('\r').join(' ');
-			str = str.split('\n').join(' ');
-			var tail: string;
-			if (type === 1) {
-				tail = '/>';
-				str = str.substring(0, str.length - 2);
-			}
-			else {
-				tail = '>';
-				str = str.substring(0, str.length - 1);
-			}
-			const props: string[] = str.split(' ');
-			const oldKey: string = '.' + stateName;
-			let change: boolean = false;
-			var k: number;
-			for (var i: number = props.length - 1; i > 0; i--) {
-				const prop: string = props[i];
-				index = prop.indexOf('=');
-				if (index === -1) {
-					continue;
-				}
-				k = prop.indexOf(oldKey);
-				if (k !== -1 && k < index) {
-					props.splice(i, 1);
-					change = true;
-				}
-			}
-			if (change) {
-				nodeText = props.join(' ') + tail;
-			}
-
-			returnStr += nodeText;
-		}
+export function removeState(xmlStr: string, stateName: string): string {
+	let xml = xmlTagUtil.parse(xmlStr, false, true);
+	if (xml.errors.length > 0) {
+		return xmlStr;
 	}
-	return removeStateFromeDefine(returnStr, stateName);
+	const attrSubfix = "." + stateName;
+	removeStateFromRoot(xml);
+	return xmlTagUtil.stringify(xml);
+	function removeStateFromRoot(root: sax.Tag) {
+		for (let i = 0; i < root.attributeNodes.length; ++i) {
+			let attrNode = root.attributeNodes[i];
+			if (attrNode.name == "excludeFrom" || attrNode.name == "includeIn" || attrNode.name == "states") {
+				let value = root.attributes[attrNode.name].split(",");
+				let index = value.indexOf(stateName);
+				if (index != -1) {
+					if (value.length == 1) {
+						if(attrNode.name == "includeIn"){
+							return false;
+						}
+						root.attributeNodes.splice(i--, 1);
+						continue;
+					}
+					value.splice(index, 1);
+					attrNode.value = value.join(",");
+				}
+			} else if (attrNode.name.endsWith(attrSubfix)) {
+				root.attributeNodes.splice(i--, 1);
+				continue;
+			}
+		}
+		for (let i = 0; i < root.children.length; ++i) {
+			let child = root.children[i];
+			if (child.name == "e:Skin") {
+				continue;
+			}
+			if (!removeStateFromRoot(root.children[i])) {
+				root.children.splice(i--, 1);
+			}
+		}
+		return true;
+	}
 }
 /**
  * 重命名状态
@@ -1328,36 +1203,6 @@ function addStateToDefine(xmlStr: string, stateName: string): string {
 		let value: string = node.substring(range[1], range[2]);
 		value += (',' + stateName);
 		node = node.substring(0, range[1]) + value + node.substring(range[2]);
-	}
-	return result['f'] + node + result['b'];
-}
-/**
- *从状态声明位置移除状态 ,lark项目的状态声明位置在根节点上面states属性
- */
-function removeStateFromeDefine(xmlStr: string, state: string): string {
-	const result: Object = getOneNode(xmlStr);
-	if (!result['n']) {
-		return xmlStr;
-	}
-	let node: string = result['n'].toString();
-	const range: number[] = getValueIndex(node, 'states');
-	if (range) {
-		let value: string = node.substring(range[1], range[2]);
-		const states: string[] = value.split(',');
-		const index: number = states.indexOf(state);
-		if (index === -1) {
-			return xmlStr;
-		} else {
-			states.splice(index, 1);
-			if (states.length === 0) {
-				node = node.substring(0, range[0]) + node.substring(range[2] + 1);
-			} else {
-				value = states.join(',');
-				node = node.substring(0, range[1]) + value + node.substring(range[2]);
-			}
-		}
-	} else {
-		return xmlStr;
 	}
 	return result['f'] + node + result['b'];
 }
