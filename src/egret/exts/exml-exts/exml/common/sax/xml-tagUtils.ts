@@ -351,8 +351,10 @@ export function stringify(xml: sax.Tag): string {
  */
 function $stringify(xml: sax.Tag, indent: number = 0): string {
 	let str: string = '';
-	if (indent === 0) {
-		str += '<?xml version="1.0" encoding="utf-8"?>\n';
+	if (xml.processingInstructions) {
+		for (let decl of xml.processingInstructions) {
+			str += `<?${decl.name} ${decl.body}?>\n`;
+		}
 	}
 	for (var i = 0; i < indent; i++) {
 		str += '\t';
