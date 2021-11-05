@@ -174,6 +174,7 @@ export abstract class AbstractExmlConfig implements IDisposable {
 
 	private _skinNames: string[] = [];
 	private _classNames: string[] = [];
+	private _itemRendererNames: string[] = [];
 	private _skinToPathMap: { [className: string]: string } = {};
 	private _classMap: { [fullName: string]: ClassNode } = {};
 	private currentStamp: number = -1;
@@ -184,6 +185,13 @@ export abstract class AbstractExmlConfig implements IDisposable {
 	protected classChanged_handler(event: ClassChangedEvent): void {
 		this._classMap = event.classMap;
 		this._skinNames = event.skinNames;
+		this._itemRendererNames.length = 0;
+		for (let className in this._classMap) {
+			let classInfo = this._classMap[className];
+			if (!classInfo.isInterface && this.isInstanceOf(className, "eui.IItemRenderer")) {
+				this._itemRendererNames.push(className);
+			}
+		}
 		this._skinToPathMap = event.skinToPathMap;
 		//解析类名列表
 		this._classNames = [];
@@ -450,6 +458,14 @@ export abstract class AbstractExmlConfig implements IDisposable {
 	 */
 	public getSkinNames(): string[] {
 		return this._skinNames;
+	}
+
+	/**
+	 * 获取实现了eui.IItemRenderer接口的类
+	 * @returns 
+	 */
+	public getItemRendererNames(): string[] {
+		return this._itemRendererNames;
 	}
 
 	/**

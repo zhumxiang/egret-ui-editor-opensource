@@ -88,6 +88,33 @@ export class SkinPart extends BasePart {
 					this.skinCombobox.setSelection('');
 				}
 			});
+
+			if (this.hasItemSkin) {
+				this.getItemRendererList().then(datas => {
+					this.itemClassCombobox.setDatas(datas);
+					let itemNameValue: IClass | IValue = null;
+					let itemNameDefault: any = null;
+					itemNameValue = node.getProperty('itemRenderer') as IClass;
+					itemNameDefault = node.getInstance()['itemRenderer'];
+
+					let itemNameValueUser: string = '';
+					if (itemNameValue) {
+						itemNameValueUser = (itemNameValue as IClass).getClassName();
+					}
+					let itemNameValueDefault: string = '';
+					if (itemNameDefault) {
+						itemNameValueDefault = itemNameDefault.prototype.__class__;
+					}
+					this.itemClassCombobox.prompt = itemNameValueDefault;
+
+					if (itemNameValueUser) {
+						this.itemClassCombobox.setSelection(itemNameValueUser);
+					} else {
+						this.itemClassCombobox.setSelection('');
+					}
+				});
+			}
+
 		} else {
 			return;
 		}
@@ -126,8 +153,26 @@ export class SkinPart extends BasePart {
 	}
 
 
+	/**
+	 * eui.IItemRenderer列表
+	 */
+	public getItemRendererList(): Promise<IDropDownTextDataSource[]> {
+		return this.egretProjectService.ensureLoaded().then(() => {
+			return this.egretProjectService.exmlConfig.ensureLoaded().then(() => {
+				const list = this.egretProjectService.exmlConfig.getItemRendererNames();
+				const reuslt: IDropDownTextDataSource[] = [];
+				for (var i = 0; i < list.length; i++) {
+					reuslt.push({ id: list[i], data: list[i] });
+				}
+				return reuslt;
+			});
+		});
+	}
+
 	private skinCombobox = new ComboBox();
 	private skinAttribute: AttributeItemGroup = new AttributeItemGroup();
+	private itemClassCombobox = new ComboBox();
+	private itemClassAttribute: AttributeItemGroup = new AttributeItemGroup();
 	/**
 	 * 渲染
 	 * @param el 
@@ -141,6 +186,11 @@ export class SkinPart extends BasePart {
 		line.text = localize('property.style.title.skin', 'Skin');
 		line.style.marginBottom = '6px';
 
+		this.itemClassAttribute.create(container);
+		this.itemClassCombobox.create(this.itemClassAttribute);
+		this.initAttributeStyle(this.itemClassAttribute);
+		this.toDisposes.push(this.itemClassCombobox.onSelectChanged(t => this.itemClassChanged_handler(t.getSelection())));
+
 		this.skinAttribute.create(container);
 		this.skinCombobox.create(this.skinAttribute);
 		this.initAttributeStyle(this.skinAttribute);
@@ -152,8 +202,11 @@ export class SkinPart extends BasePart {
 	private updateAttributeLabelDisplay(): void {
 		if (this.hasItemSkin) {
 			this.skinAttribute.label = localize('property.style.skin.itemSkinName', 'Item Skin:');
+			this.itemClassAttribute.label = localize('property.style.skin.itemClassName', 'Item Skin:');
+			this.itemClassAttribute.style.display = 'flex';
 		} else {
 			this.skinAttribute.label = localize('property.style.skin.skinName', 'Skin:');
+			this.itemClassAttribute.style.display = 'none';
 		}
 	}
 
@@ -180,6 +233,18 @@ export class SkinPart extends BasePart {
 			} else {
 				this.currentNode.setClass('skinName', value.id);
 			}
+		}
+	}
+
+	private itemClassChanged_handler(value: IDropDownTextDataSource): void {
+		if (!this.currentNode) {
+			return;
+		}
+
+		if (!value) {
+			this.currentNode.setClass('itemRenderer', null);
+		} else {
+			this.currentNode.setClass('itemRenderer', value.id);
 		}
 	}
 }

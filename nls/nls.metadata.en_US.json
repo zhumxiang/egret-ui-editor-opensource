@@ -1759,6 +1759,10 @@
 		"s": "Weight:",
 		"t": "Weight:"
 	},
+	"property.style.skin.itemClassName": {
+		"s": "Item Class:",
+		"t": "Item Class:"
+	},
 	"property.style.skin.itemSkinName": {
 		"s": "Item Skin:",
 		"t": "Item Skin:"

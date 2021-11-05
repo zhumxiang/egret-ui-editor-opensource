@@ -97,7 +97,11 @@ function getPropertyList(className: string, node: IObject, model: IExmlModel): {
 			if (!value && node.getInstance()) {
 				const instanceValue = node.getInstance()[p.name];
 				if (instanceValue != null) {
-					value = instanceValue.toString();
+					if (typeof instanceValue == 'function' && instanceValue.prototype.__class__) {
+						value = instanceValue.prototype.__class__;
+					} else {
+						value = instanceValue.toString();
+					}
 				}
 			}
 			let minValue: number = null;
@@ -155,7 +159,11 @@ function getPropertyList(className: string, node: IObject, model: IExmlModel): {
 							userValue = `${uvalue['x']},${uvalue['y']},${uvalue['width']},${uvalue['height']}`;
 						}
 					} else {
-						userValue = uvalue.toString();
+						if (typeof uvalue == 'function' && uvalue.prototype.__class__) {
+							userValue = uvalue.prototype.__class__;
+						} else {
+							userValue = uvalue.toString();
+						}
 					}
 				}
 			}
