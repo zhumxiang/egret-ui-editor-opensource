@@ -101,7 +101,7 @@ export class MatTreeModel extends TreeModel {
 				continue;
 			}
 			curModes += folderName+'/';
-			let pNode: TreeParentNode = <TreeParentNode>this.findFromArr(folderName, tempArr, 'label');
+			let pNode: TreeParentNode = tempArr.find(v => v.isFolder && v.label == folderName);
 			if (!pNode) {
 				pNode = new TreeParentNode();
 				pNode.resFile = resFile;
@@ -118,7 +118,7 @@ export class MatTreeModel extends TreeModel {
 		let lNode: TreeLeafNode;
 		let nodeLabel: string = '';
 		nodeLabel = resvo.name;
-		lNode = this.findFromArr(nodeLabel, tempArr);/// 资源库不创建重名的资源。
+		lNode = tempArr.find(v => !v.isFolder && v.label == nodeLabel);/// 资源库不创建重名的资源。
 		if (!lNode) {// file
 			lNode = new TreeLeafNode();
 			lNode.resFile = resFile;
@@ -182,22 +182,5 @@ export class MatTreeModel extends TreeModel {
 	 */
 	public find(n: TreeNodeBase) {
 
-	}
-
-	/**
-	 * 从数组里找对象
-	 * @param value 要查询的值
-	 * @param arr 查询数组
-	 * @param field 查询的域名
-	 * @return 返回值
-	 */
-	private findFromArr(value: string, arr: Array<any>, field: string = 'label'): any {
-		for (let i: number = 0; i < arr.length; i++) {
-			const item: any = arr[i];
-			if (item[field] === value) {
-				return arr[i];
-			}
-		}
-		return null;
 	}
 }
