@@ -147,7 +147,7 @@ export class LayerPanelUtil {
 			if (num === 1) {
 				const sub = tempContainer.getNodeAt(0);
 				if (isInstanceof(tempContainer, 'eui.IContainer')) {
-					LayerPanelUtil.switchNodeparent(node, sub.getInstance());
+					//LayerPanelUtil.switchNodeparent(node, sub.getInstance());
 					node.getParent().removeNode(node);
 					(sub as IContainer).addNode(node);
 				}
@@ -159,7 +159,7 @@ export class LayerPanelUtil {
 			}
 		} else {
 			if (isInstanceof(targetNode, 'eui.IContainer')) {
-				LayerPanelUtil.switchNodeparent(node, targetNode.getInstance());
+				//LayerPanelUtil.switchNodeparent(node, targetNode.getInstance());
 				node.getParent().removeNode(node);
 				(<IContainer>targetNode).addNode(node);
 			}
