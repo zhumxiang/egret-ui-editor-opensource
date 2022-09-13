@@ -135,6 +135,9 @@ export class LayerPanelUtil {
 		return true;
 	}
 	static moveNodeIntoOtherNode(node: INode, targetNode: INode, model: IExmlModel): boolean {
+		if (node == targetNode) {
+			return false;
+		}
 		model.isChangeNodeFloor(true);
 		if (isInstanceof(targetNode, 'eui.IScroller')) {
 			const num = (targetNode as IContainer).getNumChildren();
