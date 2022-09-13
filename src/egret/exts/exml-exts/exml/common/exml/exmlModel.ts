@@ -2450,9 +2450,10 @@ export class ExmlModel implements IExmlModel {
 		const range: number[] = xmlStrUtil.findRangeByPath(this._text, host.getXmlPath(), this._currentState, this._states);
 		const hostInMultiState: boolean = host['inMutipleStates'];
 		const propStr: string = (!ignoreState) && hostInMultiState && ns.uri !== W_EUI.uri ? property + '.' + this._currentState : property;
+		let insertIndex = 0;
 		if (property === 'id') {
 			const subStr: String = this._text.substr(range[0]);
-			var insertIndex: number = subStr.indexOf(' ');
+			insertIndex = subStr.indexOf(' ');
 			if (insertIndex === -1 || insertIndex > range[1] - range[0] + 1) {
 				insertIndex = range[1];
 				if (range[2] === range[3]) {
@@ -2462,12 +2463,27 @@ export class ExmlModel implements IExmlModel {
 			else {
 				insertIndex += range[0];
 			}
-		}
-		else {
-			insertIndex = range[1];
-			if (range[2] === range[3]) {
-				insertIndex--;
+		} else {
+			let tmpTag = this._text.substring(range[0], range[1]);
+			if (tmpTag.endsWith('/')) {
+				tmpTag += '>';
+			} else {
+				tmpTag += '/>';
 			}
+			let item: sax.Tag = xmlTagUtil.parse(tmpTag);
+			for (let attr of item.attributeNodes) {
+				if (attr.name == 'id') {
+					continue;
+				}
+				if (attr.name.localeCompare(propStr) > 0) {
+					insertIndex = attr.start - 1;
+					break;
+				}
+			}
+			if (insertIndex == 0) {
+				insertIndex = tmpTag.length - 2;
+			}
+			insertIndex += range[0];
 		}
 		this.pushTextChange(' ' + propStr + '=\"' + newValue + '\"', insertIndex, insertIndex);
 	}
