@@ -362,7 +362,7 @@ export class TimeLineContainer {
 		const bodyContent = DOM.$('div');
 		bodyContent.style.position = 'relative';
 		this.body.appendChild(bodyContent);
-		bodyContent.addEventListener('wheel', (browserEvent: MouseWheelEvent) => {
+		bodyContent.addEventListener('wheel', (browserEvent: WheelEvent) => {
 			this.onBodyContentWheel(browserEvent);
 		});
 		this.bodyContent = bodyContent;
@@ -379,7 +379,7 @@ export class TimeLineContainer {
 		this.updateTime(0);
 	}
 
-	private onBodyContentWheel(browserEvent: MouseWheelEvent): void {
+	private onBodyContentWheel(browserEvent: WheelEvent): void {
 		let e = new StandardWheelEvent(browserEvent as any);
 		let verticalPosition = this.animationService.getViewModel().getVerticalPosition();
 		const maxPosition = this.bodyContent.offsetHeight - this.body.offsetHeight;

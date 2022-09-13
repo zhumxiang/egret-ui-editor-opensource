@@ -804,7 +804,7 @@ export class FocusRectLayer extends EventDispatcher implements IAbosrbLineProvid
 				this.detachMouseEvent();
 				break;
 			case 'wheel':
-				let event: MouseWheelEvent = e;
+				let event: WheelEvent = e;
 				if (event.ctrlKey) {
 					if (isMacintosh) {
 						this.gestureZoom_handler(event);
@@ -891,7 +891,7 @@ export class FocusRectLayer extends EventDispatcher implements IAbosrbLineProvid
 		this.updateCursor();
 	}
 
-	private mouseWheelHandler(event: MouseWheelEvent): void {
+	private mouseWheelHandler(event: WheelEvent): void {
 		var curScale = this.scale;
 		var delta = event.deltaY;
 		if (delta > 0) {
@@ -916,14 +916,14 @@ export class FocusRectLayer extends EventDispatcher implements IAbosrbLineProvid
 
 		this.setViewTo({ x: this.movePoint.x, y: this.movePoint.y, scale: targetScale }, true, 0.1)
 	}
-	private gesturePan_handler(event: MouseWheelEvent): void {
+	private gesturePan_handler(event: WheelEvent): void {
 		var offsetX = event.deltaX / 2;
 		var offsetY = event.deltaY / 2;
 		this.movePoint.x -= offsetX;
 		this.movePoint.y -= offsetY;
 		this.updateTargetPos();
 	}
-	private gestureZoom_handler(event: MouseWheelEvent): void {
+	private gestureZoom_handler(event: WheelEvent): void {
 		var curScale = this.scale;
 		var delta = event.deltaY / 5;
 		delta = delta * (this.scale / 5);
