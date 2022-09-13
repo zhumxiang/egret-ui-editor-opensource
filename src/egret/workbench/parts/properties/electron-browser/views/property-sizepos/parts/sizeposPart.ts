@@ -17,8 +17,6 @@ enum PropertyTypes {
 	Y = 'y',
 	WIDTH = 'width',
 	HEIGHT = 'height',
-	ANCHOR_OFFSET_X = 'anchorOffsetX',
-	ANCHOR_OFFSET_Y = 'anchorOffsetY',
 	SCALE_X = 'scaleX',
 	SCALE_Y = 'scaleY'
 }
@@ -90,7 +88,6 @@ export class SizePosPart extends BasePart {
 			}
 			this.posGroup.style.display = null;
 			this.sizeGroup.style.display = null;
-			this.anchorGroup.style.display = null;
 			this.scaleGroup.style.display = null;
 			this.compMap[PropertyTypes.HEIGHT]['supportPercent'] = true;
 			this.compMap[PropertyTypes.WIDTH]['supportPercent'] = true;
@@ -125,7 +122,6 @@ export class SizePosPart extends BasePart {
 			}
 			this.posGroup.style.display = 'none';
 			this.sizeGroup.style.display = null;
-			this.anchorGroup.style.display = 'none';
 			this.scaleGroup.style.display = 'none';
 		}
 	}
@@ -149,8 +145,6 @@ export class SizePosPart extends BasePart {
 		result[PropertyTypes.Y] = getProperty(node, PropertyTypes.Y);
 		result[PropertyTypes.WIDTH] = getProperty(node, PropertyTypes.WIDTH);
 		result[PropertyTypes.HEIGHT] = getProperty(node, PropertyTypes.HEIGHT);
-		result[PropertyTypes.ANCHOR_OFFSET_X] = getProperty(node, PropertyTypes.ANCHOR_OFFSET_X);
-		result[PropertyTypes.ANCHOR_OFFSET_Y] = getProperty(node, PropertyTypes.ANCHOR_OFFSET_Y);
 		result[PropertyTypes.SCALE_X] = getProperty(node, PropertyTypes.SCALE_X);
 		result[PropertyTypes.SCALE_Y] = getProperty(node, PropertyTypes.SCALE_Y);
 		return result;
@@ -159,7 +153,6 @@ export class SizePosPart extends BasePart {
 	private compMap: { [type: string]: IUIBase } = {};
 	private posGroup = new HGroup();
 	private sizeGroup = new HGroup();
-	private anchorGroup = new HGroup();
 	private scaleGroup = new HGroup();
 
 	/**
@@ -182,11 +175,6 @@ export class SizePosPart extends BasePart {
 		this.sizeGroup.style.flexWrap = 'wrap';
 		this.createNumberAtt(PropertyTypes.WIDTH, localize('property.sizepos.width', 'Width:'), this.sizeGroup, true);
 		this.createNumberAtt(PropertyTypes.HEIGHT, localize('property.sizepos.height', 'Height:'), this.sizeGroup, true);
-
-		this.anchorGroup.create(container);
-		this.anchorGroup.style.flexWrap = 'wrap';
-		this.createNumberAtt(PropertyTypes.ANCHOR_OFFSET_X, localize('property.sizepos.anchorX', 'Anchor X:'), this.anchorGroup, false);
-		this.createNumberAtt(PropertyTypes.ANCHOR_OFFSET_Y, localize('property.sizepos.anchorY', 'Anchor Y:'), this.anchorGroup, false);
 
 		this.scaleGroup.create(container);
 		this.scaleGroup.style.flexWrap = 'wrap';
@@ -231,8 +219,6 @@ export class SizePosPart extends BasePart {
 			case PropertyTypes.Y:
 			case PropertyTypes.HEIGHT:
 			case PropertyTypes.WIDTH:
-			case PropertyTypes.ANCHOR_OFFSET_X:
-			case PropertyTypes.ANCHOR_OFFSET_Y:
 				return 1;
 			case PropertyTypes.SCALE_X:
 			case PropertyTypes.SCALE_Y:

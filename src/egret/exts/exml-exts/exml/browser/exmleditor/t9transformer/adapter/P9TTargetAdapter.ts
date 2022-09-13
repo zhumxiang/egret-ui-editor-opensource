@@ -762,8 +762,11 @@ export class P9TTargetAdapter extends EventDispatcher implements IP9TTargetAdapt
 				if (item === this.leftP || item === this.rightP || item === this.topP || item === this.bottomP ||
 					item === this.ltopP || item === this.rtopP || item === this.lbottomP || item === this.rbottomP) {
 					if (!(<IP9TPointRender><any>item).checkCenterSpace(x, y) && this.hittest(this.moveP.root, x, y)) {
-						return this.moveP;
+						item = this.moveP;
 					}
+				}
+				if (item == this.anchorP) {
+					item = this.moveP;
 				}
 				return <any>item;
 			}
