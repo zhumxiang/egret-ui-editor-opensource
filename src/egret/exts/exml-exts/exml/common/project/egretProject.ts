@@ -68,12 +68,6 @@ export class EgretProjectModel {
 			try {
 				const egretPropertyStr: string = fs.readFileSync(this.egretPropertiesUri.fsPath, { encoding: 'utf8' });
 				this.egretProperties = JSON.parse(egretPropertyStr);
-				const exmlRoot = this.exmlRoot;
-				if (exmlRoot.length === 0) {
-					// 没有配置exmlRoot，写入默认值
-					this._exmlRoots.push(URI.file('resource/eui_skins'));
-					this.saveEgretProperties();
-				}
 			} catch (error) { }
 		}
 		return this.egretProperties;
@@ -234,6 +228,11 @@ export class EgretProjectModel {
 							const fsPath = exmlRoot[i];
 							this._exmlRoots.push(URI.file(fsPath));
 						}
+					} else {
+						const defaultRoot = 'resource/eui_skins';
+						euiData['exmlRoot'] = [defaultRoot];
+						this._exmlRoots.push(URI.file(defaultRoot));
+						this.saveEgretProperties();
 					}
 				}
 			}
