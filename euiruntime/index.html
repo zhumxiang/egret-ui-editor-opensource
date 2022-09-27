@@ -80,8 +80,10 @@
             'AssetAdapter.js',
             'Theme.js',
             'Main.js',
-            ...extensionPath.split(',').map(function (p) {return projectRoot + "\\" + p}),
 		];
+		if (extensionPath) {
+			scripts.push(...extensionPath.split(',').map(function (p) { return projectRoot + "\\" + p }));
+		}
         addScripts(scripts,function(){
             var base = document.createElement("base");
             base.href=decodeURIComponent(projectRoot)+"/";
