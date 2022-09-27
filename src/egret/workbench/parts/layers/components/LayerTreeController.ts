@@ -30,7 +30,7 @@ export class DomLayerTreeController implements IController {
 	}
 
 	onClick(tree: ITree, element: INode, event: Mouse.IMouseEvent): boolean {
-		if (element.getLocked()) {
+		if (!element || element.getLocked()) {
 			return;
 		}
 		const isMac = platform.isMacintosh;
