@@ -3,7 +3,7 @@ var Theme = (function () {
         this.parseSkinName = parseSkinName;
         this.getStyle = getStyle;
     }
-    var d = __define,c=Theme;p=c.prototype;
+    var c=Theme;p=c.prototype;
     p.getSkinName = function (client) {
         return this.parseSkinName(client);
     };

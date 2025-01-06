@@ -90,7 +90,7 @@ var egret;
         var WebExternalInterface = (function () {
             function WebExternalInterface() {
             }
-            var d = __define,c=WebExternalInterface,p=c.prototype;
+            var c=WebExternalInterface,p=c.prototype;
             /**
              * @private
              * @param functionName
@@ -243,7 +243,7 @@ var egret;
                  */
                 this.loaded = false;
             }
-            var d = __define,c=HtmlSound,p=c.prototype;
+            var c=HtmlSound,p=c.prototype;
             d(p, "length"
                 ,function () {
                     if (this.originAudio) {
@@ -465,7 +465,7 @@ var egret;
                 audio.addEventListener("ended", this.onPlayEnd);
                 this.audio = audio;
             }
-            var d = __define,c=HtmlSoundChannel,p=c.prototype;
+            var c=HtmlSoundChannel,p=c.prototype;
             p.$play = function () {
                 if (this.isStopped) {
                     egret.$error(1036);
@@ -587,7 +587,7 @@ var egret;
                  */
                 this.loaded = false;
             }
-            var d = __define,c=QQSound,p=c.prototype;
+            var c=QQSound,p=c.prototype;
             /**
              * @inheritDoc
              */
@@ -742,7 +742,7 @@ var egret;
                  */
                 this._startTime = 0;
             }
-            var d = __define,c=QQSoundChannel,p=c.prototype;
+            var c=QQSoundChannel,p=c.prototype;
             p.$play = function () {
                 if (this.isStopped) {
                     egret.$error(1036);
@@ -865,7 +865,7 @@ var egret;
         var WebAudioDecode = (function () {
             function WebAudioDecode() {
             }
-            var d = __define,c=WebAudioDecode,p=c.prototype;
+            var c=WebAudioDecode,p=c.prototype;
             /**
              * @private
              *
@@ -932,7 +932,7 @@ var egret;
                  */
                 this.loaded = false;
             }
-            var d = __define,c=WebAudioSound,p=c.prototype;
+            var c=WebAudioSound,p=c.prototype;
             d(p, "length"
                 ,function () {
                     if (this.audioBuffer) {
@@ -1121,7 +1121,7 @@ var egret;
                     this.gain = this.context["createGainNode"]();
                 }
             }
-            var d = __define,c=WebAudioSoundChannel,p=c.prototype;
+            var c=WebAudioSoundChannel,p=c.prototype;
             p.$play = function () {
                 if (this.isStopped) {
                     egret.$error(1036);
@@ -1299,7 +1299,7 @@ var egret;
                     this.load();
                 }
             }
-            var d = __define,c=WebVideo,p=c.prototype;
+            var c=WebVideo,p=c.prototype;
             /**
              * @inheritDoc
              */
@@ -1736,7 +1736,7 @@ var egret;
                 this._url = "";
                 this._method = "";
             }
-            var d = __define,c=WebHttpRequest,p=c.prototype;
+            var c=WebHttpRequest,p=c.prototype;
             d(p, "response"
                 /**
                  * @private
@@ -1993,7 +1993,7 @@ var egret;
                  */
                 this.request = null;
             }
-            var d = __define,c=WebImageLoader,p=c.prototype;
+            var c=WebImageLoader,p=c.prototype;
             d(p, "crossOrigin"
                 ,function () {
                     return this._crossOrigin;
@@ -2218,7 +2218,7 @@ var egret;
                  */
                 this._styleInfoes = {};
             }
-            var d = __define,c=HTML5StageText,p=c.prototype;
+            var c=HTML5StageText,p=c.prototype;
             /**
              * @private
              *
@@ -2560,7 +2560,7 @@ var egret;
                  */
                 this.$scaleY = 1;
             }
-            var d = __define,c=HTMLInput,p=c.prototype;
+            var c=HTMLInput,p=c.prototype;
             /**
              * @private
              *
@@ -2979,7 +2979,7 @@ var egret;
                 this.surface = createCanvas(width, height);
                 this.context = this.surface.getContext("2d");
             }
-            var d = __define,c=CanvasRenderBuffer,p=c.prototype;
+            var c=CanvasRenderBuffer,p=c.prototype;
             d(p, "width"
                 /**
                  * 渲染缓冲的宽度，以像素为单位。
@@ -3199,7 +3199,7 @@ var egret;
                 this.touch = new egret.sys.TouchHandler(stage);
                 this.addListeners();
             }
-            var d = __define,c=WebTouchHandler,p=c.prototype;
+            var c=WebTouchHandler,p=c.prototype;
             /**
              * @private
              * 添加事件监听
@@ -3379,7 +3379,7 @@ var egret;
                 this.stage = stage;
                 this.registerListener();
             }
-            var d = __define,c=WebHideHandler,p=c.prototype;
+            var c=WebHideHandler,p=c.prototype;
             /**
              * @private
              *
@@ -3506,7 +3506,7 @@ var egret;
         var AudioType = (function () {
             function AudioType() {
             }
-            var d = __define,c=AudioType,p=c.prototype;
+            var c=AudioType,p=c.prototype;
             /**
              * @private
              */
@@ -3529,7 +3529,7 @@ var egret;
         var SystemOSType = (function () {
             function SystemOSType() {
             }
-            var d = __define,c=SystemOSType,p=c.prototype;
+            var c=SystemOSType,p=c.prototype;
             /**
              * @private
              */
@@ -3558,7 +3558,7 @@ var egret;
             function Html5Capatibility() {
                 _super.call(this);
             }
-            var d = __define,c=Html5Capatibility,p=c.prototype;
+            var c=Html5Capatibility,p=c.prototype;
             /**
              * @private
              *
@@ -3919,7 +3919,7 @@ var egret;
         var WebCapability = (function () {
             function WebCapability() {
             }
-            var d = __define,c=WebCapability,p=c.prototype;
+            var c=WebCapability,p=c.prototype;
             /**
              * @private
              * 检测系统属性
@@ -4080,7 +4080,7 @@ var egret;
                         this.addLog();
                 }
             }
-            var d = __define,c=WebFps,p=c.prototype;
+            var c=WebFps,p=c.prototype;
             p.addFps = function () {
                 var div = document.createElement('div');
                 div.style.display = 'inline-block';
@@ -4339,7 +4339,7 @@ var egret;
                 this.init(container, options);
                 this.initOrientation();
             }
-            var d = __define,c=WebPlayer,p=c.prototype;
+            var c=WebPlayer,p=c.prototype;
             p.init = function (container, options) {
                 var option = this.readOption(container, options);
                 var stage = new egret.Stage();
@@ -4684,7 +4684,7 @@ var egret;
                 this.nodeType = nodeType;
                 this.parent = parent;
             }
-            var d = __define,c=XMLNode,p=c.prototype;
+            var c=XMLNode,p=c.prototype;
             return XMLNode;
         }());
         web.XMLNode = XMLNode;
@@ -4715,7 +4715,7 @@ var egret;
                 this.namespace = namespace;
                 this.name = name;
             }
-            var d = __define,c=XML,p=c.prototype;
+            var c=XML,p=c.prototype;
             return XML;
         }(XMLNode));
         web.XML = XML;
@@ -4733,7 +4733,7 @@ var egret;
                 _super.call(this, 3, parent);
                 this.text = text;
             }
-            var d = __define,c=XMLText,p=c.prototype;
+            var c=XMLText,p=c.prototype;
             return XMLText;
         }(XMLNode));
         web.XMLText = XMLText;
@@ -4824,7 +4824,7 @@ var egret;
                     _this.dispatchEvent(event);
                 };
             }
-            var d = __define,c=WebDeviceOrientation,p=c.prototype;
+            var c=WebDeviceOrientation,p=c.prototype;
             /**
              * @private
              *
@@ -4890,7 +4890,7 @@ var egret;
                 };
                 this.geolocation = navigator.geolocation;
             }
-            var d = __define,c=WebGeolocation,p=c.prototype;
+            var c=WebGeolocation,p=c.prototype;
             /**
              * @private
              *
@@ -4960,7 +4960,7 @@ var egret;
                     _this.dispatchEvent(event);
                 };
             }
-            var d = __define,c=WebMotion,p=c.prototype;
+            var c=WebMotion,p=c.prototype;
             /**
              * @private
              *
@@ -5127,7 +5127,7 @@ var egret;
                 };
                 this.gl = gl;
             }
-            var d = __define,c=EgretShader,p=c.prototype;
+            var c=EgretShader,p=c.prototype;
             p.init = function () {
                 var gl = this.gl;
                 var program = egret.WebGLUtils.compileProgram(gl, this.defaultVertexSrc, this.fragmentSrc);
@@ -5288,7 +5288,7 @@ var egret;
                     "gl_FragColor = texture2D(uSampler, vTextureCoord) * vColor;\n" +
                     "}";
             }
-            var d = __define,c=TextureShader,p=c.prototype;
+            var c=TextureShader,p=c.prototype;
             return TextureShader;
         }(web.EgretShader));
         web.TextureShader = TextureShader;
@@ -5341,7 +5341,7 @@ var egret;
                     "gl_FragColor = vColor;\n" +
                     "}";
             }
-            var d = __define,c=PrimitiveShader,p=c.prototype;
+            var c=PrimitiveShader,p=c.prototype;
             return PrimitiveShader;
         }(web.EgretShader));
         web.PrimitiveShader = PrimitiveShader;
@@ -5416,7 +5416,7 @@ var egret;
                     uTextureSize: { type: '2f', value: { x: 100, y: 100 }, dirty: true }
                 };
             }
-            var d = __define,c=BlurShader,p=c.prototype;
+            var c=BlurShader,p=c.prototype;
             p.setBlur = function (blurX, blurY) {
                 var uniform = this.uniforms.blur;
                 if (uniform.value.x != blurX || uniform.value.y != blurY) {
@@ -5535,7 +5535,7 @@ var egret;
                     colorAdd: { type: '4f', value: { x: 0, y: 0, z: 0, w: 0 }, dirty: true }
                 };
             }
-            var d = __define,c=ColorTransformShader,p=c.prototype;
+            var c=ColorTransformShader,p=c.prototype;
             p.setMatrix = function (matrix) {
                 var uniform = this.uniforms.matrix;
                 if (uniform.value[0] != matrix[0] ||
@@ -5732,7 +5732,7 @@ var egret;
                     uTextureSize: { type: '2f', value: { x: 100, y: 100 }, dirty: true }
                 };
             }
-            var d = __define,c=GlowShader,p=c.prototype;
+            var c=GlowShader,p=c.prototype;
             p.setDistance = function (distance) {
                 var uniform = this.uniforms.distance;
                 if (uniform.value != distance) {
@@ -5868,7 +5868,7 @@ var egret;
                 }
                 this.setContext(gl);
             }
-            var d = __define,c=WebGLShaderManager,p=c.prototype;
+            var c=WebGLShaderManager,p=c.prototype;
             p.setContext = function (gl) {
                 this.gl = gl;
                 this.primitiveShader = new web.PrimitiveShader(gl);
@@ -5967,7 +5967,7 @@ var egret;
                 this.drawData = [];
                 this.drawDataLen = 0;
             }
-            var d = __define,c=WebGLDrawCmdManager,p=c.prototype;
+            var c=WebGLDrawCmdManager,p=c.prototype;
             /**
              * 压入绘制矩形指令
              */
@@ -6204,7 +6204,7 @@ var egret;
                     this.indices[i + 5] = j + 3;
                 }
             }
-            var d = __define,c=WebGLVertexArrayObject,p=c.prototype;
+            var c=WebGLVertexArrayObject,p=c.prototype;
             /**
              * 是否达到最大缓存数量
              */
@@ -6447,7 +6447,7 @@ var egret;
                 gl.renderbufferStorage(gl.RENDERBUFFER, gl.DEPTH_STENCIL, this.width, this.height);
                 gl.framebufferRenderbuffer(gl.FRAMEBUFFER, gl.DEPTH_STENCIL_ATTACHMENT, gl.RENDERBUFFER, this.stencilBuffer);
             }
-            var d = __define,c=WebGLRenderTarget,p=c.prototype;
+            var c=WebGLRenderTarget,p=c.prototype;
             /**
              * 重置render target的尺寸
              */
@@ -6586,7 +6586,7 @@ var egret;
                 this.vao = new web.WebGLVertexArrayObject();
                 this.setGlobalCompositeOperation("source-over");
             }
-            var d = __define,c=WebGLRenderContext,p=c.prototype;
+            var c=WebGLRenderContext,p=c.prototype;
             WebGLRenderContext.getInstance = function (width, height) {
                 if (this.instance) {
                     return this.instance;
@@ -7420,7 +7420,7 @@ var egret;
                     this.surface = this.rootRenderTarget;
                 }
             }
-            var d = __define,c=WebGLRenderBuffer,p=c.prototype;
+            var c=WebGLRenderBuffer,p=c.prototype;
             p.enableStencil = function () {
                 if (!this.stencilState) {
                     this.context.enableStencilTest();
@@ -7781,7 +7781,7 @@ var egret;
             function WebGLRenderer() {
                 this.nestLevel = 0; //渲染的嵌套层次，0表示在调用堆栈的最外层。
             }
-            var d = __define,c=WebGLRenderer,p=c.prototype;
+            var c=WebGLRenderer,p=c.prototype;
             /**
              * 渲染一个显示对象
              * @param displayObject 要渲染的显示对象

@@ -242,7 +242,6 @@ function __extends(d, b) {
     __.prototype = b.prototype;
     d.prototype = new __();
 }
-var __define = this.__define || function (o, p, g, s) { Object.defineProperty(o, p, { configurable: true, enumerable: true, get: g, set: s }); };
 var egret;
 (function (egret) {
     /**
@@ -279,7 +278,7 @@ var egret;
         function HashObject() {
             this.$hashCode = egret.$hashCount++;
         }
-        var d = __define,c=HashObject,p=c.prototype;
+        var c=HashObject,p=c.prototype;
         d(p, "hashCode"
             /**
              * @language en_US
@@ -400,7 +399,7 @@ var egret;
                 3: 0
             };
         }
-        var d = __define,c=EventDispatcher,p=c.prototype;
+        var c=EventDispatcher,p=c.prototype;
         /**
          * @private
          *
@@ -683,7 +682,7 @@ var egret;
             this.width = width;
             this.height = height;
         }
-        var d = __define,c=Rectangle,p=c.prototype;
+        var c=Rectangle,p=c.prototype;
         /**
          * @language en_US
          * Releases a rectangle instance to the object pool.
@@ -1474,7 +1473,7 @@ var egret;
                 19: null //filters
             };
         }
-        var d = __define,c=DisplayObject,p=c.prototype;
+        var c=DisplayObject,p=c.prototype;
         /**
          * @private
          * 添加一个标志量
@@ -3497,7 +3496,7 @@ var egret;
             };
             this.$setBitmapData(value);
         }
-        var d = __define,c=Bitmap,p=c.prototype;
+        var c=Bitmap,p=c.prototype;
         /**
          * @private
          * 显示对象添加到舞台
@@ -4143,7 +4142,7 @@ var egret;
     var BitmapFillMode = (function () {
         function BitmapFillMode() {
         }
-        var d = __define,c=BitmapFillMode,p=c.prototype;
+        var c=BitmapFillMode,p=c.prototype;
         /**
          * @language en_US
          * Repeat the bitmap to fill area.
@@ -4244,7 +4243,7 @@ var egret;
     var BlendMode = (function () {
         function BlendMode() {
         }
-        var d = __define,c=BlendMode,p=c.prototype;
+        var c=BlendMode,p=c.prototype;
         /**
          * @language en_US
          * The display object appears in front of the background. Pixel values of the display object override the pixel
@@ -4375,7 +4374,7 @@ var egret;
     var CapsStyle = (function () {
         function CapsStyle() {
         }
-        var d = __define,c=CapsStyle,p=c.prototype;
+        var c=CapsStyle,p=c.prototype;
         /**
          * @language en_US
          * Used to specify no caps in the caps parameter of the egret.Graphics.lineStyle() method.
@@ -4465,7 +4464,7 @@ var egret;
     var DirtyRegionPolicy = (function () {
         function DirtyRegionPolicy() {
         }
-        var d = __define,c=DirtyRegionPolicy,p=c.prototype;
+        var c=DirtyRegionPolicy,p=c.prototype;
         /**
          * @language en_US
          * Close automatic detection of dirty region
@@ -4560,7 +4559,7 @@ var egret;
             this.$touchChildren = true;
             this.$children = [];
         }
-        var d = __define,c=DisplayObjectContainer,p=c.prototype;
+        var c=DisplayObjectContainer,p=c.prototype;
         /**
          * @private
          */
@@ -5368,7 +5367,7 @@ var egret;
     var GradientType = (function () {
         function GradientType() {
         }
-        var d = __define,c=GradientType,p=c.prototype;
+        var c=GradientType,p=c.prototype;
         /**
          * @language en_US
          * Value used to specify a linear gradient fill.
@@ -5513,7 +5512,7 @@ var egret;
             this.includeLastPosition = true;
             this.$renderNode = new egret.sys.GraphicsNode();
         }
-        var d = __define,c=Graphics,p=c.prototype;
+        var c=Graphics,p=c.prototype;
         /**
          * @private
          * 设置绑定到的目标显示对象
@@ -6207,7 +6206,7 @@ var egret;
     var JointStyle = (function () {
         function JointStyle() {
         }
-        var d = __define,c=JointStyle,p=c.prototype;
+        var c=JointStyle,p=c.prototype;
         /**
          * @language en_US
          * Specifies beveled joints in the joints parameter of the egret.Graphics.lineStyle() method.
@@ -6296,7 +6295,7 @@ var egret;
             this._bounds = new egret.Rectangle();
             this.$renderNode = new egret.sys.MeshNode();
         }
-        var d = __define,c=Mesh,p=c.prototype;
+        var c=Mesh,p=c.prototype;
         /**
          * @private
          */
@@ -6400,7 +6399,7 @@ var egret;
     var OrientationMode = (function () {
         function OrientationMode() {
         }
-        var d = __define,c=OrientationMode,p=c.prototype;
+        var c=OrientationMode,p=c.prototype;
         /**
          * 适配屏幕
          */
@@ -6548,7 +6547,7 @@ var egret;
              */
             this._bitmapData = null;
         }
-        var d = __define,c=Texture,p=c.prototype;
+        var c=Texture,p=c.prototype;
         d(p, "textureWidth"
             /**
              * @language en_US
@@ -6889,7 +6888,7 @@ var egret;
             this.renderBuffer = new egret.sys.RenderBuffer();
             this._setBitmapData(this.renderBuffer.surface);
         }
-        var d = __define,c=RenderTexture,p=c.prototype;
+        var c=RenderTexture,p=c.prototype;
         /**
          * @language en_US
          * The specified display object is drawn as a texture
@@ -7029,7 +7028,7 @@ var egret;
             this.$graphics = new egret.Graphics();
             this.$graphics.$setTarget(this);
         }
-        var d = __define,c=Shape,p=c.prototype;
+        var c=Shape,p=c.prototype;
         d(p, "graphics"
             /**
              * @language en_US
@@ -7131,7 +7130,7 @@ var egret;
             this.$graphics = new egret.Graphics();
             this.$graphics.$setTarget(this);
         }
-        var d = __define,c=Sprite,p=c.prototype;
+        var c=Sprite,p=c.prototype;
         d(p, "graphics"
             /**
              * @language en_US
@@ -7298,7 +7297,7 @@ var egret;
             this._bitmapX = texture._bitmapX - texture._offsetX;
             this._bitmapY = texture._bitmapY - texture._offsetY;
         }
-        var d = __define,c=SpriteSheet,p=c.prototype;
+        var c=SpriteSheet,p=c.prototype;
         /**
          * @language en_US
          * Obtain a cached Texture object according to the specified texture name
@@ -7471,7 +7470,7 @@ var egret;
             this.$stage = this;
             this.$nestLevel = 1;
         }
-        var d = __define,c=Stage,p=c.prototype;
+        var c=Stage,p=c.prototype;
         d(p, "frameRate"
             /**
              * @language en_US
@@ -7887,7 +7886,7 @@ var egret;
             this.$cancelable = !!cancelable;
             this.data = data;
         }
-        var d = __define,c=Event,p=c.prototype;
+        var c=Event,p=c.prototype;
         d(p, "type"
             /**
              * @language en_US
@@ -8612,7 +8611,7 @@ var egret;
             if (cancelable === void 0) { cancelable = false; }
             _super.call(this, type, bubbles, cancelable);
         }
-        var d = __define,c=FocusEvent,p=c.prototype;
+        var c=FocusEvent,p=c.prototype;
         /**
          * @language en_US
          * Gets focus
@@ -8696,7 +8695,7 @@ var egret;
         function GeolocationEvent() {
             _super.apply(this, arguments);
         }
-        var d = __define,c=GeolocationEvent,p=c.prototype;
+        var c=GeolocationEvent,p=c.prototype;
         /**
          * @language en_US
          * The acquisition of the location information failed because of app don't have permission.
@@ -8801,7 +8800,7 @@ var egret;
              */
             this._status = 0;
         }
-        var d = __define,c=HTTPStatusEvent,p=c.prototype;
+        var c=HTTPStatusEvent,p=c.prototype;
         d(p, "status"
             /**
              * @language en_US
@@ -8957,7 +8956,7 @@ var egret;
             if (cancelable === void 0) { cancelable = false; }
             _super.call(this, type, bubbles, cancelable);
         }
-        var d = __define,c=IOErrorEvent,p=c.prototype;
+        var c=IOErrorEvent,p=c.prototype;
         /**
          * @language en_US
          * EventDispatcher object using the specified event object thrown Event. The objects will be thrown in the object cache pool for the next round robin.
@@ -9049,7 +9048,7 @@ var egret;
         function MotionEvent() {
             _super.apply(this, arguments);
         }
-        var d = __define,c=MotionEvent,p=c.prototype;
+        var c=MotionEvent,p=c.prototype;
         return MotionEvent;
     }(egret.Event));
     egret.MotionEvent = MotionEvent;
@@ -9108,7 +9107,7 @@ var egret;
         function OrientationEvent() {
             _super.apply(this, arguments);
         }
-        var d = __define,c=OrientationEvent,p=c.prototype;
+        var c=OrientationEvent,p=c.prototype;
         return OrientationEvent;
     }(egret.Event));
     egret.OrientationEvent = OrientationEvent;
@@ -9217,7 +9216,7 @@ var egret;
             this.bytesLoaded = bytesLoaded;
             this.bytesTotal = bytesTotal;
         }
-        var d = __define,c=ProgressEvent,p=c.prototype;
+        var c=ProgressEvent,p=c.prototype;
         /**
          * @language en_US
          * EventDispatcher object using the specified event object thrown Event. The objects will be thrown in the object cache pool for the next round robin.
@@ -9348,7 +9347,7 @@ var egret;
             if (cancelable === void 0) { cancelable = false; }
             _super.call(this, type, bubbles, cancelable);
         }
-        var d = __define,c=StageOrientationEvent,p=c.prototype;
+        var c=StageOrientationEvent,p=c.prototype;
         /**
          * @language en_US
          * 派发一个屏幕旋转的事件。
@@ -9462,7 +9461,7 @@ var egret;
             _super.call(this, type, bubbles, cancelable);
             this.text = text;
         }
-        var d = __define,c=TextEvent,p=c.prototype;
+        var c=TextEvent,p=c.prototype;
         /**
          * @language en_US
          * EventDispatcher object using the specified event object thrown TextEvent. The objects will be thrown in the object cache pool for the next round robin.
@@ -9577,7 +9576,7 @@ var egret;
         function TimerEvent(type, bubbles, cancelable) {
             _super.call(this, type, bubbles, cancelable);
         }
-        var d = __define,c=TimerEvent,p=c.prototype;
+        var c=TimerEvent,p=c.prototype;
         /**
          * @language en_US
          * Instructs Egret runtime to render after processing of this event completes, if the display list has been modified.
@@ -9759,7 +9758,7 @@ var egret;
             this.x = x;
             this.y = y;
         }
-        var d = __define,c=Point,p=c.prototype;
+        var c=Point,p=c.prototype;
         /**
          * @language en_US
          * Releases a point instance to the object pool
@@ -10171,7 +10170,7 @@ var egret;
             this.touchDown = false;
             this.$initTo(stageX, stageY, touchPointID);
         }
-        var d = __define,c=TouchEvent,p=c.prototype;
+        var c=TouchEvent,p=c.prototype;
         /**
          * @private
          */
@@ -10542,7 +10541,7 @@ var egret;
             this.type = null;
             this.$targets = [];
         }
-        var d = __define,c=Filter,p=c.prototype;
+        var c=Filter,p=c.prototype;
         p.$addTarget = function (target) {
             var length = this.$targets.length;
             for (var i = 0; i < length; i++) {
@@ -10638,7 +10637,7 @@ var egret;
             this.blurX = blurX;
             this.blurY = blurY;
         }
-        var d = __define,c=BlurFilter,p=c.prototype;
+        var c=BlurFilter,p=c.prototype;
         d(p, "blurX"
             /**
              * @language en_US
@@ -10766,7 +10765,7 @@ var egret;
             this.type = "colorTransform";
             this.setMatrix(matrix);
         }
-        var d = __define,c=ColorMatrixFilter,p=c.prototype;
+        var c=ColorMatrixFilter,p=c.prototype;
         d(p, "matrix"
             /**
              * @language en_US
@@ -10886,7 +10885,7 @@ var egret;
             this.$inner = inner;
             this.$knockout = knockout;
         }
-        var d = __define,c=GlowFilter,p=c.prototype;
+        var c=GlowFilter,p=c.prototype;
         d(p, "color"
             ,function () {
                 return this.$color;
@@ -11063,7 +11062,7 @@ var egret;
             this.$distance = distance;
             this.$angle = angle;
         }
-        var d = __define,c=DropShadowFilter,p=c.prototype;
+        var c=DropShadowFilter,p=c.prototype;
         d(p, "distance"
             ,function () {
                 return this.$distance;
@@ -11187,7 +11186,7 @@ var egret;
             this.tx = tx;
             this.ty = ty;
         }
-        var d = __define,c=Matrix,p=c.prototype;
+        var c=Matrix,p=c.prototype;
         /**
          * @language en_US
          * Releases a matrix instance to the object pool
@@ -12381,7 +12380,7 @@ var egret;
              */
             this.onResponseHeaderThisObject = null;
         }
-        var d = __define,c=PromiseObject,p=c.prototype;
+        var c=PromiseObject,p=c.prototype;
         /**
          *
          * @version Egret 2.4
@@ -12526,7 +12525,7 @@ var egret;
     var HttpMethod = (function () {
         function HttpMethod() {
         }
-        var d = __define,c=HttpMethod,p=c.prototype;
+        var c=HttpMethod,p=c.prototype;
         /**
          * @language en_US
          * Specifies that the HttpRequest object is a GET.
@@ -12636,7 +12635,7 @@ var egret;
     var HttpResponseType = (function () {
         function HttpResponseType() {
         }
-        var d = __define,c=HttpResponseType,p=c.prototype;
+        var c=HttpResponseType,p=c.prototype;
         /**
          * @language en_US
          * Specifies that downloaded data is received as text. This is the default value of HttpRequest.responseType
@@ -12779,7 +12778,7 @@ var egret;
                 this.$dirtyRegionPolicy = egret.DirtyRegionPolicy.ON;
                 this.root = root;
             }
-            var d = __define,c=DirtyRegion,p=c.prototype;
+            var c=DirtyRegion,p=c.prototype;
             /**
              * @private
              * 设置剪裁边界，超过边界的节点将跳过绘制。
@@ -13015,7 +13014,7 @@ var egret;
                 this.dirtyRegion = new sys.DirtyRegion(root);
                 this.isStage = (root instanceof egret.Stage);
             }
-            var d = __define,c=DisplayList,p=c.prototype;
+            var c=DisplayList,p=c.prototype;
             /**
              * 创建一个DisplayList对象，若内存不足或无法创建RenderBuffer，将会返回null。
              */
@@ -13365,7 +13364,7 @@ var egret;
                 this.drawPaintRect = drawPaintRect;
                 this.drawDirtyRect = drawDirtyRect;
             }
-            var d = __define,c=Player,p=c.prototype;
+            var c=Player,p=c.prototype;
             /**
              * @private
              */
@@ -13841,7 +13840,7 @@ var egret;
                  */
                 this.moved = false;
             }
-            var d = __define,c=Region,p=c.prototype;
+            var c=Region,p=c.prototype;
             /**
              * @private
              * 释放一个Region实例到对象池
@@ -14184,7 +14183,7 @@ var egret;
             function DefaultScreenAdapter() {
                 _super.call(this);
             }
-            var d = __define,c=DefaultScreenAdapter,p=c.prototype;
+            var c=DefaultScreenAdapter,p=c.prototype;
             /**
              * @private
              * 计算舞台显示尺寸
@@ -14314,7 +14313,7 @@ var egret;
     var StageScaleMode = (function () {
         function StageScaleMode() {
         }
-        var d = __define,c=StageScaleMode,p=c.prototype;
+        var c=StageScaleMode,p=c.prototype;
         /**
          * @language en_US
          * Do not scale application content. Even when you change the player viewport size, it remains unchanged. If the player is smaller than the viewport content, possibly with some cropping.<br/>
@@ -14532,7 +14531,7 @@ var egret;
                 }
                 sys.$START_TIME = Date.now();
             }
-            var d = __define,c=SystemTicker,p=c.prototype;
+            var c=SystemTicker,p=c.prototype;
             /**
              * @private
              * 注册一个播放器实例并运行
@@ -14786,7 +14785,7 @@ var egret;
                 this.lastTouchY = -1;
                 this.stage = stage;
             }
-            var d = __define,c=TouchHandler,p=c.prototype;
+            var c=TouchHandler,p=c.prototype;
             /**
              * @private
              * 设置同时触摸数量
@@ -14948,7 +14947,7 @@ var egret;
                  */
                 this.renderCount = 0;
             }
-            var d = __define,c=RenderNode,p=c.prototype;
+            var c=RenderNode,p=c.prototype;
             /**
              * 在显示对象的$render()方法被调用前，自动清空自身的drawData数据。
              */
@@ -15019,7 +15018,7 @@ var egret;
                 this.blendMode = null;
                 this.type = 1 /* BitmapNode */;
             }
-            var d = __define,c=BitmapNode,p=c.prototype;
+            var c=BitmapNode,p=c.prototype;
             /**
              * 绘制一次位图
              */
@@ -15090,7 +15089,7 @@ var egret;
                 this.dirtyRender = true;
                 this.type = 3 /* GraphicsNode */;
             }
-            var d = __define,c=GraphicsNode,p=c.prototype;
+            var c=GraphicsNode,p=c.prototype;
             /**
              * 指定一种简单的单一颜色填充，在绘制时该填充将在随后对其他 Graphics 方法（如 lineTo() 或 drawCircle()）的调用中使用。
              * @param color 填充的颜色
@@ -15238,7 +15237,7 @@ var egret;
                 _super.call(this);
                 this.type = 4 /* GroupNode */;
             }
-            var d = __define,c=GroupNode,p=c.prototype;
+            var c=GroupNode,p=c.prototype;
             p.addNode = function (node) {
                 this.drawData.push(node);
             };
@@ -15323,7 +15322,7 @@ var egret;
                 this.uvs = [];
                 this.indices = [];
             }
-            var d = __define,c=MeshNode,p=c.prototype;
+            var c=MeshNode,p=c.prototype;
             ;
             /**
              * 绘制一次位图
@@ -15388,7 +15387,7 @@ var egret;
                 _super.call(this);
                 this.type = 6 /* SetAlphaNode */;
             }
-            var d = __define,c=SetAlphaNode,p=c.prototype;
+            var c=SetAlphaNode,p=c.prototype;
             /**
              * 绘制一次位图
              */
@@ -15447,7 +15446,7 @@ var egret;
                 _super.call(this);
                 this.type = 5 /* SetTransformNode */;
             }
-            var d = __define,c=SetTransformNode,p=c.prototype;
+            var c=SetTransformNode,p=c.prototype;
             /**
              * 绘制一次位图
              */
@@ -15566,7 +15565,7 @@ var egret;
                 this.dirtyRender = true;
                 this.type = 2 /* TextNode */;
             }
-            var d = __define,c=TextNode,p=c.prototype;
+            var c=TextNode,p=c.prototype;
             /**
              * 绘制一行文本
              */
@@ -15634,7 +15633,7 @@ var egret;
                 this.commandPosition = 0;
                 this.dataPosition = 0;
             }
-            var d = __define,c=Path2D,p=c.prototype;
+            var c=Path2D,p=c.prototype;
             /**
              * 将当前绘图位置移动到 (x, y)。如果缺少任何一个参数，则此方法将失败，并且当前绘图位置不改变。
              * @param x 一个表示相对于父显示对象注册点的水平位置的数字（以像素为单位）。
@@ -15927,7 +15926,7 @@ var egret;
                 _super.call(this);
                 this.type = 1 /* Fill */;
             }
-            var d = __define,c=FillPath,p=c.prototype;
+            var c=FillPath,p=c.prototype;
             return FillPath;
         }(sys.Path2D));
         sys.FillPath = FillPath;
@@ -15976,7 +15975,7 @@ var egret;
                 _super.call(this);
                 this.type = 2 /* GradientFill */;
             }
-            var d = __define,c=GradientFillPath,p=c.prototype;
+            var c=GradientFillPath,p=c.prototype;
             return GradientFillPath;
         }(sys.Path2D));
         sys.GradientFillPath = GradientFillPath;
@@ -16026,7 +16025,7 @@ var egret;
                 _super.call(this);
                 this.type = 3 /* Stroke */;
             }
-            var d = __define,c=StrokePath,p=c.prototype;
+            var c=StrokePath,p=c.prototype;
             return StrokePath;
         }(sys.Path2D));
         sys.StrokePath = StrokePath;
@@ -16077,7 +16076,7 @@ var egret;
             this.nestLevel = 0; //渲染的嵌套层次，0表示在调用堆栈的最外层。
             this.renderingMask = false;
         }
-        var d = __define,c=CanvasRenderer,p=c.prototype;
+        var c=CanvasRenderer,p=c.prototype;
         /**
          * 渲染一个显示对象
          * @param displayObject 要渲染的显示对象
@@ -16783,7 +16782,7 @@ var egret;
     var RuntimeType = (function () {
         function RuntimeType() {
         }
-        var d = __define,c=RuntimeType,p=c.prototype;
+        var c=RuntimeType,p=c.prototype;
         /**
          * @language en_US
          * Running on Web
@@ -16831,7 +16830,7 @@ var egret;
     var Capabilities = (function () {
         function Capabilities() {
         }
-        var d = __define,c=Capabilities,p=c.prototype;
+        var c=Capabilities,p=c.prototype;
         d(Capabilities, "language"
             /**
              * @language en_US
@@ -17200,7 +17199,7 @@ var egret;
                 this.charList = {};
             }
         }
-        var d = __define,c=BitmapFont,p=c.prototype;
+        var c=BitmapFont,p=c.prototype;
         /**
          * @language en_US
          * Obtain corresponding texture through the name attribute
@@ -17389,7 +17388,7 @@ var egret;
                 12: egret.Bitmap.defaultSmoothing //smoothing
             };
         }
-        var d = __define,c=BitmapText,p=c.prototype;
+        var c=BitmapText,p=c.prototype;
         d(p, "smoothing"
             /**
              * @language en_US
@@ -17986,7 +17985,7 @@ var egret;
     var HorizontalAlign = (function () {
         function HorizontalAlign() {
         }
-        var d = __define,c=HorizontalAlign,p=c.prototype;
+        var c=HorizontalAlign,p=c.prototype;
         /**
          * @language en_US
          * Horizontally align content to the left of the container.
@@ -18126,7 +18125,7 @@ var egret;
             this.resutlArr = [];
             this.initReplaceArr();
         }
-        var d = __define,c=HtmlTextParser,p=c.prototype;
+        var c=HtmlTextParser,p=c.prototype;
         p.initReplaceArr = function () {
             this.replaceArr = [];
             this.replaceArr.push([/&lt;/g, "<"]);
@@ -18406,7 +18405,7 @@ var egret;
              */
             this._isFocus = false;
         }
-        var d = __define,c=InputController,p=c.prototype;
+        var c=InputController,p=c.prototype;
         /**
          *
          * @param text
@@ -18801,7 +18800,7 @@ var egret;
                 37: egret.TextFieldInputType.TEXT //inputType
             };
         }
-        var d = __define,c=TextField,p=c.prototype;
+        var c=TextField,p=c.prototype;
         /**
          * @private
          */
@@ -20436,7 +20435,7 @@ var egret;
     var TextFieldInputType = (function () {
         function TextFieldInputType() {
         }
-        var d = __define,c=TextFieldInputType,p=c.prototype;
+        var c=TextFieldInputType,p=c.prototype;
         /**
          * @language en_US
          * The default
@@ -20526,7 +20525,7 @@ var egret;
     var TextFieldType = (function () {
         function TextFieldType() {
         }
-        var d = __define,c=TextFieldType,p=c.prototype;
+        var c=TextFieldType,p=c.prototype;
         /**
          * @language en_US
          * Used to specify dynamic text
@@ -20596,7 +20595,7 @@ var egret;
     var TextFieldUtils = (function () {
         function TextFieldUtils() {
         }
-        var d = __define,c=TextFieldUtils,p=c.prototype;
+        var c=TextFieldUtils,p=c.prototype;
         /**
          * 获取第一个绘制的行数
          * @param textfield 文本
@@ -20860,7 +20859,7 @@ var egret;
     var VerticalAlign = (function () {
         function VerticalAlign() {
         }
-        var d = __define,c=VerticalAlign,p=c.prototype;
+        var c=VerticalAlign,p=c.prototype;
         /**
          * @language en_US
          * Vertically align content to the top of the container.
@@ -20984,7 +20983,7 @@ var egret;
     var Endian = (function () {
         function Endian() {
         }
-        var d = __define,c=Endian,p=c.prototype;
+        var c=Endian,p=c.prototype;
         /**
          * @language en_US
          * Indicates the least significant byte of the multibyte number appears first in the sequence of bytes.
@@ -21056,7 +21055,7 @@ var egret;
             this._setArrayBuffer(buffer || new ArrayBuffer(this.BUFFER_EXT_SIZE));
             this.endian = Endian.BIG_ENDIAN;
         }
-        var d = __define,c=ByteArray,p=c.prototype;
+        var c=ByteArray,p=c.prototype;
         /**
          * @private
          * @param buffer
@@ -22094,7 +22093,7 @@ var egret;
     var Logger = (function () {
         function Logger() {
         }
-        var d = __define,c=Logger,p=c.prototype;
+        var c=Logger,p=c.prototype;
         d(Logger, "logLevel",undefined
             /**
              * @language en_US
@@ -22251,7 +22250,7 @@ var egret;
     var NumberUtils = (function () {
         function NumberUtils() {
         }
-        var d = __define,c=NumberUtils,p=c.prototype;
+        var c=NumberUtils,p=c.prototype;
         /**
          * @language en_US
          * Judge whether it is a numerical value
@@ -22484,7 +22483,7 @@ var egret;
             this.delay = delay;
             this.repeatCount = +repeatCount | 0;
         }
-        var d = __define,c=Timer,p=c.prototype;
+        var c=Timer,p=c.prototype;
         d(p, "delay"
             /**
              * @language en_US
@@ -23564,7 +23563,7 @@ var egret;
     var WebGLUtils = (function () {
         function WebGLUtils() {
         }
-        var d = __define,c=WebGLUtils,p=c.prototype;
+        var c=WebGLUtils,p=c.prototype;
         WebGLUtils.compileProgram = function (gl, vertexSrc, fragmentSrc) {
             var fragmentShader = WebGLUtils.compileFragmentShader(gl, fragmentSrc);
             var vertexShader = WebGLUtils.compileVertexShader(gl, vertexSrc);

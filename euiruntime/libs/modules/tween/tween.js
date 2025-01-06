@@ -50,7 +50,7 @@ var egret;
         function Ease() {
             egret.$error(1014);
         }
-        var d = __define,c=Ease,p=c.prototype;
+        var c=Ease,p=c.prototype;
         /**
          * @language en_US
          * get.See example.
@@ -750,7 +750,7 @@ var egret;
             this.passive = false;
             this.initialize(target, props, pluginData);
         }
-        var d = __define,c=Tween,p=c.prototype;
+        var c=Tween,p=c.prototype;
         /**
          * @language en_US
          * Activate an object and add a Tween animation to the object
@@ -1508,7 +1508,7 @@ var egret;
                  */
                 this.name = "";
             }
-            var d = __define,c=BasePath,p=c.prototype;
+            var c=BasePath,p=c.prototype;
             return BasePath;
         }(egret.EventDispatcher));
         tween.BasePath = BasePath;
@@ -1569,7 +1569,7 @@ var egret;
                  */
                 this.ease = undefined;
             }
-            var d = __define,c=To,p=c.prototype;
+            var c=To,p=c.prototype;
             return To;
         }(BasePath));
         tween.To = To;
@@ -1617,7 +1617,7 @@ var egret;
                  */
                 this.passive = undefined;
             }
-            var d = __define,c=Wait,p=c.prototype;
+            var c=Wait,p=c.prototype;
             return Wait;
         }(BasePath));
         tween.Wait = Wait;
@@ -1652,7 +1652,7 @@ var egret;
                  */
                 this.props = undefined;
             }
-            var d = __define,c=Set,p=c.prototype;
+            var c=Set,p=c.prototype;
             return Set;
         }(BasePath));
         tween.Set = Set;
@@ -1687,7 +1687,7 @@ var egret;
                  */
                 this.delta = 0;
             }
-            var d = __define,c=Tick,p=c.prototype;
+            var c=Tick,p=c.prototype;
             return Tick;
         }(BasePath));
         tween.Tick = Tick;
@@ -1757,7 +1757,7 @@ var egret;
             function TweenItem() {
                 _super.call(this);
             }
-            var d = __define,c=TweenItem,p=c.prototype;
+            var c=TweenItem,p=c.prototype;
             d(p, "props"
                 /**
                  * @language en_US
@@ -1920,7 +1920,7 @@ var egret;
                 _super.call(this);
                 this.completeCount = 0;
             }
-            var d = __define,c=TweenGroup,p=c.prototype;
+            var c=TweenGroup,p=c.prototype;
             d(p, "items"
                 /**
                  * @language en_US

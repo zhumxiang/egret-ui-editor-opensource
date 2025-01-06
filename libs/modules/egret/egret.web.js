@@ -36,7 +36,7 @@ var egret;
         var WebExternalInterface = (function () {
             function WebExternalInterface() {
             }
-            var d = __define,c=WebExternalInterface,p=c.prototype;
+            var c=WebExternalInterface,p=c.prototype;
             /**
              * @private
              * @param functionName
@@ -189,7 +189,7 @@ var egret;
                  */
                 this.loaded = false;
             }
-            var d = __define,c=HtmlSound,p=c.prototype;
+            var c=HtmlSound,p=c.prototype;
             /**
              * @inheritDoc
              */
@@ -392,7 +392,7 @@ var egret;
                 audio.addEventListener("ended", this.onPlayEnd);
                 this.audio = audio;
             }
-            var d = __define,c=HtmlSoundChannel,p=c.prototype;
+            var c=HtmlSoundChannel,p=c.prototype;
             p.$play = function () {
                 if (this.isStopped) {
                     egret.$error(1036);
@@ -510,7 +510,7 @@ var egret;
                  */
                 this.loaded = false;
             }
-            var d = __define,c=QQSound,p=c.prototype;
+            var c=QQSound,p=c.prototype;
             /**
              * @inheritDoc
              */
@@ -658,7 +658,7 @@ var egret;
                  */
                 this._startTime = 0;
             }
-            var d = __define,c=QQSoundChannel,p=c.prototype;
+            var c=QQSoundChannel,p=c.prototype;
             p.$play = function () {
                 if (this.isStopped) {
                     egret.$error(1036);
@@ -777,7 +777,7 @@ var egret;
         var WebAudioDecode = (function () {
             function WebAudioDecode() {
             }
-            var d = __define,c=WebAudioDecode,p=c.prototype;
+            var c=WebAudioDecode,p=c.prototype;
             /**
              * @private
              *
@@ -844,7 +844,7 @@ var egret;
                  */
                 this.loaded = false;
             }
-            var d = __define,c=WebAudioSound,p=c.prototype;
+            var c=WebAudioSound,p=c.prototype;
             /**
              * @inheritDoc
              */
@@ -1024,7 +1024,7 @@ var egret;
                     this.gain = this.context["createGainNode"]();
                 }
             }
-            var d = __define,c=WebAudioSoundChannel,p=c.prototype;
+            var c=WebAudioSoundChannel,p=c.prototype;
             p.$play = function () {
                 if (this.isStopped) {
                     egret.$error(1036);
@@ -1193,7 +1193,7 @@ var egret;
                     this.load();
                 }
             }
-            var d = __define,c=WebVideo,p=c.prototype;
+            var c=WebVideo,p=c.prototype;
             /**
              * @inheritDoc
              */
@@ -1600,7 +1600,7 @@ var egret;
                 this._url = "";
                 this._method = "";
             }
-            var d = __define,c=WebHttpRequest,p=c.prototype;
+            var c=WebHttpRequest,p=c.prototype;
             d(p, "response"
                 /**
                  * @private
@@ -1847,7 +1847,7 @@ var egret;
                  */
                 this.request = null;
             }
-            var d = __define,c=WebImageLoader,p=c.prototype;
+            var c=WebImageLoader,p=c.prototype;
             d(p, "crossOrigin"
                 ,function () {
                     return this._crossOrigin;
@@ -2759,7 +2759,7 @@ var egret;
                 //                this.$propagateFlagsUp();
                 //            }
             }
-            var d = __define,c=NativeMenu,p=c.prototype;
+            var c=NativeMenu,p=c.prototype;
             d(NativeMenu, "isSupported"
                 ,function () {
                     return true;
@@ -2956,7 +2956,7 @@ var egret;
                 this.$options = nwOption;
                 this.$options.click = function (e) { return _this.onClick(); };
             }
-            var d = __define,c=NativeMenuItem,p=c.prototype;
+            var c=NativeMenuItem,p=c.prototype;
             d(p, "checked"
                 /** 控制此菜单项是否显示复选标记。 */
                 ,function () {
@@ -3143,7 +3143,7 @@ var egret;
                 _super.apply(this, arguments);
                 this.datas = {};
             }
-            var d = __define,c=WebClipboard,p=c.prototype;
+            var c=WebClipboard,p=c.prototype;
             d(p, "formats"
                 /**
                  * [只读] 一个字符串数组，其中包含此 Clipboard 对象中的可用数据格式的名称。
@@ -3422,7 +3422,7 @@ var egret;
                 canvas.draggable = true;
                 this.addListeners();
             }
-            var d = __define,c=WebDragManager,p=c.prototype;
+            var c=WebDragManager,p=c.prototype;
             /**
              * @private
              * 添加事件监听
@@ -3725,7 +3725,7 @@ var egret;
                     surfacePool.push(this.create());
                 }
             }
-            var d = __define,c=CanvasFactory,p=c.prototype;
+            var c=CanvasFactory,p=c.prototype;
             /**
              * @private
              * 从对象池取出或创建一个新的Surface实例
@@ -3911,7 +3911,7 @@ var egret;
                 this.touch = new egret.sys.TouchHandler(stage);
                 this.addListeners();
             }
-            var d = __define,c=WebTouchHandler,p=c.prototype;
+            var c=WebTouchHandler,p=c.prototype;
             /**
              * @private
              * 添加事件监听
@@ -4097,7 +4097,7 @@ var egret;
                 this.stage = stage;
                 this.registerListener();
             }
-            var d = __define,c=WebHideHandler,p=c.prototype;
+            var c=WebHideHandler,p=c.prototype;
             /**
              * @private
              *
@@ -4224,7 +4224,7 @@ var egret;
         var AudioType = (function () {
             function AudioType() {
             }
-            var d = __define,c=AudioType,p=c.prototype;
+            var c=AudioType,p=c.prototype;
             /**
              * @private
              */
@@ -4247,7 +4247,7 @@ var egret;
         var SystemOSType = (function () {
             function SystemOSType() {
             }
-            var d = __define,c=SystemOSType,p=c.prototype;
+            var c=SystemOSType,p=c.prototype;
             /**
              * @private
              */
@@ -4276,7 +4276,7 @@ var egret;
             function Html5Capatibility() {
                 _super.call(this);
             }
-            var d = __define,c=Html5Capatibility,p=c.prototype;
+            var c=Html5Capatibility,p=c.prototype;
             /**
              * @private
              *
@@ -4666,7 +4666,7 @@ var egret;
         var WebCapability = (function () {
             function WebCapability() {
             }
-            var d = __define,c=WebCapability,p=c.prototype;
+            var c=WebCapability,p=c.prototype;
             /**
              * @private
              * 检测系统属性
@@ -4813,7 +4813,7 @@ var egret;
                 this.init(container);
                 this.initOrientation();
             }
-            var d = __define,c=WebPlayer,p=c.prototype;
+            var c=WebPlayer,p=c.prototype;
             p.init = function (container) {
                 var option = this.readOption(container);
                 var stage = new egret.Stage();
@@ -5272,7 +5272,7 @@ var egret;
                 this.nodeType = nodeType;
                 this.parent = parent;
             }
-            var d = __define,c=XMLNode,p=c.prototype;
+            var c=XMLNode,p=c.prototype;
             return XMLNode;
         })();
         web.XMLNode = XMLNode;
@@ -5303,7 +5303,7 @@ var egret;
                 this.namespace = namespace;
                 this.name = name;
             }
-            var d = __define,c=XML,p=c.prototype;
+            var c=XML,p=c.prototype;
             return XML;
         })(XMLNode);
         web.XML = XML;
@@ -5321,7 +5321,7 @@ var egret;
                 _super.call(this, 3, parent);
                 this.text = text;
             }
-            var d = __define,c=XMLText,p=c.prototype;
+            var c=XMLText,p=c.prototype;
             return XMLText;
         })(XMLNode);
         web.XMLText = XMLText;
@@ -5412,7 +5412,7 @@ var egret;
                     _this.dispatchEvent(event);
                 };
             }
-            var d = __define,c=WebDeviceOrientation,p=c.prototype;
+            var c=WebDeviceOrientation,p=c.prototype;
             /**
              * @private
              *
@@ -5478,7 +5478,7 @@ var egret;
                 };
                 this.geolocation = navigator.geolocation;
             }
-            var d = __define,c=WebGeolocation,p=c.prototype;
+            var c=WebGeolocation,p=c.prototype;
             /**
              * @private
              *
@@ -5548,7 +5548,7 @@ var egret;
                     _this.dispatchEvent(event);
                 };
             }
-            var d = __define,c=WebMotion,p=c.prototype;
+            var c=WebMotion,p=c.prototype;
             /**
              * @private
              *
@@ -5664,7 +5664,7 @@ var egret;
             function Mouse() {
                 _super.apply(this, arguments);
             }
-            var d = __define,c=Mouse,p=c.prototype;
+            var c=Mouse,p=c.prototype;
             d(Mouse, "cursor"
                 /** [静态] 本机光标的名称。 */
                 ,function () {
@@ -5848,7 +5848,7 @@ var egret;
                 this.addListeners();
                 this.canvas.style['pointer-events'] = "";
             }
-            var d = __define,c=WebMouseHandler,p=c.prototype;
+            var c=WebMouseHandler,p=c.prototype;
             /**
              * @private
              * 添加事件监听

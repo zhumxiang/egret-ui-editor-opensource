@@ -260,7 +260,6 @@ function __extends(d, b) {
     __.prototype = b.prototype;
     d.prototype = new __();
 }
-var __define = this.__define || function (o, p, g, s) { Object.defineProperty(o, p, { configurable: true, enumerable: true, get: g, set: s }); };
 var egret;
 (function (egret) {
     /**
@@ -297,7 +296,7 @@ var egret;
         function HashObject() {
             this.$hashCode = egret.$hashCount++;
         }
-        var d = __define,c=HashObject,p=c.prototype;
+        var c=HashObject,p=c.prototype;
         d(p, "hashCode"
             /**
              * @language en_US
@@ -331,7 +330,7 @@ var egret;
     var ClipboardFormats = (function () {
         function ClipboardFormats() {
         }
-        var d = __define,c=ClipboardFormats,p=c.prototype;
+        var c=ClipboardFormats,p=c.prototype;
         /** [静态] 文件数组（仅限 AIR）。 */
         ClipboardFormats.FILE_LIST_FORMAT = "egret:filelist";
         /** [静态] HTML 数据。 */
@@ -350,7 +349,7 @@ var egret;
     var ClipboardTransferMode = (function () {
         function ClipboardTransferMode() {
         }
-        var d = __define,c=ClipboardTransferMode,p=c.prototype;
+        var c=ClipboardTransferMode,p=c.prototype;
         /** [静态] Clipboard 对象应仅返回副本。 */
         ClipboardTransferMode.CLONE_ONLY = "cloneOnly";
         /** [静态] 如果可用，Clipboard 对象应返回副本；如果不可用，则返回引用。 */
@@ -459,7 +458,7 @@ var egret;
                 3: 0
             };
         }
-        var d = __define,c=EventDispatcher,p=c.prototype;
+        var c=EventDispatcher,p=c.prototype;
         /**
          * @private
          *
@@ -668,7 +667,7 @@ var egret;
         function NativeDragActions() {
             _super.apply(this, arguments);
         }
-        var d = __define,c=NativeDragActions,p=c.prototype;
+        var c=NativeDragActions,p=c.prototype;
         /** [静态] 定义用于复制操作的字符串。 */
         NativeDragActions.COPY = "copy";
         /** [静态] 定义用于链接操作的字符串。 */
@@ -713,7 +712,7 @@ var egret;
             _super.apply(this, arguments);
             this.$byte = NativeDragOptionsFlag.copy | NativeDragOptionsFlag.link | NativeDragOptionsFlag.move;
         }
-        var d = __define,c=NativeDragOptions,p=c.prototype;
+        var c=NativeDragOptions,p=c.prototype;
         d(p, "allowCopy"
             /** 允许使用放置目标来复制拖动的数据。 */
             ,function () {
@@ -990,7 +989,7 @@ var egret;
                 20: null // context menu
             };
         }
-        var d = __define,c=DisplayObject,p=c.prototype;
+        var c=DisplayObject,p=c.prototype;
         /**
          * @private
          * 添加一个标志量
@@ -2922,7 +2921,7 @@ var egret;
             };
             this.$setBitmapData(value);
         }
-        var d = __define,c=Bitmap,p=c.prototype;
+        var c=Bitmap,p=c.prototype;
         /**
          * @private
          * 显示对象添加到舞台
@@ -3527,7 +3526,7 @@ var egret;
     var BitmapFillMode = (function () {
         function BitmapFillMode() {
         }
-        var d = __define,c=BitmapFillMode,p=c.prototype;
+        var c=BitmapFillMode,p=c.prototype;
         /**
          * @language en_US
          * Repeat the bitmap to fill area.
@@ -3626,7 +3625,7 @@ var egret;
     var BlendMode = (function () {
         function BlendMode() {
         }
-        var d = __define,c=BlendMode,p=c.prototype;
+        var c=BlendMode,p=c.prototype;
         /**
          * @language en_US
          * The display object appears in front of the background. Pixel values of the display object override the pixel
@@ -3772,7 +3771,7 @@ var egret;
             this.$touchChildren = true;
             this.$children = [];
         }
-        var d = __define,c=DisplayObjectContainer,p=c.prototype;
+        var c=DisplayObjectContainer,p=c.prototype;
         /**
          * @private
          */
@@ -4358,7 +4357,7 @@ var egret;
     var GradientType = (function () {
         function GradientType() {
         }
-        var d = __define,c=GradientType,p=c.prototype;
+        var c=GradientType,p=c.prototype;
         /**
          * 用于指定线性渐变填充的值
          * @method egret.GradientType.LINEAR
@@ -4476,7 +4475,7 @@ var egret;
             this._maxY = 0;
             this.$renderContext = new egret.GraphicsRenderContext();
         }
-        var d = __define,c=Graphics,p=c.prototype;
+        var c=Graphics,p=c.prototype;
         d(p, "graphicsRenderContext"
             /**
              * @private
@@ -5187,7 +5186,7 @@ var egret;
             this.$commands = [];
             this.reset();
         }
-        var d = __define,c=GraphicsRenderContext,p=c.prototype;
+        var c=GraphicsRenderContext,p=c.prototype;
         /**
          * @language en_US
          * creates a radial gradient given by the coordinates of the two circles represented by the parameters.
@@ -6158,7 +6157,7 @@ var egret;
              */
             this._bitmapData = null;
         }
-        var d = __define,c=Texture,p=c.prototype;
+        var c=Texture,p=c.prototype;
         d(p, "textureWidth"
             /**
              * @language en_US
@@ -6505,7 +6504,7 @@ var egret;
             _super.call(this);
             this.$displayListMap = {};
         }
-        var d = __define,c=RenderTexture,p=c.prototype;
+        var c=RenderTexture,p=c.prototype;
         /**
          * @language en_US
          * The specified display object is drawn as a texture
@@ -6901,7 +6900,7 @@ var egret;
             this.$graphics.$renderContext.$targetDisplay = this;
             this.$renderRegion = new egret.sys.Region();
         }
-        var d = __define,c=Shape,p=c.prototype;
+        var c=Shape,p=c.prototype;
         d(p, "graphics"
             /**
              * @language en_US
@@ -7010,7 +7009,7 @@ var egret;
             this.$graphics.$renderContext.$targetDisplay = this;
             this.$renderRegion = new egret.sys.Region();
         }
-        var d = __define,c=Sprite,p=c.prototype;
+        var c=Sprite,p=c.prototype;
         d(p, "graphics"
             /**
              * @language en_US
@@ -7183,7 +7182,7 @@ var egret;
             this._bitmapX = texture._bitmapX - texture._offsetX;
             this._bitmapY = texture._bitmapY - texture._offsetY;
         }
-        var d = __define,c=SpriteSheet,p=c.prototype;
+        var c=SpriteSheet,p=c.prototype;
         /**
          * @language en_US
          * Obtain a cached Texture object according to the specified texture name
@@ -7364,7 +7363,7 @@ var egret;
             this.$stage = this;
             this.$nestLevel = 1;
         }
-        var d = __define,c=Stage,p=c.prototype;
+        var c=Stage,p=c.prototype;
         d(p, "frameRate"
             /**
              * @language en_US
@@ -7829,7 +7828,7 @@ var egret;
             this.$cancelable = !!cancelable;
             this.data = data;
         }
-        var d = __define,c=Event,p=c.prototype;
+        var c=Event,p=c.prototype;
         d(p, "type"
             /**
              * @language en_US
@@ -8585,7 +8584,7 @@ var egret;
             if (cancelable === void 0) { cancelable = false; }
             _super.call(this, type, bubbles, cancelable);
         }
-        var d = __define,c=FocusEvent,p=c.prototype;
+        var c=FocusEvent,p=c.prototype;
         FocusEvent.dispatchFocusEvent = function (target, type, relatedObject, shiftKey, direction, keyCode) {
             if (relatedObject === void 0) { relatedObject = null; }
             if (shiftKey === void 0) { shiftKey = false; }
@@ -8705,7 +8704,7 @@ var egret;
         function GeolocationEvent() {
             _super.apply(this, arguments);
         }
-        var d = __define,c=GeolocationEvent,p=c.prototype;
+        var c=GeolocationEvent,p=c.prototype;
         /**
          * @language en_US
          * The acquisition of the location information failed because of app don't have permission.
@@ -8810,7 +8809,7 @@ var egret;
              */
             this._status = 0;
         }
-        var d = __define,c=HTTPStatusEvent,p=c.prototype;
+        var c=HTTPStatusEvent,p=c.prototype;
         d(p, "status"
             /**
              * @language en_US
@@ -8966,7 +8965,7 @@ var egret;
             if (cancelable === void 0) { cancelable = false; }
             _super.call(this, type, bubbles, cancelable);
         }
-        var d = __define,c=IOErrorEvent,p=c.prototype;
+        var c=IOErrorEvent,p=c.prototype;
         /**
          * @language en_US
          * EventDispatcher object using the specified event object thrown Event. The objects will be thrown in the object cache pool for the next round robin.
@@ -9031,7 +9030,7 @@ var egret;
             this.keyLocation = keyLocationValue;
             this.shiftKey = shiftKeyValue;
         }
-        var d = __define,c=KeyboardEvent,p=c.prototype;
+        var c=KeyboardEvent,p=c.prototype;
         KeyboardEvent.dispatchKeyboardEvent = function (target, type, bubbles, cancelable, charCodeValue, keyCodeValue, keyLocationValue, ctrlKeyValue, altKeyValue, shiftKeyValue, controlKeyValue, commandKeyValue) {
             if (bubbles === void 0) { bubbles = true; }
             if (cancelable === void 0) { cancelable = false; }
@@ -9118,7 +9117,7 @@ var egret;
         function MotionEvent() {
             _super.apply(this, arguments);
         }
-        var d = __define,c=MotionEvent,p=c.prototype;
+        var c=MotionEvent,p=c.prototype;
         return MotionEvent;
     })(egret.Event);
     egret.MotionEvent = MotionEvent;
@@ -9196,7 +9195,7 @@ var egret;
             this.x = x;
             this.y = y;
         }
-        var d = __define,c=Point,p=c.prototype;
+        var c=Point,p=c.prototype;
         /**
          * @language en_US
          * Releases a point instance to the object pool
@@ -9535,7 +9534,7 @@ var egret;
             if (DEBUG) {
             }
         }
-        var d = __define,c=MouseEvent,p=c.prototype;
+        var c=MouseEvent,p=c.prototype;
         d(p, "clickCount"
             /** [只读] 表示鼠标按下事件是否为多击序列的一部分。 */
             ,function () {
@@ -9800,7 +9799,7 @@ var egret;
             this.allowedActions = allowedActions;
             this.dropAction = dropAction;
         }
-        var d = __define,c=NativeDragEvent,p=c.prototype;
+        var c=NativeDragEvent,p=c.prototype;
         NativeDragEvent.dispatchDragEvent = function (target, type, bubbles, cancelable, stageX, stageY, relatedObject, clipboard, allowedActions, dropAction, controlKey, altKey, shiftKey, commandKey) {
             if (bubbles === void 0) { bubbles = false; }
             if (cancelable === void 0) { cancelable = true; }
@@ -9904,7 +9903,7 @@ var egret;
         function OrientationEvent() {
             _super.apply(this, arguments);
         }
-        var d = __define,c=OrientationEvent,p=c.prototype;
+        var c=OrientationEvent,p=c.prototype;
         return OrientationEvent;
     })(egret.Event);
     egret.OrientationEvent = OrientationEvent;
@@ -10013,7 +10012,7 @@ var egret;
             this.bytesLoaded = bytesLoaded;
             this.bytesTotal = bytesTotal;
         }
-        var d = __define,c=ProgressEvent,p=c.prototype;
+        var c=ProgressEvent,p=c.prototype;
         /**
          * @language en_US
          * EventDispatcher object using the specified event object thrown Event. The objects will be thrown in the object cache pool for the next round robin.
@@ -10144,7 +10143,7 @@ var egret;
             if (cancelable === void 0) { cancelable = false; }
             _super.call(this, type, bubbles, cancelable);
         }
-        var d = __define,c=StageOrientationEvent,p=c.prototype;
+        var c=StageOrientationEvent,p=c.prototype;
         /**
          * @language en_US
          * 派发一个屏幕旋转的事件。
@@ -10258,7 +10257,7 @@ var egret;
             _super.call(this, type, bubbles, cancelable);
             this.text = text;
         }
-        var d = __define,c=TextEvent,p=c.prototype;
+        var c=TextEvent,p=c.prototype;
         /**
          * @language en_US
          * EventDispatcher object using the specified event object thrown TextEvent. The objects will be thrown in the object cache pool for the next round robin.
@@ -10381,7 +10380,7 @@ var egret;
         function TimerEvent(type, bubbles, cancelable) {
             _super.call(this, type, bubbles, cancelable);
         }
-        var d = __define,c=TimerEvent,p=c.prototype;
+        var c=TimerEvent,p=c.prototype;
         /**
          * @language en_US
          * Instructs Egret runtime to render after processing of this event completes, if the display list has been modified.
@@ -10596,7 +10595,7 @@ var egret;
             this.touchDown = false;
             this.$initTo(stageX, stageY, touchPointID);
         }
-        var d = __define,c=TouchEvent,p=c.prototype;
+        var c=TouchEvent,p=c.prototype;
         /**
          * @private
          */
@@ -10966,7 +10965,7 @@ var egret;
              */
             this.type = null;
         }
-        var d = __define,c=Filter,p=c.prototype;
+        var c=Filter,p=c.prototype;
         return Filter;
     })(egret.HashObject);
     egret.Filter = Filter;
@@ -11019,7 +11018,7 @@ var egret;
             this.blurY = blurY;
             this.type = "blur";
         }
-        var d = __define,c=BlurFilter,p=c.prototype;
+        var c=BlurFilter,p=c.prototype;
         return BlurFilter;
     })(egret.Filter);
     egret.BlurFilter = BlurFilter;
@@ -11080,7 +11079,7 @@ var egret;
             this.type = "colorTransform";
             this.setMatrix(matrix);
         }
-        var d = __define,c=ColorMatrixFilter,p=c.prototype;
+        var c=ColorMatrixFilter,p=c.prototype;
         d(p, "matrix"
             /**
              * @version Egret 2.4
@@ -11189,7 +11188,7 @@ var egret;
             this.$green = (color & 0x00ff00) >> 8;
             this.$red = color >> 16;
         }
-        var d = __define,c=GlowFilter,p=c.prototype;
+        var c=GlowFilter,p=c.prototype;
         return GlowFilter;
     })(egret.Filter);
     egret.GlowFilter = GlowFilter;
@@ -11268,7 +11267,7 @@ var egret;
             this.distance = distance;
             this.angle = angle;
         }
-        var d = __define,c=DropShadowFilter,p=c.prototype;
+        var c=DropShadowFilter,p=c.prototype;
         return DropShadowFilter;
     })(egret.GlowFilter);
     egret.DropShadowFilter = DropShadowFilter;
@@ -11406,7 +11405,7 @@ var egret;
             this.tx = tx;
             this.ty = ty;
         }
-        var d = __define,c=Matrix,p=c.prototype;
+        var c=Matrix,p=c.prototype;
         /**
          * @language en_US
          * Releases a matrix instance to the object pool
@@ -12193,7 +12192,7 @@ var egret;
             this.width = width;
             this.height = height;
         }
-        var d = __define,c=Rectangle,p=c.prototype;
+        var c=Rectangle,p=c.prototype;
         /**
          * @language en_US
          * Releases a rectangle instance to the object pool.
@@ -13222,7 +13221,7 @@ var egret;
              */
             this.onResponseHeaderThisObject = null;
         }
-        var d = __define,c=PromiseObject,p=c.prototype;
+        var c=PromiseObject,p=c.prototype;
         /**
          *
          * @version Egret 2.4
@@ -13367,7 +13366,7 @@ var egret;
     var HttpMethod = (function () {
         function HttpMethod() {
         }
-        var d = __define,c=HttpMethod,p=c.prototype;
+        var c=HttpMethod,p=c.prototype;
         /**
          * @language en_US
          * Specifies that the HttpRequest object is a GET.
@@ -13477,7 +13476,7 @@ var egret;
     var HttpResponseType = (function () {
         function HttpResponseType() {
         }
-        var d = __define,c=HttpResponseType,p=c.prototype;
+        var c=HttpResponseType,p=c.prototype;
         /**
          * @language en_US
          * Specifies that downloaded data is received as text. This is the default value of HttpRequest.responseType
@@ -13619,7 +13618,7 @@ var egret;
                 this.clipRectChanged = false;
                 this.$dirtyRegionPolicy = egret.DirtyRegionPolicy.ON;
             }
-            var d = __define,c=DirtyRegion,p=c.prototype;
+            var c=DirtyRegion,p=c.prototype;
             /**
              * @private
              * 设置剪裁边界，超过边界的节点将跳过绘制。
@@ -13804,7 +13803,7 @@ var egret;
     var DirtyRegionPolicy = (function () {
         function DirtyRegionPolicy() {
         }
-        var d = __define,c=DirtyRegionPolicy,p=c.prototype;
+        var c=DirtyRegionPolicy,p=c.prototype;
         /**
          * @language en_US
          * Close automatic detection of dirty region
@@ -13951,7 +13950,7 @@ var egret;
                 this.root = root;
                 this.dirtyRegion.displayList = this;
             }
-            var d = __define,c=DisplayList,p=c.prototype;
+            var c=DisplayList,p=c.prototype;
             /**
              * @private
              * 释放一个DisplayList实例到对象池
@@ -14575,7 +14574,7 @@ var egret;
     var Keyboard = (function () {
         function Keyboard() {
         }
-        var d = __define,c=Keyboard,p=c.prototype;
+        var c=Keyboard,p=c.prototype;
         /** [静态] 指定其它 SWF 文件能否访问最后按下的键。 */
         Keyboard.isAccessible = function () {
             return false;
@@ -15182,7 +15181,7 @@ var egret;
                 _super.call(this);
                 this.stage = stage;
             }
-            var d = __define,c=KeyboardHandler,p=c.prototype;
+            var c=KeyboardHandler,p=c.prototype;
             /**
              * @private
              * 按键开始（按下）
@@ -15223,7 +15222,7 @@ var egret;
         function MouseCursor() {
             _super.apply(this, arguments);
         }
-        var d = __define,c=MouseCursor,p=c.prototype;
+        var c=MouseCursor,p=c.prototype;
         /** [静态] 用于指定应使用箭头光标。 */
         MouseCursor.ARROW = "default";
         /** [静态] 用于指定应根据鼠标下的对象自动选择光标。 */
@@ -15300,7 +15299,7 @@ var egret;
             /** 以像素表示的光标热点。 */
             this.hotSpot = new egret.Point(0, 0);
         }
-        var d = __define,c=MouseCursorData,p=c.prototype;
+        var c=MouseCursorData,p=c.prototype;
         return MouseCursorData;
     })(egret.HashObject);
     egret.MouseCursorData = MouseCursorData;
@@ -15370,7 +15369,7 @@ var egret;
                 this.lastTouchY = -1;
                 this.stage = stage;
             }
-            var d = __define,c=MouseHandler,p=c.prototype;
+            var c=MouseHandler,p=c.prototype;
             /**
              * @private
              * 设置同时触摸数量
@@ -15633,7 +15632,7 @@ var egret;
     var OrientationMode = (function () {
         function OrientationMode() {
         }
-        var d = __define,c=OrientationMode,p=c.prototype;
+        var c=OrientationMode,p=c.prototype;
         /**
          * @private
          * 适配屏幕
@@ -15724,7 +15723,7 @@ var egret;
                 this.drawPaintRect = drawPaintRect;
                 this.drawDirtyRect = drawDirtyRect;
             }
-            var d = __define,c=Player,p=c.prototype;
+            var c=Player,p=c.prototype;
             /**
              * @private
              */
@@ -16248,7 +16247,7 @@ var egret;
                  */
                 this.moved = false;
             }
-            var d = __define,c=Region,p=c.prototype;
+            var c=Region,p=c.prototype;
             /**
              * @private
              * 释放一个Region实例到对象池
@@ -16574,7 +16573,7 @@ var egret;
             function ScreenAdapter() {
                 _super.call(this);
             }
-            var d = __define,c=ScreenAdapter,p=c.prototype;
+            var c=ScreenAdapter,p=c.prototype;
             /**
              * @private
              * 计算舞台显示尺寸
@@ -16697,7 +16696,7 @@ var egret;
     var StageScaleMode = (function () {
         function StageScaleMode() {
         }
-        var d = __define,c=StageScaleMode,p=c.prototype;
+        var c=StageScaleMode,p=c.prototype;
         /**
          * @language en_US
          * Do not scale application content. Even when you change the player viewport size, it remains unchanged. If the player is smaller than the viewport content, possibly with some cropping.<br/>
@@ -16943,7 +16942,7 @@ var egret;
                 }
                 sys.$START_TIME = Date.now();
             }
-            var d = __define,c=SystemTicker,p=c.prototype;
+            var c=SystemTicker,p=c.prototype;
             /**
              * @private
              * 注册一个播放器实例并运行
@@ -17197,7 +17196,7 @@ var egret;
                 this.lastTouchY = -1;
                 this.stage = stage;
             }
-            var d = __define,c=TouchHandler,p=c.prototype;
+            var c=TouchHandler,p=c.prototype;
             /**
              * @private
              * 设置同时触摸数量
@@ -17342,7 +17341,7 @@ var egret;
     var RuntimeType = (function () {
         function RuntimeType() {
         }
-        var d = __define,c=RuntimeType,p=c.prototype;
+        var c=RuntimeType,p=c.prototype;
         /**
          * @language en_US
          * Running on Web
@@ -17390,7 +17389,7 @@ var egret;
     var Capabilities = (function () {
         function Capabilities() {
         }
-        var d = __define,c=Capabilities,p=c.prototype;
+        var c=Capabilities,p=c.prototype;
         d(Capabilities, "language"
             /**
              * @language en_US
@@ -17685,7 +17684,7 @@ var egret;
                 this.charList = {};
             }
         }
-        var d = __define,c=BitmapFont,p=c.prototype;
+        var c=BitmapFont,p=c.prototype;
         /**
          * @language en_US
          * Obtain corresponding texture through the name attribute
@@ -17864,7 +17863,7 @@ var egret;
                 12: egret.Bitmap.defaultSmoothing //smoothing
             };
         }
-        var d = __define,c=BitmapText,p=c.prototype;
+        var c=BitmapText,p=c.prototype;
         d(p, "smoothing"
             /**
              * @language en_US
@@ -18445,7 +18444,7 @@ var egret;
     var HorizontalAlign = (function () {
         function HorizontalAlign() {
         }
-        var d = __define,c=HorizontalAlign,p=c.prototype;
+        var c=HorizontalAlign,p=c.prototype;
         /**
          * @language en_US
          * Horizontally align content to the left of the container.
@@ -18585,7 +18584,7 @@ var egret;
             this.resutlArr = [];
             this.initReplaceArr();
         }
-        var d = __define,c=HtmlTextParser,p=c.prototype;
+        var c=HtmlTextParser,p=c.prototype;
         p.initReplaceArr = function () {
             this.replaceArr = [];
             this.replaceArr.push([/&lt;/g, "<"]);
@@ -18865,7 +18864,7 @@ var egret;
              */
             this._isFocus = false;
         }
-        var d = __define,c=InputController,p=c.prototype;
+        var c=InputController,p=c.prototype;
         /**
          *
          * @param text
@@ -19284,7 +19283,7 @@ var egret;
                 36: null //restrictNot
             };
         }
-        var d = __define,c=TextField,p=c.prototype;
+        var c=TextField,p=c.prototype;
         /**
          * @private
          *
@@ -21001,7 +21000,7 @@ var egret;
     var TextFieldType = (function () {
         function TextFieldType() {
         }
-        var d = __define,c=TextFieldType,p=c.prototype;
+        var c=TextFieldType,p=c.prototype;
         /**
          * @language en_US
          * Used to specify dynamic text
@@ -21071,7 +21070,7 @@ var egret;
     var TextFieldUtils = (function () {
         function TextFieldUtils() {
         }
-        var d = __define,c=TextFieldUtils,p=c.prototype;
+        var c=TextFieldUtils,p=c.prototype;
         /**
          * 获取第一个绘制的行数
          * @param textfield 文本
@@ -21301,7 +21300,7 @@ var egret;
     var VerticalAlign = (function () {
         function VerticalAlign() {
         }
-        var d = __define,c=VerticalAlign,p=c.prototype;
+        var c=VerticalAlign,p=c.prototype;
         /**
          * @language en_US
          * Vertically align content to the top of the container.
@@ -21425,7 +21424,7 @@ var egret;
     var Endian = (function () {
         function Endian() {
         }
-        var d = __define,c=Endian,p=c.prototype;
+        var c=Endian,p=c.prototype;
         /**
          * @language en_US
          * Indicates the least significant byte of the multibyte number appears first in the sequence of bytes.
@@ -21497,7 +21496,7 @@ var egret;
             this._setArrayBuffer(buffer || new ArrayBuffer(this.BUFFER_EXT_SIZE));
             this.endian = Endian.BIG_ENDIAN;
         }
-        var d = __define,c=ByteArray,p=c.prototype;
+        var c=ByteArray,p=c.prototype;
         /**
          * @private
          * @param buffer
@@ -22494,7 +22493,7 @@ var egret;
         function Dictionary(weak) {
             this.map = new Array();
         }
-        var d = __define,c=Dictionary,p=c.prototype;
+        var c=Dictionary,p=c.prototype;
         p.getItem = function (key) {
             for (var i = 0; i < this.map.length; i++) {
                 if (this.map[i][0] == key)
@@ -22581,7 +22580,7 @@ var egret;
     var Logger = (function () {
         function Logger() {
         }
-        var d = __define,c=Logger,p=c.prototype;
+        var c=Logger,p=c.prototype;
         d(Logger, "logLevel",undefined
             /**
              * @language en_US
@@ -22783,7 +22782,7 @@ var egret;
     var NumberUtils = (function () {
         function NumberUtils() {
         }
-        var d = __define,c=NumberUtils,p=c.prototype;
+        var c=NumberUtils,p=c.prototype;
         /**
          * @language en_US
          * Judge whether it is a numerical value
@@ -23022,7 +23021,7 @@ var egret;
             this.delay = delay;
             this.repeatCount = +repeatCount | 0;
         }
-        var d = __define,c=Timer,p=c.prototype;
+        var c=Timer,p=c.prototype;
         d(p, "delay"
             /**
              * @language en_US
@@ -24182,7 +24181,7 @@ var egret;
                 this.keyboard = new egret.sys.KeyboardHandler(stage);
                 this.addListeners();
             }
-            var d = __define,c=WebKeyboardHandler,p=c.prototype;
+            var c=WebKeyboardHandler,p=c.prototype;
             /**
              * @private
              * 添加事件监听

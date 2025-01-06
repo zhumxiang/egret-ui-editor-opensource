@@ -48,7 +48,7 @@ var eui;
     var Binding = (function () {
         function Binding() {
         }
-        var d = __define,c=Binding,p=c.prototype;
+        var c=Binding,p=c.prototype;
         /**
          * @language en_US
          * Binds a property, <prop>prop</code> on the <code>target</code> Object, to a bindable property or peoperty chain.
@@ -241,7 +241,7 @@ var eui;
             this.next = next;
             this.thisObject = thisObject;
         }
-        var d = __define,c=Watcher,p=c.prototype;
+        var c=Watcher,p=c.prototype;
         /**
          * @language en_US
          * Creates and starts a Watcher instance.
@@ -788,7 +788,7 @@ var eui;
                 this._source = [];
             }
         }
-        var d = __define,c=ArrayCollection,p=c.prototype;
+        var c=ArrayCollection,p=c.prototype;
         d(p, "source"
             /**
              * @language en_US
@@ -1197,7 +1197,7 @@ var eui;
                  */
                 this.listenersAttached = false;
             }
-            var d = __define,c=Validator,p=c.prototype;
+            var c=Validator,p=c.prototype;
             /**
              * @private
              * 标记组件属性失效
@@ -1429,7 +1429,7 @@ var eui;
                  */
                 this.maxDepth = -1;
             }
-            var d = __define,c=DepthQueue,p=c.prototype;
+            var c=DepthQueue,p=c.prototype;
             /**
              * 插入一个元素
              */
@@ -1604,7 +1604,7 @@ var eui;
                 this.items = [];
                 this.length = 0;
             }
-            var d = __define,c=DepthBin,p=c.prototype;
+            var c=DepthBin,p=c.prototype;
             p.insert = function (client) {
                 var hashCode = client.$hashCode;
                 if (this.map[hashCode]) {
@@ -1698,7 +1698,7 @@ var eui;
                 _super.call(this);
                 this.initializeUIValues();
             }
-            var d = __define,c=UIComponentImpl,p=c.prototype;
+            var c=UIComponentImpl,p=c.prototype;
             /**
              * @private
              * UIComponentImpl 定义的所有变量请不要添加任何初始值，必须统一在此处初始化。
@@ -2775,7 +2775,7 @@ var eui;
             this.initializeUIValues();
             this.text = text;
         }
-        var d = __define,c=BitmapLabel,p=c.prototype;
+        var c=BitmapLabel,p=c.prototype;
         /**
          * @private
          *
@@ -3161,7 +3161,7 @@ var eui;
             this.$touchEnabled = true;
             //endif*/
         }
-        var d = __define,c=Component,p=c.prototype;
+        var c=Component,p=c.prototype;
         d(p, "hostComponentKey"
             /**
              * @language en_US
@@ -4011,7 +4011,7 @@ var eui;
             this.touchChildren = false;
             this.addEventListener(egret.TouchEvent.TOUCH_BEGIN, this.onTouchBegin, this);
         }
-        var d = __define,c=Button,p=c.prototype;
+        var c=Button,p=c.prototype;
         d(p, "label"
             /**
              * @language en_US
@@ -4265,7 +4265,7 @@ var eui;
              */
             this.$autoSelected = true;
         }
-        var d = __define,c=ToggleButton,p=c.prototype;
+        var c=ToggleButton,p=c.prototype;
         d(p, "selected"
             /**
              * @language en_US
@@ -4418,7 +4418,7 @@ var eui;
         function CheckBox() {
             _super.call(this);
         }
-        var d = __define,c=CheckBox,p=c.prototype;
+        var c=CheckBox,p=c.prototype;
         return CheckBox;
     }(eui.ToggleButton));
     eui.CheckBox = CheckBox;
@@ -4511,7 +4511,7 @@ var eui;
             this.name = name;
             this.overrides = overrides;
         }
-        var d = __define,c=State,p=c.prototype;
+        var c=State,p=c.prototype;
         /**
          * @language en_US
          * Initialize this state and all of its overrides.
@@ -4555,7 +4555,7 @@ var eui;
         var StateClient = (function () {
             function StateClient() {
             }
-            var d = __define,c=StateClient,p=c.prototype;
+            var c=StateClient,p=c.prototype;
             d(p, "states"
                 /**
                  * @private
@@ -4698,7 +4698,7 @@ var eui;
                  */
                 this.stateIsDirty = false;
             }
-            var d = __define,c=StateValues,p=c.prototype;
+            var c=StateValues,p=c.prototype;
             return StateValues;
         }());
         sys.StateValues = StateValues;
@@ -4803,7 +4803,7 @@ var eui;
             };
             this.$stateValues.parent = this;
         }
-        var d = __define,c=Group,p=c.prototype;
+        var c=Group,p=c.prototype;
         d(p, "elementsContent",undefined
             /**
              * @language en_US
@@ -5484,7 +5484,7 @@ var eui;
                 14: false,
             };
         }
-        var d = __define,c=DataGroup,p=c.prototype;
+        var c=DataGroup,p=c.prototype;
         d(p, "useVirtualLayout"
             /**
              * @copy eui.LayoutBase#useVirtualLayout
@@ -6496,7 +6496,7 @@ var eui;
                 2: false //asPassword
             };
         }
-        var d = __define,c=EditableText,p=c.prototype;
+        var c=EditableText,p=c.prototype;
         /**
          * @private
          *
@@ -7009,7 +7009,7 @@ var eui;
              */
             this.autoVisibility = true;
         }
-        var d = __define,c=ScrollBarBase,p=c.prototype;
+        var c=ScrollBarBase,p=c.prototype;
         d(p, "viewport"
             /**
              * @language en_US
@@ -7165,7 +7165,7 @@ var eui;
         function HScrollBar() {
             _super.apply(this, arguments);
         }
-        var d = __define,c=HScrollBar,p=c.prototype;
+        var c=HScrollBar,p=c.prototype;
         /**
          * @inheritDoc
          *
@@ -7321,7 +7321,7 @@ var eui;
                 9: false,
             };
         }
-        var d = __define,c=Range,p=c.prototype;
+        var c=Range,p=c.prototype;
         d(p, "maximum"
             /**
              * @language en_US
@@ -7866,7 +7866,7 @@ var eui;
             this.maximum = 10;
             this.addEventListener(egret.TouchEvent.TOUCH_BEGIN, this.onTouchBegin, this);
         }
-        var d = __define,c=SliderBase,p=c.prototype;
+        var c=SliderBase,p=c.prototype;
         d(p, "slideDuration"
             /**
              * @language en_US
@@ -8337,7 +8337,7 @@ var eui;
         function HSlider() {
             _super.call(this);
         }
-        var d = __define,c=HSlider,p=c.prototype;
+        var c=HSlider,p=c.prototype;
         /**
          * @inheritDoc
          *
@@ -8449,7 +8449,7 @@ var eui;
     var DefaultAssetAdapter = (function () {
         function DefaultAssetAdapter() {
         }
-        var d = __define,c=DefaultAssetAdapter,p=c.prototype;
+        var c=DefaultAssetAdapter,p=c.prototype;
         /**
          * @language en_US
          * resolve asset.
@@ -8618,7 +8618,7 @@ var eui;
                 this.source = source;
             }
         }
-        var d = __define,c=Image,p=c.prototype;
+        var c=Image,p=c.prototype;
         d(p, "scale9Grid"
             /**
              * @language en_US
@@ -9114,7 +9114,7 @@ var eui;
             this.touchCaptured = false;
             this.addEventListener(egret.TouchEvent.TOUCH_BEGIN, this.onTouchBegin, this);
         }
-        var d = __define,c=ItemRenderer,p=c.prototype;
+        var c=ItemRenderer,p=c.prototype;
         d(p, "data"
             /**
              * @language en_US
@@ -9378,7 +9378,7 @@ var eui;
             this.initializeUIValues();
             this.text = text;
         }
-        var d = __define,c=Label,p=c.prototype;
+        var c=Label,p=c.prototype;
         /**
          * @private
          *
@@ -9709,7 +9709,7 @@ var eui;
                 8: false //touchCancle
             };
         }
-        var d = __define,c=ListBase,p=c.prototype;
+        var c=ListBase,p=c.prototype;
         d(p, "requireSelection"
             /**
              * @language en_US
@@ -10531,7 +10531,7 @@ var eui;
                 return _this.$dataProvider && (item >= 0) && (item < _this.$dataProvider.length) && item % 1 == 0;
             };
         }
-        var d = __define,c=List,p=c.prototype;
+        var c=List,p=c.prototype;
         d(p, "selectedIndices"
             /**
              * @language en_US
@@ -11030,7 +11030,7 @@ var eui;
             this.offsetPointY = 0;
             this.addEventListener(egret.TouchEvent.TOUCH_BEGIN, this.onWindowTouchBegin, this, false, 100);
         }
-        var d = __define,c=Panel,p=c.prototype;
+        var c=Panel,p=c.prototype;
         /**
          * @private
          * 在窗体上按下时前置窗口
@@ -11381,7 +11381,7 @@ var eui;
             this.thumbInitY = 0;
             this.animation = new eui.sys.Animation(this.animationUpdateHandler, this);
         }
-        var d = __define,c=ProgressBar,p=c.prototype;
+        var c=ProgressBar,p=c.prototype;
         d(p, "labelFunction"
             /**
              * @language en_US
@@ -11755,7 +11755,7 @@ var eui;
             this._value = null;
             this.groupName = "radioGroup";
         }
-        var d = __define,c=RadioButton,p=c.prototype;
+        var c=RadioButton,p=c.prototype;
         d(p, "enabled"
             /**
              * @language en_US
@@ -12102,7 +12102,7 @@ var eui;
             this._selection = null;
             this.$name = "_radioButtonGroup" + groupCount++;
         }
-        var d = __define,c=RadioButtonGroup,p=c.prototype;
+        var c=RadioButtonGroup,p=c.prototype;
         /**
          * @language en_US
          * Returns the RadioButton component at the specified index.
@@ -12478,7 +12478,7 @@ var eui;
             this.height = height;
             this.fillColor = fillColor;
         }
-        var d = __define,c=Rect,p=c.prototype;
+        var c=Rect,p=c.prototype;
         d(p, "graphics"
             ,function () {
                 return this.$graphics;
@@ -12872,7 +12872,7 @@ var eui;
                 12: false //touchCancle
             };
         }
-        var d = __define,c=Scroller,p=c.prototype;
+        var c=Scroller,p=c.prototype;
         d(p, "bounces"
             /**
              * @language en_US
@@ -13742,7 +13742,7 @@ var eui;
              */
             this.$stateValues = new eui.sys.StateValues();
         }
-        var d = __define,c=Skin,p=c.prototype;
+        var c=Skin,p=c.prototype;
         d(p, "elementsContent",undefined
             ,function (value) {
                 this.$elementsContent = value;
@@ -13905,7 +13905,7 @@ var eui;
             this.requireSelection = true;
             this.useVirtualLayout = false;
         }
-        var d = __define,c=TabBar,p=c.prototype;
+        var c=TabBar,p=c.prototype;
         /**
          * @inheritDoc
          *
@@ -14006,7 +14006,7 @@ var eui;
                 7: null //restrict
             };
         }
-        var d = __define,c=TextInput,p=c.prototype;
+        var c=TextInput,p=c.prototype;
         d(p, "prompt"
             /**
              * @copy eui.EditableText#prompt
@@ -14443,7 +14443,7 @@ var eui;
         function ToggleSwitch() {
             _super.call(this);
         }
-        var d = __define,c=ToggleSwitch,p=c.prototype;
+        var c=ToggleSwitch,p=c.prototype;
         return ToggleSwitch;
     }(eui.ToggleButton));
     eui.ToggleSwitch = ToggleSwitch;
@@ -14519,7 +14519,7 @@ var eui;
             this.addEventListener(egret.Event.ADDED_TO_STAGE, this.onAddToStage, this);
             this.addEventListener(egret.Event.REMOVED_FROM_STAGE, this.onRemoveFromStage, this);
         }
-        var d = __define,c=UILayer,p=c.prototype;
+        var c=UILayer,p=c.prototype;
         /**
          * @private
          * 添加到舞台
@@ -14609,7 +14609,7 @@ var eui;
         function VScrollBar() {
             _super.apply(this, arguments);
         }
-        var d = __define,c=VScrollBar,p=c.prototype;
+        var c=VScrollBar,p=c.prototype;
         /**
          * @inheritDoc
          *
@@ -14742,7 +14742,7 @@ var eui;
         function VSlider() {
             _super.call(this);
         }
-        var d = __define,c=VSlider,p=c.prototype;
+        var c=VSlider,p=c.prototype;
         /**
          * @inheritDoc
          *
@@ -14896,7 +14896,7 @@ var eui;
              */
             this._selectedIndex = -1;
         }
-        var d = __define,c=ViewStack,p=c.prototype;
+        var c=ViewStack,p=c.prototype;
         d(p, "layout"
             /**
              * @language en_US
@@ -15239,7 +15239,7 @@ var eui;
                 this.updateFunction = updateFunction;
                 this.thisObject = thisObject;
             }
-            var d = __define,c=Animation,p=c.prototype;
+            var c=Animation,p=c.prototype;
             /**
              * @private
              * 开始正向播放动画,无论何时调用都重新从零时刻开始，若设置了延迟会首先进行等待。
@@ -15347,7 +15347,7 @@ var eui;
     var DefaultThemeAdapter = (function () {
         function DefaultThemeAdapter() {
         }
-        var d = __define,c=DefaultThemeAdapter,p=c.prototype;
+        var c=DefaultThemeAdapter,p=c.prototype;
         /**
          * 解析主题
          * @param url 待解析的主题url
@@ -15516,7 +15516,7 @@ var eui;
                 this.animation.endFunction = this.finishScrolling;
                 this.animation.easerFunction = easeOut;
             }
-            var d = __define,c=TouchScroll,p=c.prototype;
+            var c=TouchScroll,p=c.prototype;
             /**
              * @private
              * 正在播放缓动动画的标志。
@@ -15767,7 +15767,7 @@ var eui;
     var Direction = (function () {
         function Direction() {
         }
-        var d = __define,c=Direction,p=c.prototype;
+        var c=Direction,p=c.prototype;
         /**
          * @language en_US
          * Specifies left-to-right direction.
@@ -16026,7 +16026,7 @@ var eui;
     var ScrollPolicy = (function () {
         function ScrollPolicy() {
         }
-        var d = __define,c=ScrollPolicy,p=c.prototype;
+        var c=ScrollPolicy,p=c.prototype;
         /**
          * @language en_US
          * Show the scrollbar if the children exceed the owner's dimension.
@@ -16170,7 +16170,7 @@ var eui;
             this.$configURL = configURL;
             this.load(configURL);
         }
-        var d = __define,c=Theme,p=c.prototype;
+        var c=Theme,p=c.prototype;
         /**
          * @private
          *
@@ -16452,7 +16452,7 @@ var eui;
             _super.call(this, type, bubbles, cancelable);
             this.$initTo(kind, location, oldLocation, items, oldItems);
         }
-        var d = __define,c=CollectionEvent,p=c.prototype;
+        var c=CollectionEvent,p=c.prototype;
         /**
          * @private
          *
@@ -16612,7 +16612,7 @@ var eui;
     var CollectionEventKind = (function () {
         function CollectionEventKind() {
         }
-        var d = __define,c=CollectionEventKind,p=c.prototype;
+        var c=CollectionEventKind,p=c.prototype;
         /**
          * @language en_US
          * Indicates that the collection added an item or items.
@@ -16809,7 +16809,7 @@ var eui;
              */
             this.itemIndex = -1;
         }
-        var d = __define,c=ItemTapEvent,p=c.prototype;
+        var c=ItemTapEvent,p=c.prototype;
         /**
          * @inheritDoc
          *
@@ -16962,7 +16962,7 @@ var eui;
             _super.call(this, type, bubbles, cancelable);
             this.property = property;
         }
-        var d = __define,c=PropertyEvent,p=c.prototype;
+        var c=PropertyEvent,p=c.prototype;
         /**
          * @language en_US
          * Dispatch an event with specified EventDispatcher. The dispatched event will be cached in the object pool,
@@ -17036,7 +17036,7 @@ var eui;
             this.currentPos = currentPos;
             this.toPos = toPos;
         }
-        var d = __define,c=ScrollerThrowEvent,p=c.prototype;
+        var c=ScrollerThrowEvent,p=c.prototype;
         ScrollerThrowEvent.THROW = "throw";
         return ScrollerThrowEvent;
     }(egret.Event));
@@ -17121,7 +17121,7 @@ var eui;
         function UIEvent(type, bubbles, cancelable) {
             _super.call(this, type, bubbles, cancelable);
         }
-        var d = __define,c=UIEvent,p=c.prototype;
+        var c=UIEvent,p=c.prototype;
         /**
          * @language en_US
          * Dispatch an event with specified EventDispatcher. The dispatched event will be cached in the object pool,
@@ -17286,7 +17286,7 @@ var eui;
                  */
                 this.indent = 0;
             }
-            var d = __define,c=CodeBase,p=c.prototype;
+            var c=CodeBase,p=c.prototype;
             /**
              * @private
              *
@@ -17345,7 +17345,7 @@ var eui;
                  */
                 this.functionBlock = [];
             }
-            var d = __define,c=EXClass,p=c.prototype;
+            var c=EXClass,p=c.prototype;
             /**
              * @private
              * 添加一个内部类
@@ -17487,7 +17487,7 @@ var eui;
                  */
                 this.lines = [];
             }
-            var d = __define,c=EXCodeBlock,p=c.prototype;
+            var c=EXCodeBlock,p=c.prototype;
             /**
              * @private
              * 添加变量声明语句
@@ -17635,7 +17635,7 @@ var eui;
                  */
                 this.name = "";
             }
-            var d = __define,c=EXFunction,p=c.prototype;
+            var c=EXFunction,p=c.prototype;
             /**
              * @private
              *
@@ -17690,7 +17690,7 @@ var eui;
                 this.name = name;
                 this.defaultValue = defaultValue;
             }
-            var d = __define,c=EXVariable,p=c.prototype;
+            var c=EXVariable,p=c.prototype;
             /**
              * @private
              *
@@ -17737,7 +17737,7 @@ var eui;
                 if (stateGroups)
                     this.stateGroups = stateGroups;
             }
-            var d = __define,c=EXState,p=c.prototype;
+            var c=EXState,p=c.prototype;
             /**
              * @private
              * 添加一个覆盖
@@ -17796,7 +17796,7 @@ var eui;
                 this.position = position;
                 this.relativeTo = relativeTo;
             }
-            var d = __define,c=EXAddItems,p=c.prototype;
+            var c=EXAddItems,p=c.prototype;
             /**
              * @private
              *
@@ -17824,7 +17824,7 @@ var eui;
                 this.name = name;
                 this.value = value;
             }
-            var d = __define,c=EXSetProperty,p=c.prototype;
+            var c=EXSetProperty,p=c.prototype;
             /**
              * @private
              *
@@ -17851,7 +17851,7 @@ var eui;
                 this.property = property;
                 this.expression = expression;
             }
-            var d = __define,c=EXSetStateProperty,p=c.prototype;
+            var c=EXSetStateProperty,p=c.prototype;
             /**
              * @private
              *
@@ -17879,7 +17879,7 @@ var eui;
                 this.property = property;
                 this.expression = expression;
             }
-            var d = __define,c=EXBinding,p=c.prototype;
+            var c=EXBinding,p=c.prototype;
             /**
              * @private
              *
@@ -17962,7 +17962,7 @@ var eui;
                     this.checkDeclarations = checkDeclarations;
                 }
             }
-            var d = __define,c=EXMLParser,p=c.prototype;
+            var c=EXMLParser,p=c.prototype;
             /**
              * @private
              * 将已有javascript代码注册
@@ -19381,7 +19381,7 @@ var eui;
         var EXMLConfig = (function () {
             function EXMLConfig() {
             }
-            var d = __define,c=EXMLConfig,p=c.prototype;
+            var c=EXMLConfig,p=c.prototype;
             /**
              * @private
              */
@@ -20028,7 +20028,7 @@ var eui;
              */
             this.$typicalHeight = 22;
         }
-        var d = __define,c=LayoutBase,p=c.prototype;
+        var c=LayoutBase,p=c.prototype;
         d(p, "target"
             /**
              * @language en_US
@@ -20375,7 +20375,7 @@ var eui;
         function BasicLayout() {
             _super.call(this);
         }
-        var d = __define,c=BasicLayout,p=c.prototype;
+        var c=BasicLayout,p=c.prototype;
         /**
          * @inheritDoc
          *
@@ -20608,7 +20608,7 @@ var eui;
     var ColumnAlign = (function () {
         function ColumnAlign() {
         }
-        var d = __define,c=ColumnAlign,p=c.prototype;
+        var c=ColumnAlign,p=c.prototype;
         /**
          * @language en_US
          * Do not justify the rows.
@@ -20831,7 +20831,7 @@ var eui;
              */
             this.maxElementSize = 0;
         }
-        var d = __define,c=LinearLayoutBase,p=c.prototype;
+        var c=LinearLayoutBase,p=c.prototype;
         d(p, "horizontalAlign"
             /**
              * @language en_US
@@ -21462,7 +21462,7 @@ var eui;
                  */
                 this.max = NaN;
             }
-            var d = __define,c=ChildInfo,p=c.prototype;
+            var c=ChildInfo,p=c.prototype;
             return ChildInfo;
         }());
         sys.ChildInfo = ChildInfo;
@@ -21525,7 +21525,7 @@ var eui;
         function HorizontalLayout() {
             _super.apply(this, arguments);
         }
-        var d = __define,c=HorizontalLayout,p=c.prototype;
+        var c=HorizontalLayout,p=c.prototype;
         /**
          * @inheritDoc
          *
@@ -22047,7 +22047,7 @@ var eui;
     var JustifyAlign = (function () {
         function JustifyAlign() {
         }
-        var d = __define,c=JustifyAlign,p=c.prototype;
+        var c=JustifyAlign,p=c.prototype;
         /**
          * @language en_US
          * Justify the children with respect to the container.
@@ -22146,7 +22146,7 @@ var eui;
     var RowAlign = (function () {
         function RowAlign() {
         }
-        var d = __define,c=RowAlign,p=c.prototype;
+        var c=RowAlign,p=c.prototype;
         /**
          * @language en_US
          * Do not justify the rows.
@@ -22389,7 +22389,7 @@ var eui;
              */
             this.indexInViewCalculated = false;
         }
-        var d = __define,c=TileLayout,p=c.prototype;
+        var c=TileLayout,p=c.prototype;
         d(p, "horizontalGap"
             /**
              * @language en_US
@@ -23459,7 +23459,7 @@ var eui;
     var TileOrientation = (function () {
         function TileOrientation() {
         }
-        var d = __define,c=TileOrientation,p=c.prototype;
+        var c=TileOrientation,p=c.prototype;
         /**
          * @language en_US
          * Arranges elements row by row.
@@ -23555,7 +23555,7 @@ var eui;
         function VerticalLayout() {
             _super.apply(this, arguments);
         }
-        var d = __define,c=VerticalLayout,p=c.prototype;
+        var c=VerticalLayout,p=c.prototype;
         /**
          * @inheritDoc
          *
@@ -24089,7 +24089,7 @@ var eui;
             this.position = position;
             this.relativeTo = relativeTo;
         }
-        var d = __define,c=AddItems,p=c.prototype;
+        var c=AddItems,p=c.prototype;
         /**
          * @inheritDoc
          *
@@ -24261,7 +24261,7 @@ var eui;
             this.name = name;
             this.value = value;
         }
-        var d = __define,c=SetProperty,p=c.prototype;
+        var c=SetProperty,p=c.prototype;
         /**
          * @inheritDoc
          *
@@ -24398,7 +24398,7 @@ var eui;
             this.target = target;
             this.prop = prop;
         }
-        var d = __define,c=SetStateProperty,p=c.prototype;
+        var c=SetStateProperty,p=c.prototype;
         /**
          * @inheritDoc
          *
@@ -24510,7 +24510,7 @@ var eui;
         var MatrixUtil = (function () {
             function MatrixUtil() {
             }
-            var d = __define,c=MatrixUtil,p=c.prototype;
+            var c=MatrixUtil,p=c.prototype;
             /**
              * @private
              */

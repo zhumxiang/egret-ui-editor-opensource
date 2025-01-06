@@ -55,7 +55,6 @@ declare module egret {
 }
 declare var __global: any;
 declare function __extends(d: any, b: any): void;
-declare var __define: any;
 declare module egret {
     /**
      * @language en_US

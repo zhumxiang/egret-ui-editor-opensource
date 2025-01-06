@@ -19,7 +19,7 @@ var eui;
             this.canDropMove = true;
             this.itemRenderList = [];
         }
-        var d = __define,c=TreeDragBehavior,p=c.prototype;
+        var c=TreeDragBehavior,p=c.prototype;
         /**
          * 设置一个拖拽进入完成的回调函数
          * @param callback
@@ -768,7 +768,7 @@ var eui;
     var Binding = (function () {
         function Binding() {
         }
-        var d = __define,c=Binding,p=c.prototype;
+        var c=Binding,p=c.prototype;
         /**
          * @language en_US
          * Binds a property, <prop>prop</code> on the <code>target</code> Object, to a bindable property or peoperty chain.
@@ -961,7 +961,7 @@ var eui;
             this.next = next;
             this.thisObject = thisObject;
         }
-        var d = __define,c=Watcher,p=c.prototype;
+        var c=Watcher,p=c.prototype;
         /**
          * @language en_US
          * Creates and starts a Watcher instance.
@@ -1508,7 +1508,7 @@ var eui;
                 this._source = [];
             }
         }
-        var d = __define,c=ArrayCollection,p=c.prototype;
+        var c=ArrayCollection,p=c.prototype;
         d(p, "source"
             /**
              * @language en_US
@@ -1857,7 +1857,7 @@ var eui;
             this.childrenKey = childrenKey;
             this.parentKey = parentKey;
         }
-        var d = __define,c=ObjectCollection,p=c.prototype;
+        var c=ObjectCollection,p=c.prototype;
         d(p, "source"
             /**
              * 数据源。注意：设置source会同时清空openNodes。
@@ -2260,7 +2260,7 @@ var eui;
             this.name = name;
             this.overrides = overrides;
         }
-        var d = __define,c=State,p=c.prototype;
+        var c=State,p=c.prototype;
         /**
          * @language en_US
          * Initialize this state and all of its overrides.
@@ -2304,7 +2304,7 @@ var eui;
         var StateClient = (function () {
             function StateClient() {
             }
-            var d = __define,c=StateClient,p=c.prototype;
+            var c=StateClient,p=c.prototype;
             d(p, "states"
                 /**
                  * @private
@@ -2447,7 +2447,7 @@ var eui;
                  */
                 this.stateIsDirty = false;
             }
-            var d = __define,c=StateValues,p=c.prototype;
+            var c=StateValues,p=c.prototype;
             return StateValues;
         })();
         sys.StateValues = StateValues;
@@ -2544,7 +2544,7 @@ var eui;
                  */
                 this.listenersAttached = false;
             }
-            var d = __define,c=Validator,p=c.prototype;
+            var c=Validator,p=c.prototype;
             /**
              * @private
              * 标记组件属性失效
@@ -2776,7 +2776,7 @@ var eui;
                  */
                 this.maxDepth = -1;
             }
-            var d = __define,c=DepthQueue,p=c.prototype;
+            var c=DepthQueue,p=c.prototype;
             /**
              * 插入一个元素
              */
@@ -2951,7 +2951,7 @@ var eui;
                 this.items = [];
                 this.length = 0;
             }
-            var d = __define,c=DepthBin,p=c.prototype;
+            var c=DepthBin,p=c.prototype;
             p.insert = function (client) {
                 var hashCode = client.$hashCode;
                 if (this.map[hashCode]) {
@@ -3036,7 +3036,7 @@ var eui;
                 this._focusEnabled = false;
                 this.initializeUIValues();
             }
-            var d = __define,c=UIComponentImpl,p=c.prototype;
+            var c=UIComponentImpl,p=c.prototype;
             /**
              * @private
              * UIComponentImpl 定义的所有变量请不要添加任何初始值，必须统一在此处初始化。
@@ -4193,7 +4193,7 @@ var eui;
             };
             this.$stateValues.parent = this;
         }
-        var d = __define,c=Group,p=c.prototype;
+        var c=Group,p=c.prototype;
         d(p, "elementsContent",undefined
             /**
              * @language en_US
@@ -4816,7 +4816,7 @@ var eui;
             _super.prototype.$setLayout.call(this, new eui.AccordionLayout());
             this.accordionButtonSkinClass = "skins.AccordionButtonSkin";
         }
-        var d = __define,c=AccordionGroup,p=c.prototype;
+        var c=AccordionGroup,p=c.prototype;
         d(p, "layout"
             ,function () {
                 return this.$layout;
@@ -5089,7 +5089,7 @@ var eui;
             this.addEventListener(egret.Event.ADDED_TO_STAGE, this.onAddToStage, this);
             this.addEventListener(egret.Event.REMOVED_FROM_STAGE, this.onRemoveFromStage, this);
         }
-        var d = __define,c=UILayer,p=c.prototype;
+        var c=UILayer,p=c.prototype;
         /**
          * @private
          * 添加到舞台
@@ -5134,7 +5134,7 @@ var eui;
             this.addEventListener(egret.Event.ADDED_TO_STAGE, this.addedToStageHandle, this);
             this.addEventListener(egret.Event.REMOVED_FROM_STAGE, this.removeFromStageHandle, this);
         }
-        var d = __define,c=Application,p=c.prototype;
+        var c=Application,p=c.prototype;
         p.createChildren = function () {
             _super.prototype.createChildren.call(this);
             //注册焦点管理器
@@ -5244,7 +5244,7 @@ var eui;
             this.$touchEnabled = true;
             //endif*/
         }
-        var d = __define,c=Component,p=c.prototype;
+        var c=Component,p=c.prototype;
         d(p, "hostComponentKey"
             /**
              * @language en_US
@@ -6148,7 +6148,7 @@ var eui;
             this.addEventListener(egret.MouseEvent.ROLL_OVER, this.onMouseRollOver, this);
             this.addEventListener(egret.MouseEvent.ROLL_OUT, this.onMouseRollOut, this);
         }
-        var d = __define,c=Button,p=c.prototype;
+        var c=Button,p=c.prototype;
         /**
          * 强制让按钮停在鼠标按下状态,此方法不会导致重复抛出buttonDown事件,仅影响皮肤State。
          * @param down 是否按下
@@ -6573,7 +6573,7 @@ var eui;
              */
             this.$autoSelected = true;
         }
-        var d = __define,c=ToggleButton,p=c.prototype;
+        var c=ToggleButton,p=c.prototype;
         d(p, "selected"
             /**
              * @language en_US
@@ -6666,7 +6666,7 @@ var eui;
             this.touchChildren = false;
             this.buttonMode = true;
         }
-        var d = __define,c=AutoToggleButton,p=c.prototype;
+        var c=AutoToggleButton,p=c.prototype;
         p.buttonReleased = function () {
             if (!this.autoSelected)
                 return;
@@ -6737,7 +6737,7 @@ var eui;
             this.initializeUIValues();
             this.text = text;
         }
-        var d = __define,c=BitmapLabel,p=c.prototype;
+        var c=BitmapLabel,p=c.prototype;
         /**
          * @private
          *
@@ -7103,7 +7103,7 @@ var eui;
             this.addEventListener(egret.MouseEvent.MOUSE_DOWN, this.onMouseDown, this);
             this._isDoc = _isDoc;
         }
-        var d = __define,c=BoxContainer,p=c.prototype;
+        var c=BoxContainer,p=c.prototype;
         d(p, "elementId"
             ,function () {
                 return this._elementId;
@@ -8050,7 +8050,7 @@ var eui;
         function CheckBox() {
             _super.call(this);
         }
-        var d = __define,c=CheckBox,p=c.prototype;
+        var c=CheckBox,p=c.prototype;
         return CheckBox;
     })(eui.ToggleButton);
     eui.CheckBox = CheckBox;
@@ -8069,7 +8069,7 @@ var eui;
             this.touchChildren = false;
             _self__.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onClick, this);
         }
-        var d = __define,c=ColorPicker,p=c.prototype;
+        var c=ColorPicker,p=c.prototype;
         d(p, "liveChange"
             ,function () {
                 return this._liveChange;
@@ -8306,7 +8306,7 @@ var eui;
             this.offsetPointY = 0;
             this.addEventListener(egret.TouchEvent.TOUCH_BEGIN, this.onWindowTouchBegin, this, false, 100);
         }
-        var d = __define,c=Panel,p=c.prototype;
+        var c=Panel,p=c.prototype;
         /**
          * @private
          * 在窗体上按下时前置窗口
@@ -8547,7 +8547,7 @@ var eui;
             this.width = 450;
             this.height = 400;
         }
-        var d = __define,c=ColorWindow,p=c.prototype;
+        var c=ColorWindow,p=c.prototype;
         p.onKeyDown = function (event) {
             if (event.keyCode == egret.Keyboard.ENTER) {
                 this.onConfirmClick();
@@ -9123,7 +9123,7 @@ var eui;
             _self__.addEventListener(egret.Event["SELECT_ALL"], this.selectAllHandler, this);
             this.addEventListener(egret.Event.ADDED_TO_STAGE, this.initGridHead, this);
         }
-        var d = __define,c=DataGrid,p=c.prototype;
+        var c=DataGrid,p=c.prototype;
         d(p, "selectedByKeyboard"
             /**
              * 能否使用键盘来控制选中项
@@ -10731,7 +10731,7 @@ var eui;
             _super.call(this);
             this.rect = new eui.SelectionIndicatorRect();
         }
-        var d = __define,c=SelectionIndicator,p=c.prototype;
+        var c=SelectionIndicator,p=c.prototype;
         p.createChildren = function () {
             //            this.rect.fillColor = 0x4f6070;
             //            this.rect.strokeAlpha = 1;
@@ -10865,7 +10865,7 @@ var eui;
                 14: false,
             };
         }
-        var d = __define,c=DataGroup,p=c.prototype;
+        var c=DataGroup,p=c.prototype;
         d(p, "useVirtualLayout"
             /**
              * @copy eui.LayoutBase#useVirtualLayout
@@ -11877,7 +11877,7 @@ var eui;
             this.height = height;
             this.fillColor = fillColor;
         }
-        var d = __define,c=Rect,p=c.prototype;
+        var c=Rect,p=c.prototype;
         d(p, "graphics"
             ,function () {
                 return this.$graphics;
@@ -12118,7 +12118,7 @@ var eui;
             this.dividerLine = DividerLine;
             this.dividers = [];
         }
-        var d = __define,c=DividedGroup,p=c.prototype;
+        var c=DividedGroup,p=c.prototype;
         d(p, "cursorName"
             ,function () {
                 return "";
@@ -12240,7 +12240,7 @@ var eui;
             this.width = 2;
             this.fillColor = 0x374552;
         }
-        var d = __define,c=DividerLine,p=c.prototype;
+        var c=DividerLine,p=c.prototype;
         return DividerLine;
     })(eui.Rect);
     egret.registerClass(DividerLine,'DividerLine');
@@ -12275,7 +12275,7 @@ var eui;
             this._setSelectItem = NaN;
             this.addEventListener(eui.UIEvent.ADDED, this.addedHandle, this);
         }
-        var d = __define,c=DropDownList,p=c.prototype;
+        var c=DropDownList,p=c.prototype;
         p.addedHandle = function (e) {
             this.validateDisplayList();
             this.validateNow();
@@ -12520,7 +12520,7 @@ var eui;
         function DocDropDownList() {
             _super.call(this);
         }
-        var d = __define,c=DocDropDownList,p=c.prototype;
+        var c=DocDropDownList,p=c.prototype;
         d(p, "label"
             /**
              * 显示的文字
@@ -12596,7 +12596,7 @@ var eui;
             this.addEventListener(egret.FocusEvent.FOCUS_IN, this.onFocusIn, this);
             this.addEventListener(egret.FocusEvent.FOCUS_OUT, this.onFocusOut, this);
         }
-        var d = __define,c=TabGroup,p=c.prototype;
+        var c=TabGroup,p=c.prototype;
         p.onClose = function (event) {
             this._isFocus = false;
             this.validateNow();
@@ -13463,7 +13463,7 @@ var eui;
             this.addEventListener(eui.TabGroupEvent.CLOSE_PANEL, this.onClosedPanel, this);
             this.addEventListener(eui.TabGroupEvent.PANEL_CREATED, this.onPanelCreated, this);
         }
-        var d = __define,c=DocTabGroup,p=c.prototype;
+        var c=DocTabGroup,p=c.prototype;
         p.onFocusIn = function (event) {
             _super.prototype.onFocusIn.call(this, event);
             var docEvent = new eui.DocumentEvent(eui.DocumentEvent.DOC_FOCUS_IN, true);
@@ -13865,7 +13865,7 @@ var eui;
             this.addEventListener(egret.MouseEvent.ROLL_OVER, this.onMouseRollOver, this);
             this.addEventListener(egret.MouseEvent.ROLL_OUT, this.onMouseRollOut, this);
         }
-        var d = __define,c=ItemRenderer,p=c.prototype;
+        var c=ItemRenderer,p=c.prototype;
         d(p, "data"
             /**
              * @language en_US
@@ -14051,7 +14051,7 @@ var eui;
             _super.call(this);
             this._isEnabled = true;
         }
-        var d = __define,c=DownListItemRenderer,p=c.prototype;
+        var c=DownListItemRenderer,p=c.prototype;
         d(p, "type"
             ,function () {
                 return this._type;
@@ -14111,7 +14111,7 @@ var eui;
             this.maxSize = 8;
             this._dataArr = dataArr.concat();
         }
-        var d = __define,c=DragDisplay,p=c.prototype;
+        var c=DragDisplay,p=c.prototype;
         p.createChildren = function () {
             _super.prototype.createChildren.call(this);
             var bg = new eui.Rect();
@@ -14213,7 +14213,7 @@ var eui;
                 2: false //asPassword
             };
         }
-        var d = __define,c=EditableText,p=c.prototype;
+        var c=EditableText,p=c.prototype;
         /**
          * @private
          *
@@ -14788,7 +14788,7 @@ var eui;
             this.addEventListener(egret.MouseEvent.MOUSE_MOVE, this.grid_mouseMoveHandler, this);
             this.addEventListener(egret.MouseEvent.ROLL_OUT, this.grid_mouseRollOutHandler, this);
         }
-        var d = __define,c=Grid,p=c.prototype;
+        var c=Grid,p=c.prototype;
         d(p, "gridLayout"
             ,function () {
                 return this.layout;
@@ -16311,7 +16311,7 @@ var eui;
             this.addEventListener(egret.MouseEvent.DOUBLE_CLICK, this.gchg_doubleClickHandler, this);
             //                this.addEventListener(eui.UIEvent.,this.createCompeletFun,this)
         }
-        var d = __define,c=GridColumnHeaderGroup,p=c.prototype;
+        var c=GridColumnHeaderGroup,p=c.prototype;
         p.createCompeletFun = function (e) {
             this.updateDisplayList(this.dataGrid.grid.width, this.minHeight);
         };
@@ -16539,7 +16539,7 @@ var eui;
             //            this.$setLayout(hLayout);
             egret.superSetter(eui.HDividerGroup, this, "layout", hLayout);
         }
-        var d = __define,c=HDividerGroup,p=c.prototype;
+        var c=HDividerGroup,p=c.prototype;
         d(p, "cursorName"
             ,function () {
                 //					return egret.ui.core.Cursors.DESKTOP_RESIZE_EW;
@@ -16691,7 +16691,7 @@ var eui;
                 9: false,
             };
         }
-        var d = __define,c=Range,p=c.prototype;
+        var c=Range,p=c.prototype;
         d(p, "maximum"
             /**
              * @language en_US
@@ -17236,7 +17236,7 @@ var eui;
             this.maximum = 10;
             this.addEventListener(egret.TouchEvent.TOUCH_BEGIN, this.onTouchBegin, this);
         }
-        var d = __define,c=SliderBase,p=c.prototype;
+        var c=SliderBase,p=c.prototype;
         d(p, "slideDuration"
             /**
              * @language en_US
@@ -17657,7 +17657,7 @@ var eui;
             this.addEventListener(eui.TrackBaseEvent.THUMB_RELEASE, this.onRelease, this);
             this.dropDownController = new eui.DropDownController();
         }
-        var d = __define,c=PopUpSliderBase,p=c.prototype;
+        var c=PopUpSliderBase,p=c.prototype;
         d(p, "isDragging"
             ,function () {
                 return this._isDragging;
@@ -17846,7 +17846,7 @@ var eui;
             this.openButton = null;
             this.dropDown = null;
         }
-        var d = __define,c=HPopUpSlider,p=c.prototype;
+        var c=HPopUpSlider,p=c.prototype;
         p.pointToValue = function (x, y) {
             if (!this.thumb || !this.track)
                 return 0;
@@ -17974,7 +17974,7 @@ var eui;
              */
             this.$viewport = null;
         }
-        var d = __define,c=ScrollBarBase,p=c.prototype;
+        var c=ScrollBarBase,p=c.prototype;
         d(p, "viewport"
             /**
              * @language en_US
@@ -18131,7 +18131,7 @@ var eui;
             _super.apply(this, arguments);
             this.trackLayoutBounds = new egret.Rectangle();
         }
-        var d = __define,c=HScrollBar,p=c.prototype;
+        var c=HScrollBar,p=c.prototype;
         /**
          * @inheritDoc
          *
@@ -18304,7 +18304,7 @@ var eui;
         function HSlider() {
             _super.call(this);
         }
-        var d = __define,c=HSlider,p=c.prototype;
+        var c=HSlider,p=c.prototype;
         /**
          * @inheritDoc
          *
@@ -18437,7 +18437,7 @@ var eui;
         function VSlider() {
             _super.call(this);
         }
-        var d = __define,c=VSlider,p=c.prototype;
+        var c=VSlider,p=c.prototype;
         /**
          * @inheritDoc
          *
@@ -18506,7 +18506,7 @@ var eui;
             _super.call(this);
             this.isMouseDown = false;
         }
-        var d = __define,c=HueSlider,p=c.prototype;
+        var c=HueSlider,p=c.prototype;
         p.onTrackTouchBegin = function (event) {
             var _this = this;
             _super.prototype.onTrackTouchBegin.call(this, event);
@@ -18620,7 +18620,7 @@ var eui;
                 8: false //touchCancle
             };
         }
-        var d = __define,c=ListBase,p=c.prototype;
+        var c=ListBase,p=c.prototype;
         d(p, "requireSelection"
             /**
              * @language en_US
@@ -19450,7 +19450,7 @@ var eui;
             this.requireSelection = true;
             this.useVirtualLayout = false;
         }
-        var d = __define,c=TabBar,p=c.prototype;
+        var c=TabBar,p=c.prototype;
         /**
          * @inheritDoc
          *
@@ -19519,7 +19519,7 @@ var eui;
         function IconTabBar() {
             _super.call(this);
         }
-        var d = __define,c=IconTabBar,p=c.prototype;
+        var c=IconTabBar,p=c.prototype;
         p.rendererAdded = function (renderer, index, item) {
             _super.prototype.rendererAdded.call(this, renderer, index, item);
             renderer.addEventListener(egret.MouseEvent.CLICK, this.item_mouseDownHandler, this);
@@ -19557,7 +19557,7 @@ var eui;
         function IconTabBarButton() {
             _super.call(this);
         }
-        var d = __define,c=IconTabBarButton,p=c.prototype;
+        var c=IconTabBarButton,p=c.prototype;
         p.dataChanged = function () {
             _super.prototype.dataChanged.call(this);
             if (this.iconDisplay != null && this.data.hasOwnProperty("icon"))
@@ -19628,7 +19628,7 @@ var eui;
     var DefaultAssetAdapter = (function () {
         function DefaultAssetAdapter() {
         }
-        var d = __define,c=DefaultAssetAdapter,p=c.prototype;
+        var c=DefaultAssetAdapter,p=c.prototype;
         /**
          * @language en_US
          * resolve asset.
@@ -19798,7 +19798,7 @@ var eui;
                 this.source = source;
             }
         }
-        var d = __define,c=Image,p=c.prototype;
+        var c=Image,p=c.prototype;
         d(p, "scale9Grid"
             /**
              * @language en_US
@@ -20330,7 +20330,7 @@ var eui;
             this.initializeUIValues();
             this.text = text;
         }
-        var d = __define,c=Label,p=c.prototype;
+        var c=Label,p=c.prototype;
         /**
          * @private
          *
@@ -20707,7 +20707,7 @@ var eui;
             this.selectedByKeyboard = true;
             this.keyboardUpAndDownLoop = true;
         }
-        var d = __define,c=List,p=c.prototype;
+        var c=List,p=c.prototype;
         p.$onAddToStage = function (stage, nestLevel) {
             _super.prototype.$onAddToStage.call(this, stage, nestLevel);
             stage.addEventListener(egret.Event.RESIZE, this.onResize_handler, this);
@@ -21282,7 +21282,7 @@ var eui;
             this.hasUpdateValue = false;
             this.focusEnabled = false;
         }
-        var d = __define,c=NumberRegulator,p=c.prototype;
+        var c=NumberRegulator,p=c.prototype;
         d(p, "value"
             ,function () {
                 return egret.superGetter(eui.NumberRegulator, this, "value");
@@ -21632,7 +21632,7 @@ var eui;
             this.addEventListener(eui.DocumentEvent.SELECTED_DOC_CHANGE, this.onDocChanged, this);
             this.addEventListener(eui.DocumentEvent.DOC_FOCUS_IN, this.onDocFocusIn, this);
         }
-        var d = __define,c=PanelArea,p=c.prototype;
+        var c=PanelArea,p=c.prototype;
         d(p, "exmlConfig"
             ,function () {
                 return this._exmlConfig;
@@ -22251,7 +22251,7 @@ var eui;
             this.addEventListener(egret.Event.ADDED_TO_STAGE, this.addedToStageHandler, this);
             this.addEventListener(egret.Event.REMOVED_FROM_STAGE, this.removedFromStageHandler, this);
         }
-        var d = __define,c=PopUpAnchor,p=c.prototype;
+        var c=PopUpAnchor,p=c.prototype;
         d(p, "popUpHeightMatchesAnchorHeight"
             /**
              * 如果为 true，则将popUp控件的高度设置为 PopUpAnchor的高度值。
@@ -22681,7 +22681,7 @@ var eui;
             this.animationValue = 0;
             this.animation = new eui.sys.Animation(this.animationUpdateHandler, this);
         }
-        var d = __define,c=ProgressBar,p=c.prototype;
+        var c=ProgressBar,p=c.prototype;
         d(p, "labelFunction"
             /**
              * @language en_US
@@ -23047,7 +23047,7 @@ var eui;
             this._value = null;
             this.groupName = "radioGroup";
         }
-        var d = __define,c=RadioButton,p=c.prototype;
+        var c=RadioButton,p=c.prototype;
         d(p, "enabled"
             /**
              * @language en_US
@@ -23394,7 +23394,7 @@ var eui;
             this._selection = null;
             this.$name = "_radioButtonGroup" + groupCount++;
         }
-        var d = __define,c=RadioButtonGroup,p=c.prototype;
+        var c=RadioButtonGroup,p=c.prototype;
         /**
          * @language en_US
          * Returns the RadioButton component at the specified index.
@@ -23878,7 +23878,7 @@ var eui;
                 13: false //auto hide
             };
         }
-        var d = __define,c=Scroller,p=c.prototype;
+        var c=Scroller,p=c.prototype;
         d(p, "bounces"
             /**
              * @language en_US
@@ -24775,7 +24775,7 @@ var eui;
              */
             this.$stateValues = new eui.sys.StateValues();
         }
-        var d = __define,c=Skin,p=c.prototype;
+        var c=Skin,p=c.prototype;
         d(p, "elementsContent",undefined
             ,function (value) {
                 this.$elementsContent = value;
@@ -24849,7 +24849,7 @@ var eui;
             this._itemIndex = 0;
             this.labelDisplay = null;
         }
-        var d = __define,c=TabBarButton,p=c.prototype;
+        var c=TabBarButton,p=c.prototype;
         d(p, "allowDeselection"
             ,function () {
                 return this._allowDeselection;
@@ -24902,7 +24902,7 @@ var eui;
             //this.focusEnabled = true;
             this.skinName = "skins.TabPanelSkin";
         }
-        var d = __define,c=TabPanel,p=c.prototype;
+        var c=TabPanel,p=c.prototype;
         /***
          * 使用皮肤中contentContainer 的布局，如果不是用此方法 则布局是错误的
          */
@@ -25028,7 +25028,7 @@ var eui;
                 7: null //restrict
             };
         }
-        var d = __define,c=TextInput,p=c.prototype;
+        var c=TextInput,p=c.prototype;
         d(p, "prompt"
             /**
              * @copy eui.EditableText#prompt
@@ -25424,7 +25424,7 @@ var eui;
             this.addEventListener(egret.FocusEvent.FOCUS_IN, this.focusIn_handler, this);
             this.addEventListener(egret.FocusEvent.FOCUS_OUT, this.focusOut_handler, this);
         }
-        var d = __define,c=TextInputPro,p=c.prototype;
+        var c=TextInputPro,p=c.prototype;
         /**
          * 焦点移入
          */
@@ -25522,7 +25522,7 @@ var eui;
         function ToggleSwitch() {
             _super.call(this);
         }
-        var d = __define,c=ToggleSwitch,p=c.prototype;
+        var c=ToggleSwitch,p=c.prototype;
         return ToggleSwitch;
     })(eui.ToggleButton);
     eui.ToggleSwitch = ToggleSwitch;
@@ -25542,7 +25542,7 @@ var eui;
         function Tree() {
             _super.call(this);
         }
-        var d = __define,c=Tree,p=c.prototype;
+        var c=Tree,p=c.prototype;
         /**
          * @inheritDoc
          */
@@ -25650,7 +25650,7 @@ var eui;
             this._treeDragBehavior.setOnDragMoveComplete(this.onDragMoveComplete, this);
             this._treeDragBehavior.setOnDragStart(this.onDragStart, this);
         }
-        var d = __define,c=TreePro,p=c.prototype;
+        var c=TreePro,p=c.prototype;
         d(p, "treeDragBehavior"
             ,function () {
                 return this._treeDragBehavior;
@@ -25860,7 +25860,7 @@ var eui;
             _super.apply(this, arguments);
             this.trackLayoutBounds = new egret.Rectangle();
         }
-        var d = __define,c=VScrollBar,p=c.prototype;
+        var c=VScrollBar,p=c.prototype;
         /**
              * @inheritDoc
              *
@@ -26085,7 +26085,7 @@ var eui;
              */
             this._selectedIndex = -1;
         }
-        var d = __define,c=ViewStack,p=c.prototype;
+        var c=ViewStack,p=c.prototype;
         d(p, "layout"
             /**
              * @language en_US
@@ -26359,7 +26359,7 @@ var eui;
             this._separator.cursor = this.isVertical ? egret.MouseCursor.NS_RESIZE : egret.MouseCursor.EW_RESIZE;
             this._separator.target = this;
         }
-        var d = __define,c=BoxElement,p=c.prototype;
+        var c=BoxElement,p=c.prototype;
         d(p, "separator"
             ,function () {
                 return this._separator;
@@ -26550,7 +26550,7 @@ var eui;
             _super.call(this);
             this._isFocus = true;
         }
-        var d = __define,c=FocusTabBarButton,p=c.prototype;
+        var c=FocusTabBarButton,p=c.prototype;
         d(p, "isFocus"
             ,function () {
                 return this._isFocus;
@@ -26587,7 +26587,7 @@ var eui;
             this.addEventListener(egret.MouseEvent.RIGHT_CLICK, this.rightClickHandler, this);
             this.addEventListener(egret.MouseEvent.MIDDLE_CLICK, this.middleClickHandler, this);
         }
-        var d = __define,c=CloseTabButton,p=c.prototype;
+        var c=CloseTabButton,p=c.prototype;
         p.middleClickHandler = function (event) {
             this.dispatchEvent(new eui.CloseTabEvent(eui.CloseTabEvent.CLOSE, true));
         };
@@ -26668,7 +26668,7 @@ var eui;
             this.$graphics.$renderContext.$targetDisplay = this;
             this.touchChildren = false;
         }
-        var d = __define,c=Separator,p=c.prototype;
+        var c=Separator,p=c.prototype;
         /**
          * @private
          */
@@ -26718,7 +26718,7 @@ var eui;
         function NavigationUnit() {
             _super.apply(this, arguments);
         }
-        var d = __define,c=NavigationUnit,p=c.prototype;
+        var c=NavigationUnit,p=c.prototype;
         NavigationUnit.isNavigationUnit = function (keyCode) {
             switch (keyCode) {
                 case egret.Keyboard.LEFT:
@@ -26772,7 +26772,7 @@ var eui;
         function PopUpPosition() {
             _super.apply(this, arguments);
         }
-        var d = __define,c=PopUpPosition,p=c.prototype;
+        var c=PopUpPosition,p=c.prototype;
         return PopUpPosition;
     })(egret.HashObject);
     eui.PopUpPosition = PopUpPosition;
@@ -26801,7 +26801,7 @@ var eui;
             this.buttons = new egret.HashObject();
             this._returnCode = DialogConstants.OK;
         }
-        var d = __define,c=Dialog,p=c.prototype;
+        var c=Dialog,p=c.prototype;
         /**
          * 获取指定id的按钮
          */
@@ -26900,7 +26900,7 @@ var eui;
     var DialogConstants = (function () {
         function DialogConstants() {
         }
-        var d = __define,c=DialogConstants,p=c.prototype;
+        var c=DialogConstants,p=c.prototype;
         /**
          * returnCode的值， 表示确定
          */
@@ -26979,7 +26979,7 @@ var eui;
             _super.call(this);
             this._messageType = eui.DialogConstants.NONE;
         }
-        var d = __define,c=DialogPage,p=c.prototype;
+        var c=DialogPage,p=c.prototype;
         p.getDescription = function () {
             return this._description;
         };
@@ -27032,7 +27032,7 @@ var eui;
             this.width = 350;
             this.height = 180;
         }
-        var d = __define,c=InputDialog,p=c.prototype;
+        var c=InputDialog,p=c.prototype;
         /**
          * 验证输入
          */
@@ -27182,7 +27182,7 @@ var eui;
             this.buttonLabels = buttonLabels;
             this.defaultButtonIndex = defaultIndex;
         }
-        var d = __define,c=MessageDialog,p=c.prototype;
+        var c=MessageDialog,p=c.prototype;
         /**
      * 打开对话框
      */
@@ -27279,7 +27279,7 @@ var eui;
     var MessageDialogConstants = (function () {
         function MessageDialogConstants() {
         }
-        var d = __define,c=MessageDialogConstants,p=c.prototype;
+        var c=MessageDialogConstants,p=c.prototype;
         /**
          * 错误对话框，带有一个确定按钮
          */
@@ -27321,7 +27321,7 @@ var eui;
             this.oldPage = oldPage;
             this.newPage = newPage;
         }
-        var d = __define,c=PageChangeEvent,p=c.prototype;
+        var c=PageChangeEvent,p=c.prototype;
         /**
         * 页面发生改变的事件
         */
@@ -27348,7 +27348,7 @@ var eui;
             _super.call(this);
             this.showingError = false;
         }
-        var d = __define,c=TitleAreaDialog,p=c.prototype;
+        var c=TitleAreaDialog,p=c.prototype;
         d(p, "titleAreaTitle"
             /**
              * 标题区的标题
@@ -27448,7 +27448,7 @@ var eui;
             this._rowIndex = rowIndex;
             this._columnIndex = columnIndex;
         }
-        var d = __define,c=CellPosition,p=c.prototype;
+        var c=CellPosition,p=c.prototype;
         d(p, "columnIndex"
             ,function () {
                 return this._columnIndex;
@@ -27489,7 +27489,7 @@ var eui;
             this._rowCount = rowCount;
             this._columnCount = columnCount;
         }
-        var d = __define,c=CellRegion,p=c.prototype;
+        var c=CellRegion,p=c.prototype;
         d(p, "columnCount"
             ,function () {
                 return this._columnCount;
@@ -27540,7 +27540,7 @@ var eui;
             _super.call(this);
             this.skinName = "skins.ColumnSeparatorSkin";
         }
-        var d = __define,c=ColumnSeparator,p=c.prototype;
+        var c=ColumnSeparator,p=c.prototype;
         return ColumnSeparator;
     })(eui.Component);
     eui.ColumnSeparator = ColumnSeparator;
@@ -27557,7 +27557,7 @@ var eui;
             this.inEndEdit = false;
             this._dataGrid = dataGrid;
         }
-        var d = __define,c=DataGridEditor,p=c.prototype;
+        var c=DataGridEditor,p=c.prototype;
         d(p, "dataGrid"
             ,function () {
                 return this._dataGrid;
@@ -28134,7 +28134,7 @@ var eui;
             this._data = null;
             this._rowIndex = 0;
         }
-        var d = __define,c=GridItemEditor,p=c.prototype;
+        var c=GridItemEditor,p=c.prototype;
         d(p, "owner"
             ,function () {
                 return this._owner;
@@ -28288,7 +28288,7 @@ var eui;
             _super.call(this);
             this.skinName = "skins.TextInputSkin";
         }
-        var d = __define,c=DefaultGridItemEditor,p=c.prototype;
+        var c=DefaultGridItemEditor,p=c.prototype;
         d(p, "value"
             ,function () {
                 return this.textDisplay.text;
@@ -28321,7 +28321,7 @@ var eui;
             this.touchChildren = false;
             this.touchEnabled = false;
         }
-        var d = __define,c=EditorIndicator,p=c.prototype;
+        var c=EditorIndicator,p=c.prototype;
         return EditorIndicator;
     })(eui.Component);
     eui.EditorIndicator = EditorIndicator;
@@ -28359,7 +28359,7 @@ var eui;
             if (columnName)
                 this.dataField = this.headerText = columnName;
         }
-        var d = __define,c=GridColumn,p=c.prototype;
+        var c=GridColumn,p=c.prototype;
         d(GridColumn, "defaultItemEditor"
             ,function () {
                 if (!eui.GridColumn._defaultItemEditor)
@@ -28834,7 +28834,7 @@ var eui;
              */
             this.keyboardUpAndDownLoop = false;
         }
-        var d = __define,c=LayoutBase,p=c.prototype;
+        var c=LayoutBase,p=c.prototype;
         d(p, "target"
             /**
              * @language en_US
@@ -29305,7 +29305,7 @@ var eui;
             this.elementToFactoryMap = new egret.Dictionary();
             this.createdVisualElement = false;
         }
-        var d = __define,c=GridColumnHeaderGroupLayout,p=c.prototype;
+        var c=GridColumnHeaderGroupLayout,p=c.prototype;
         d(p, "target"
             ,function () {
                 return egret.superGetter(eui.GridColumnHeaderGroupLayout, this, "target");
@@ -29824,7 +29824,7 @@ var eui;
             this.horizontalSpan = horizontalSpan;
             this.verticalSpan = verticalSpan;
         }
-        var d = __define,c=GridData,p=c.prototype;
+        var c=GridData,p=c.prototype;
         p.computeSize = function (view, wHint, hHint) {
             if (this.cacheWidth != -1 && this.cacheHeight != -1)
                 return;
@@ -29890,7 +29890,7 @@ var eui;
             this._maxRowHeight = 10000;
             _super.call(this);
         }
-        var d = __define,c=GridDimensions,p=c.prototype;
+        var c=GridDimensions,p=c.prototype;
         GridDimensions.insertElementsToVector = function (vec, startIndex, elements) {
             var oldLength = vec.length;
             var count = elements.length;
@@ -30685,7 +30685,7 @@ var eui;
             this.skinName = "skins.GridItemRendererSkin";
             _self__.addEventListener(eui.ToolTipEvent.TOOL_TIP_SHOW, eui.GridItemRenderer.toolTipShowHandler, null);
         }
-        var d = __define,c=GridItemRenderer,p=c.prototype;
+        var c=GridItemRenderer,p=c.prototype;
         GridItemRenderer.initializeRendererToolTip = function (renderer) {
             //                    var toolTipClient: egret.managers.IToolTipManagerClient = <egret.managers.IToolTipManagerClient>flash.As3As(renderer,null,"egret.managers.IToolTipManagerClient");
             //                    if(!toolTipClient)
@@ -30875,7 +30875,7 @@ var eui;
             _super.call(this);
             this.layout = new eui.LayoutBase();
         }
-        var d = __define,c=GridLayer,p=c.prototype;
+        var c=GridLayer,p=c.prototype;
         p.invalidateDisplayList = function () {
             var grid = this.parent;
             if (grid && grid.inUpdateDisplayList)
@@ -30905,7 +30905,7 @@ var eui;
             this._numColumns = 0;
             _super.call(this);
         }
-        var d = __define,c=GridRowList,p=c.prototype;
+        var c=GridRowList,p=c.prototype;
         d(p, "first"
             ,function () {
                 return this._head;
@@ -31221,7 +31221,7 @@ var eui;
             this.cellHeights = new Array(numColumns);
             eui.GridDimensions.clearVector(this.cellHeights, -1);
         }
-        var d = __define,c=GridRowNode,p=c.prototype;
+        var c=GridRowNode,p=c.prototype;
         d(p, "numColumns"
             ,function () {
                 return this._numColumns;
@@ -31316,7 +31316,7 @@ var eui;
             this._selectionLength = 0;
             this._selectionMode = eui.GridSelectionMode.SINGLE_ROW;
         }
-        var d = __define,c=GridSelection,p=c.prototype;
+        var c=GridSelection,p=c.prototype;
         d(p, "grid"
             ,function () {
                 return this._grid;
@@ -31955,7 +31955,7 @@ var eui;
             this.isAdd = false;
             this.isAdd = isAdd;
         }
-        var d = __define,c=CellRect,p=c.prototype;
+        var c=CellRect,p=c.prototype;
         p.containsCell = function (cellRowIndex, cellColumnIndex) {
             var _self__ = this;
             ///这里休要修改
@@ -31980,7 +31980,7 @@ var eui;
         function GridSelectionMode() {
             _super.call(this);
         }
-        var d = __define,c=GridSelectionMode,p=c.prototype;
+        var c=GridSelectionMode,p=c.prototype;
         return GridSelectionMode;
     })(egret.HashObject);
     eui.GridSelectionMode = GridSelectionMode;
@@ -32006,7 +32006,7 @@ var eui;
             this.touchChildren = false;
             this.touchEnabled = false;
         }
-        var d = __define,c=HeaderColumnSeparator,p=c.prototype;
+        var c=HeaderColumnSeparator,p=c.prototype;
         return HeaderColumnSeparator;
     })(eui.Component);
     eui.HeaderColumnSeparator = HeaderColumnSeparator;
@@ -32027,7 +32027,7 @@ var eui;
             this.touchChildren = false;
             this.touchEnabled = false;
         }
-        var d = __define,c=HoverIndicator,p=c.prototype;
+        var c=HoverIndicator,p=c.prototype;
         return HoverIndicator;
     })(eui.Component);
     eui.HoverIndicator = HoverIndicator;
@@ -32048,7 +32048,7 @@ var eui;
             this.touchChildren = false;
             this.touchEnabled = false;
         }
-        var d = __define,c=RowSeparator,p=c.prototype;
+        var c=RowSeparator,p=c.prototype;
         return RowSeparator;
     })(eui.Component);
     eui.RowSeparator = RowSeparator;
@@ -32069,7 +32069,7 @@ var eui;
             this.touchChildren = false;
             this.touchEnabled = false;
         }
-        var d = __define,c=SelectionIndicatorRect,p=c.prototype;
+        var c=SelectionIndicatorRect,p=c.prototype;
         return SelectionIndicatorRect;
     })(eui.Component);
     eui.SelectionIndicatorRect = SelectionIndicatorRect;
@@ -32168,7 +32168,7 @@ var eui;
                 this.updateFunction = updateFunction;
                 this.thisObject = thisObject;
             }
-            var d = __define,c=Animation,p=c.prototype;
+            var c=Animation,p=c.prototype;
             /**
              * @private
              * 开始正向播放动画,无论何时调用都重新从零时刻开始，若设置了延迟会首先进行等待。
@@ -32276,7 +32276,7 @@ var eui;
     var DefaultThemeAdapter = (function () {
         function DefaultThemeAdapter() {
         }
-        var d = __define,c=DefaultThemeAdapter,p=c.prototype;
+        var c=DefaultThemeAdapter,p=c.prototype;
         /**
          * 解析主题
          * @param url 待解析的主题url
@@ -32325,7 +32325,7 @@ var eui;
             this._closeOnResize = true;
             this._rollOverOpenDelay = NaN;
         }
-        var d = __define,c=DropDownController,p=c.prototype;
+        var c=DropDownController,p=c.prototype;
         d(p, "openButton"
             /**
              * 下拉按钮实例
@@ -32793,7 +32793,7 @@ var eui;
                 this.animation.endFunction = this.finishScrolling;
                 this.animation.easerFunction = easeOut;
             }
-            var d = __define,c=TouchScroll,p=c.prototype;
+            var c=TouchScroll,p=c.prototype;
             /**
              * @private
              * 正在播放缓动动画的标志。
@@ -33010,7 +33010,7 @@ var eui;
             this.addEventListener(egret.TouchEvent.TOUCH_END, this.onItemTouch, this, false, 100);
             this.addEventListener(egret.TouchEvent.TOUCH_CANCEL, this.onItemTouch, this, false, 100);
         }
-        var d = __define,c=TreeItemRenderer,p=c.prototype;
+        var c=TreeItemRenderer,p=c.prototype;
         p.onItemTouch = function (event) {
             if (event.target == this.disclosureButton) {
                 event.stopImmediatePropagation();
@@ -33121,7 +33121,7 @@ var eui;
             this._forcePreviousAndNextButtons = false;
             this._needsProgressMonitor = false;
         }
-        var d = __define,c=Wizard,p=c.prototype;
+        var c=Wizard,p=c.prototype;
         d(p, "forcePreviousAndNextButtons",undefined
             /**
              * 即使只有一页向导是否需要上一页和下一页的按钮
@@ -33254,7 +33254,7 @@ var eui;
             this.minHeight = 360;
             this.setWizard(newWidzard);
         }
-        var d = __define,c=WizardDialog,p=c.prototype;
+        var c=WizardDialog,p=c.prototype;
         d(p, "wizard"
             /**
              * 当前的向导
@@ -33671,7 +33671,7 @@ var eui;
             this.percentWidth = 100;
             this.percentHeight = 100;
         }
-        var d = __define,c=WizardPage,p=c.prototype;
+        var c=WizardPage,p=c.prototype;
         p.canFlipToNextPage = function () {
             return this.getIsPageComplete() && this.getNextPage() != null;
         };
@@ -33775,7 +33775,7 @@ var eui;
             /**可选的向导节点*/
             this.selectedWizardNodes = [];
         }
-        var d = __define,c=WizardSelectionPage,p=c.prototype;
+        var c=WizardSelectionPage,p=c.prototype;
         d(p, "selectedNode"
             /**
              * 选中的向导节点
@@ -33837,7 +33837,7 @@ var eui;
             this._direction = eui.ProgressBarDirection.LEFT_TO_RIGHT;
             this.animated = true;
         }
-        var d = __define,c=ProgressIndicator,p=c.prototype;
+        var c=ProgressIndicator,p=c.prototype;
         d(p, "direction"
             /**
              * 进度条增长方向。请使用ProgressBarDirection定义的常量。默认值：ProgressBarDirection.LEFT_TO_RIGHT。
@@ -33933,7 +33933,7 @@ var eui;
     var ProgressBarDirection = (function () {
         function ProgressBarDirection() {
         }
-        var d = __define,c=ProgressBarDirection,p=c.prototype;
+        var c=ProgressBarDirection,p=c.prototype;
         /**
          * 水平从左到右增长
          */
@@ -33969,7 +33969,7 @@ var eui;
             this.addEventListener(egret.Event.ADDED_TO_STAGE, this.startAnimate, this);
             this.addEventListener(egret.Event.REMOVED_FROM_STAGE, this.stopAnimate, this);
         }
-        var d = __define,c=ProgressLoopBar,p=c.prototype;
+        var c=ProgressLoopBar,p=c.prototype;
         d(p, "visible",undefined
             ,function (value) {
                 if (this.visible == value)
@@ -34098,7 +34098,7 @@ var eui;
             this.blockedReason = null;
             this._totalWork = 0;
         }
-        var d = __define,c=ProgressMonitorPart,p=c.prototype;
+        var c=ProgressMonitorPart,p=c.prototype;
         d(p, "createStopButton"
             /**
              * 是否创建停止按钮
@@ -34247,7 +34247,7 @@ var eui;
         function AddPosition() {
             _super.apply(this, arguments);
         }
-        var d = __define,c=AddPosition,p=c.prototype;
+        var c=AddPosition,p=c.prototype;
         return AddPosition;
     })(egret.HashObject);
     eui.AddPosition = AddPosition;
@@ -34307,7 +34307,7 @@ var eui;
     var Direction = (function () {
         function Direction() {
         }
-        var d = __define,c=Direction,p=c.prototype;
+        var c=Direction,p=c.prototype;
         /**
          * @language en_US
          * Specifies left-to-right direction.
@@ -34566,7 +34566,7 @@ var eui;
     var ScrollPolicy = (function () {
         function ScrollPolicy() {
         }
-        var d = __define,c=ScrollPolicy,p=c.prototype;
+        var c=ScrollPolicy,p=c.prototype;
         /**
          * @language en_US
          * Show the scrollbar if the children exceed the owner's dimension.
@@ -34709,7 +34709,7 @@ var eui;
             this.$configURL = configURL;
             this.load(configURL);
         }
-        var d = __define,c=Theme,p=c.prototype;
+        var c=Theme,p=c.prototype;
         /**
          * @private
          *
@@ -34894,7 +34894,7 @@ var eui;
             this.toGroup = null;
             this.toGroupPosititon = "";
         }
-        var d = __define,c=BoxContainerEvent,p=c.prototype;
+        var c=BoxContainerEvent,p=c.prototype;
         return BoxContainerEvent;
     })(egret.Event);
     eui.BoxContainerEvent = BoxContainerEvent;
@@ -34919,7 +34919,7 @@ var eui;
             if (cancelable === void 0) { cancelable = false; }
             _super.call(this, type, bubbles, cancelable);
         }
-        var d = __define,c=CloseTabEvent,p=c.prototype;
+        var c=CloseTabEvent,p=c.prototype;
         /**
          * 关闭当前
          */
@@ -35043,7 +35043,7 @@ var eui;
             _super.call(this, type, bubbles, cancelable);
             this.$initTo(kind, location, oldLocation, items, oldItems);
         }
-        var d = __define,c=CollectionEvent,p=c.prototype;
+        var c=CollectionEvent,p=c.prototype;
         /**
          * @private
          *
@@ -35203,7 +35203,7 @@ var eui;
     var CollectionEventKind = (function () {
         function CollectionEventKind() {
         }
-        var d = __define,c=CollectionEventKind,p=c.prototype;
+        var c=CollectionEventKind,p=c.prototype;
         /**
          * @language en_US
          * Indicates that the collection added an item or items.
@@ -35326,7 +35326,7 @@ var eui;
         function CollectionEventKindEX() {
             _super.apply(this, arguments);
         }
-        var d = __define,c=CollectionEventKindEX,p=c.prototype;
+        var c=CollectionEventKindEX,p=c.prototype;
         return CollectionEventKindEX;
     })(egret.HashObject);
     eui.CollectionEventKindEX = CollectionEventKindEX;
@@ -35347,7 +35347,7 @@ var eui;
             if (cancelable === void 0) { cancelable = false; }
             _super.call(this, type, bubbles, cancelable);
         }
-        var d = __define,c=DocumentEvent,p=c.prototype;
+        var c=DocumentEvent,p=c.prototype;
         p.clone = function () {
             var evt = new eui.DocumentEvent(this.type, this.bubbles, this.cancelable);
             evt.newData = this.newData;
@@ -35380,7 +35380,7 @@ var eui;
             this.altKey = altKey;
             this.shiftKey = shiftKey;
         }
-        var d = __define,c=DragEvent,p=c.prototype;
+        var c=DragEvent,p=c.prototype;
         p.clone = function () {
             var cloneEvent = new DragEvent(this.type, this.bubbles, this.cancelable, this.dragInitiator, this.dragSource, this.ctrlKey, this.altKey, this.shiftKey);
             cloneEvent.relatedObject = this.relatedObject;
@@ -35420,7 +35420,7 @@ var eui;
             this.newRowIndex = newRowIndex;
             this.newColumnIndex = newColumnIndex;
         }
-        var d = __define,c=GridCaretEvent,p=c.prototype;
+        var c=GridCaretEvent,p=c.prototype;
         p.clone = function () {
             return new eui.GridCaretEvent(this.type, this.bubbles, this.cancelable, this.oldRowIndex, this.oldColumnIndex, this.newRowIndex, this.newColumnIndex);
         };
@@ -35510,7 +35510,7 @@ var eui;
             this.item = item;
             this.itemRenderer = itemRenderer;
         }
-        var d = __define,c=GridEvent,p=c.prototype;
+        var c=GridEvent,p=c.prototype;
         d(p, "grid"
             /**
              * 与此事件关联的网格。
@@ -35572,7 +35572,7 @@ var eui;
             this.columnIndex = columnIndex;
             this.column = column;
         }
-        var d = __define,c=GridItemEditorEvent,p=c.prototype;
+        var c=GridItemEditorEvent,p=c.prototype;
         p.clone = function () {
             var cloneEvent = new eui.GridItemEditorEvent(this.type, this.bubbles, this.cancelable, this.rowIndex, this.columnIndex, this.column);
             return cloneEvent;
@@ -35599,7 +35599,7 @@ var eui;
             this.kind = kind;
             this.selectionChange = selectionChange;
         }
-        var d = __define,c=GridSelectionEvent,p=c.prototype;
+        var c=GridSelectionEvent,p=c.prototype;
         p.toString = function () {
             var _self__ = this;
             return _self__.formatToString("GridSelectionEvent", "type", "bubbles", "cancelable", "eventPhase", "kind", "selectionChange");
@@ -35621,7 +35621,7 @@ var eui;
         function GridSelectionEventKind() {
             _super.apply(this, arguments);
         }
-        var d = __define,c=GridSelectionEventKind,p=c.prototype;
+        var c=GridSelectionEventKind,p=c.prototype;
         return GridSelectionEventKind;
     })(egret.HashObject);
     eui.GridSelectionEventKind = GridSelectionEventKind;
@@ -35645,7 +35645,7 @@ var eui;
             _super.call(this, type, bubbles, cancelable);
             this.column = column;
         }
-        var d = __define,c=GridSortEvent,p=c.prototype;
+        var c=GridSortEvent,p=c.prototype;
         p.clone = function () {
             return new eui.GridSortEvent(this.type, this.bubbles, this.cancelable, this.column);
         };
@@ -35671,7 +35671,7 @@ var eui;
             this.oldIndex = oldIndex;
             this.newIndex = newIndex;
         }
-        var d = __define,c=IndexChangeEvent,p=c.prototype;
+        var c=IndexChangeEvent,p=c.prototype;
         p.clone = function () {
             return new eui.IndexChangeEvent(this.type, this.bubbles, this.cancelable, this.oldIndex, this.newIndex);
         };
@@ -35778,7 +35778,7 @@ var eui;
              */
             this.itemIndex = -1;
         }
-        var d = __define,c=ItemTapEvent,p=c.prototype;
+        var c=ItemTapEvent,p=c.prototype;
         /**
          * @inheritDoc
          *
@@ -35866,7 +35866,7 @@ var eui;
             this.newValue = newValue;
             this.source = source;
         }
-        var d = __define,c=PropertyChangeEvent,p=c.prototype;
+        var c=PropertyChangeEvent,p=c.prototype;
         PropertyChangeEvent.createUpdateEvent = function (source, property, oldValue, newValue) {
             var event = new eui.PropertyChangeEvent(eui.PropertyChangeEvent.PROPERTY_CHANGE);
             event.kind = eui.PropertyChangeEventKind.UPDATE;
@@ -35895,7 +35895,7 @@ var eui;
     var PropertyChangeEventKind = (function () {
         function PropertyChangeEventKind() {
         }
-        var d = __define,c=PropertyChangeEventKind,p=c.prototype;
+        var c=PropertyChangeEventKind,p=c.prototype;
         return PropertyChangeEventKind;
     })();
     eui.PropertyChangeEventKind = PropertyChangeEventKind;
@@ -35987,7 +35987,7 @@ var eui;
             _super.call(this, type, bubbles, cancelable);
             this.property = property;
         }
-        var d = __define,c=PropertyEvent,p=c.prototype;
+        var c=PropertyEvent,p=c.prototype;
         /**
          * @language en_US
          * Dispatch an event with specified EventDispatcher. The dispatched event will be cached in the object pool,
@@ -36061,7 +36061,7 @@ var eui;
             this.currentPos = currentPos;
             this.toPos = toPos;
         }
-        var d = __define,c=ScrollerThrowEvent,p=c.prototype;
+        var c=ScrollerThrowEvent,p=c.prototype;
         ScrollerThrowEvent.THROW = "throw";
         return ScrollerThrowEvent;
     })(egret.Event);
@@ -36077,7 +36077,7 @@ var eui;
             if (cancelable === void 0) { cancelable = false; }
             _super.call(this, type, bubbles, cancelable);
         }
-        var d = __define,c=TabGroupEvent,p=c.prototype;
+        var c=TabGroupEvent,p=c.prototype;
         p.clone = function () {
             var event = new eui.TabGroupEvent(this.type, this.bubbles, this.cancelable);
             event.relateObject = this.relateObject;
@@ -36107,7 +36107,7 @@ var eui;
             _super.call(this, type, bubbles, cancelable);
             this.toolTip = toolTip;
         }
-        var d = __define,c=ToolTipEvent,p=c.prototype;
+        var c=ToolTipEvent,p=c.prototype;
         p.clone = function () {
             return new eui.ToolTipEvent(this.type, this.bubbles, this.cancelable, this.toolTip);
         };
@@ -36127,7 +36127,7 @@ var eui;
             if (cancelable === void 0) { cancelable = false; }
             _super.call(this, type, bubbles, cancelable);
         }
-        var d = __define,c=TrackBaseEvent,p=c.prototype;
+        var c=TrackBaseEvent,p=c.prototype;
         p.clone = function () {
             return new eui.TrackBaseEvent(this.type, this.bubbles, this.cancelable);
         };
@@ -36152,7 +36152,7 @@ var eui;
             if (cancelable === void 0) { cancelable = true; }
             _super.call(this, type, bubbles, cancelable);
         }
-        var d = __define,c=TreeDragEvent,p=c.prototype;
+        var c=TreeDragEvent,p=c.prototype;
         p.clone = function () {
             var evt = new TreeDragEvent(this.type, this.bubbles, this.cancelable);
             evt.dragItems = this.dragItems;
@@ -36196,7 +36196,7 @@ var eui;
             this.itemRenderer = itemRenderer;
             this.itemIndex = itemIndex;
         }
-        var d = __define,c=TreeEvent,p=c.prototype;
+        var c=TreeEvent,p=c.prototype;
         /**
          * @inheritDoc
          */
@@ -36325,7 +36325,7 @@ var eui;
         function UIEvent(type, bubbles, cancelable) {
             _super.call(this, type, bubbles, cancelable);
         }
-        var d = __define,c=UIEvent,p=c.prototype;
+        var c=UIEvent,p=c.prototype;
         /**
          * @language en_US
          * Dispatch an event with specified EventDispatcher. The dispatched event will be cached in the object pool,
@@ -36468,7 +36468,7 @@ var eui;
     var UIEventEx = (function () {
         function UIEventEx() {
         }
-        var d = __define,c=UIEventEx,p=c.prototype;
+        var c=UIEventEx,p=c.prototype;
         UIEventEx.VALUE_COMMIT = "valueCommit";
         UIEventEx.ENTER = "enter";
         UIEventEx.UPDATE_COMPLETE = "updateComplete";
@@ -36526,7 +36526,7 @@ var eui;
                  */
                 this.indent = 0;
             }
-            var d = __define,c=CodeBase,p=c.prototype;
+            var c=CodeBase,p=c.prototype;
             /**
              * @private
              *
@@ -36585,7 +36585,7 @@ var eui;
                  */
                 this.functionBlock = [];
             }
-            var d = __define,c=EXClass,p=c.prototype;
+            var c=EXClass,p=c.prototype;
             /**
              * @private
              * 添加一个内部类
@@ -36727,7 +36727,7 @@ var eui;
                  */
                 this.lines = [];
             }
-            var d = __define,c=EXCodeBlock,p=c.prototype;
+            var c=EXCodeBlock,p=c.prototype;
             /**
              * @private
              * 添加变量声明语句
@@ -36875,7 +36875,7 @@ var eui;
                  */
                 this.name = "";
             }
-            var d = __define,c=EXFunction,p=c.prototype;
+            var c=EXFunction,p=c.prototype;
             /**
              * @private
              *
@@ -36930,7 +36930,7 @@ var eui;
                 this.name = name;
                 this.defaultValue = defaultValue;
             }
-            var d = __define,c=EXVariable,p=c.prototype;
+            var c=EXVariable,p=c.prototype;
             /**
              * @private
              *
@@ -36977,7 +36977,7 @@ var eui;
                 if (stateGroups)
                     this.stateGroups = stateGroups;
             }
-            var d = __define,c=EXState,p=c.prototype;
+            var c=EXState,p=c.prototype;
             /**
              * @private
              * 添加一个覆盖
@@ -37036,7 +37036,7 @@ var eui;
                 this.position = position;
                 this.relativeTo = relativeTo;
             }
-            var d = __define,c=EXAddItems,p=c.prototype;
+            var c=EXAddItems,p=c.prototype;
             /**
              * @private
              *
@@ -37064,7 +37064,7 @@ var eui;
                 this.name = name;
                 this.value = value;
             }
-            var d = __define,c=EXSetProperty,p=c.prototype;
+            var c=EXSetProperty,p=c.prototype;
             /**
              * @private
              *
@@ -37091,7 +37091,7 @@ var eui;
                 this.property = property;
                 this.expression = expression;
             }
-            var d = __define,c=EXSetStateProperty,p=c.prototype;
+            var c=EXSetStateProperty,p=c.prototype;
             /**
              * @private
              *
@@ -37119,7 +37119,7 @@ var eui;
                 this.property = property;
                 this.expression = expression;
             }
-            var d = __define,c=EXBinding,p=c.prototype;
+            var c=EXBinding,p=c.prototype;
             /**
              * @private
              *
@@ -37202,7 +37202,7 @@ var eui;
                     this.checkDeclarations = checkDeclarations;
                 }
             }
-            var d = __define,c=EXMLParser,p=c.prototype;
+            var c=EXMLParser,p=c.prototype;
             /**
              * @private
              * 编译指定的XML对象为JavaScript代码。
@@ -38570,7 +38570,7 @@ var eui;
         var EXMLConfig = (function () {
             function EXMLConfig() {
             }
-            var d = __define,c=EXMLConfig,p=c.prototype;
+            var c=EXMLConfig,p=c.prototype;
             /**
              * @private
              */
@@ -39171,7 +39171,7 @@ var eui;
         function BasicLayout() {
             _super.call(this);
         }
-        var d = __define,c=BasicLayout,p=c.prototype;
+        var c=BasicLayout,p=c.prototype;
         /**
          * @inheritDoc
          *
@@ -39359,7 +39359,7 @@ var eui;
         function ScrollBasicLayout() {
             _super.call(this);
         }
-        var d = __define,c=ScrollBasicLayout,p=c.prototype;
+        var c=ScrollBasicLayout,p=c.prototype;
         p.getElementBoundsLeftOfScrollRect = function (scrollRect) {
             var bounds = new egret.Rectangle();
             bounds.left = scrollRect.left - 20;
@@ -39396,7 +39396,7 @@ var eui;
         function AccordionLayout() {
             _super.call(this);
         }
-        var d = __define,c=AccordionLayout,p=c.prototype;
+        var c=AccordionLayout,p=c.prototype;
         p.measure = function () {
             _super.prototype.measure.call(this);
             var target = this.target;
@@ -39505,7 +39505,7 @@ var eui;
             this._paddingTop = 0;
             this._paddingBottom = 0;
         }
-        var d = __define,c=AttributeQueueLayout,p=c.prototype;
+        var c=AttributeQueueLayout,p=c.prototype;
         d(p, "paddingTop"
             /**
              * 容器的顶边缘与第一个布局元素的顶边缘之间的像素数,若为NaN将使用padding的值，默认值：0。
@@ -39952,7 +39952,7 @@ var eui;
     var ColumnAlign = (function () {
         function ColumnAlign() {
         }
-        var d = __define,c=ColumnAlign,p=c.prototype;
+        var c=ColumnAlign,p=c.prototype;
         /**
          * @language en_US
          * Do not justify the rows.
@@ -40074,7 +40074,7 @@ var eui;
             this._enablePerformanceStatistics = false;
             this.gridDimensions = new eui.GridDimensions();
         }
-        var d = __define,c=GridLayout,p=c.prototype;
+        var c=GridLayout,p=c.prototype;
         d(p, "useVirtualLayout"
             ,function () {
                 return true;
@@ -41410,7 +41410,7 @@ var eui;
              */
             this.maxElementSize = 0;
         }
-        var d = __define,c=LinearLayoutBase,p=c.prototype;
+        var c=LinearLayoutBase,p=c.prototype;
         d(p, "horizontalAlign"
             /**
              * @language en_US
@@ -42041,7 +42041,7 @@ var eui;
                  */
                 this.max = NaN;
             }
-            var d = __define,c=ChildInfo,p=c.prototype;
+            var c=ChildInfo,p=c.prototype;
             return ChildInfo;
         })();
         sys.ChildInfo = ChildInfo;
@@ -42104,7 +42104,7 @@ var eui;
         function HorizontalLayout() {
             _super.apply(this, arguments);
         }
-        var d = __define,c=HorizontalLayout,p=c.prototype;
+        var c=HorizontalLayout,p=c.prototype;
         /**
          * @inheritDoc
          *
@@ -42626,7 +42626,7 @@ var eui;
     var JustifyAlign = (function () {
         function JustifyAlign() {
         }
-        var d = __define,c=JustifyAlign,p=c.prototype;
+        var c=JustifyAlign,p=c.prototype;
         /**
          * @language en_US
          * Justify the children with respect to the container.
@@ -42725,7 +42725,7 @@ var eui;
     var RowAlign = (function () {
         function RowAlign() {
         }
-        var d = __define,c=RowAlign,p=c.prototype;
+        var c=RowAlign,p=c.prototype;
         /**
          * @language en_US
          * Do not justify the rows.
@@ -42968,7 +42968,7 @@ var eui;
              */
             this.indexInViewCalculated = false;
         }
-        var d = __define,c=TileLayout,p=c.prototype;
+        var c=TileLayout,p=c.prototype;
         d(p, "horizontalGap"
             /**
              * @language en_US
@@ -44038,7 +44038,7 @@ var eui;
     var TileOrientation = (function () {
         function TileOrientation() {
         }
-        var d = __define,c=TileOrientation,p=c.prototype;
+        var c=TileOrientation,p=c.prototype;
         /**
          * @language en_US
          * Arranges elements row by row.
@@ -44134,7 +44134,7 @@ var eui;
         function VerticalLayout() {
             _super.apply(this, arguments);
         }
-        var d = __define,c=VerticalLayout,p=c.prototype;
+        var c=VerticalLayout,p=c.prototype;
         /**
          * @inheritDoc
          *
@@ -44761,7 +44761,7 @@ var eui;
         function DragManager() {
             _super.apply(this, arguments);
         }
-        var d = __define,c=DragManager,p=c.prototype;
+        var c=DragManager,p=c.prototype;
         DragManager.getImpl = function (target) {
             var stage = target.stage;
             if (!stage) {
@@ -44838,7 +44838,7 @@ var eui;
             _super.call(this);
             this._isDragging = false;
         }
-        var d = __define,c=DragManagerImpl,p=c.prototype;
+        var c=DragManagerImpl,p=c.prototype;
         p.getIsDragging = function () {
             return this._isDragging;
         };
@@ -44917,7 +44917,7 @@ var eui;
             this.stageRoot.addEventListener(egret.MouseEvent.MOUSE_UP, this.mouseUpHandler, this);
             this.stageRoot.addEventListener(egret.Event.MOUSE_LEAVE, this.mouseLeaveHandler, this);
         }
-        var d = __define,c=DragProxy,p=c.prototype;
+        var c=DragProxy,p=c.prototype;
         p.createChildren = function () {
             _super.prototype.createChildren.call(this);
             if (!this.stageRoot.focus)
@@ -45120,7 +45120,7 @@ var eui;
             this.formatHandlers = {};
             this._formats = [];
         }
-        var d = __define,c=DragSource,p=c.prototype;
+        var c=DragSource,p=c.prototype;
         d(p, "formats"
             ,function () {
                 return this._formats;
@@ -45163,7 +45163,7 @@ var eui;
     var FocusManager = (function () {
         function FocusManager() {
         }
-        var d = __define,c=FocusManager,p=c.prototype;
+        var c=FocusManager,p=c.prototype;
         d(p, "stage"
             /**
              * 舞台引用
@@ -45258,7 +45258,7 @@ var eui;
     var PopUpManager = (function () {
         function PopUpManager() {
         }
-        var d = __define,c=PopUpManager,p=c.prototype;
+        var c=PopUpManager,p=c.prototype;
         d(PopUpManager, "impl"
             ,function () {
                 if (!PopUpManager._impl) {
@@ -45307,7 +45307,7 @@ var eui;
             this.popUps = new Array();
             this.maskData = new MaskData();
         }
-        var d = __define,c=PopUpManagerImpl,p=c.prototype;
+        var c=PopUpManagerImpl,p=c.prototype;
         /**
          * 添加一个弹出项
          * 若重复添加则会移除上一次弹出
@@ -45425,7 +45425,7 @@ var eui;
     var PopUpData = (function () {
         function PopUpData() {
         }
-        var d = __define,c=PopUpData,p=c.prototype;
+        var c=PopUpData,p=c.prototype;
         return PopUpData;
     })();
     eui.PopUpData = PopUpData;
@@ -45437,7 +45437,7 @@ var eui;
             this.color = color;
             this.alpha = alpha;
         }
-        var d = __define,c=MaskData,p=c.prototype;
+        var c=MaskData,p=c.prototype;
         return MaskData;
     })();
     eui.MaskData = MaskData;
@@ -45508,7 +45508,7 @@ var eui;
             this.position = position;
             this.relativeTo = relativeTo;
         }
-        var d = __define,c=AddItems,p=c.prototype;
+        var c=AddItems,p=c.prototype;
         /**
          * @inheritDoc
          *
@@ -45680,7 +45680,7 @@ var eui;
             this.name = name;
             this.value = value;
         }
-        var d = __define,c=SetProperty,p=c.prototype;
+        var c=SetProperty,p=c.prototype;
         /**
          * @inheritDoc
          *
@@ -45817,7 +45817,7 @@ var eui;
             this.target = target;
             this.prop = prop;
         }
-        var d = __define,c=SetStateProperty,p=c.prototype;
+        var c=SetStateProperty,p=c.prototype;
         /**
          * @inheritDoc
          *
@@ -45895,7 +45895,7 @@ var eui;
         function BoxElementIdUtil() {
             _super.apply(this, arguments);
         }
-        var d = __define,c=BoxElementIdUtil,p=c.prototype;
+        var c=BoxElementIdUtil,p=c.prototype;
         BoxElementIdUtil.newId = function () {
             var id = 0;
             while (eui.BoxElementIdUtil.checkHas(id)) {
@@ -45963,7 +45963,7 @@ var eui;
         var MatrixUtil = (function () {
             function MatrixUtil() {
             }
-            var d = __define,c=MatrixUtil,p=c.prototype;
+            var c=MatrixUtil,p=c.prototype;
             /**
              * @private
              */
@@ -46320,7 +46320,7 @@ var eui;
         function MouseEventUtil() {
             _super.apply(this, arguments);
         }
-        var d = __define,c=MouseEventUtil,p=c.prototype;
+        var c=MouseEventUtil,p=c.prototype;
         MouseEventUtil.addDownDragUpListeners = function (target, handleDown, handleDrag, handleUp) {
             var f = function (e) {
                 var sbr;
