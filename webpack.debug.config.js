@@ -52,7 +52,8 @@ module.exports = {
 	output: {
 		filename: '[name].js',
 		path: __dirname + '/out',
-		publicPath: '../../../../'
+		publicPath: '../../../../',
+		hashFunction: 'sha256',
 	},
 	externals: externals,
 	module: {
