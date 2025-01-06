@@ -53,7 +53,6 @@ module.exports = {
 		filename: '[name].js',
 		path: __dirname + '/out',
 		publicPath: '../../../../',
-		hashFunction: 'sha256',
 	},
 	externals: externals,
 	module: {
