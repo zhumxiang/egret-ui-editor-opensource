@@ -144,11 +144,12 @@ var registerTSClass = function (className, classData, propertyData) {
 		classString += "(function (" + moduleName + ") {\n";
 	}
 	classString += "var " + classShortName + " = " + (moduleName || "window") + "." + classShortName + " || (function (" + (superClassName ? "_super" : "") + ") {\n";
+	classString += "class " + classShortName;
 	if (superClassName)
-		classString += "__extends(" + classShortName + ", _super);\n";
-	classString += "function " + classShortName + "(){\n";
+		classString += " extends _super";
+	classString += " {\nconstructor(){\n";
 	if (superClassName)
-		classString += "_super.call(this);\n";
+		classString += "super();\n";
 
 	//添加属性
 	if (classData) {
@@ -171,7 +172,7 @@ var registerTSClass = function (className, classData, propertyData) {
 		}
 	}
 
-	classString += "}\n";
+	classString += "}}\n";
 	classString += "return " + classShortName + ";\n";
 	if (superClassName)
 		classString += "})(" + superClassName + ");\n";
